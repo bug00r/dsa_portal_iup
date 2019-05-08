@@ -9,10 +9,6 @@
 #include <cdiup.h>
 #include <wd.h>
 
-//#include "scene_builder.h"
-//#include "renderer.h"
-//#include "texture.h"
-
 #include "app.h"
 #include "plugin.h"
 #include "plugin_ui_main.h"
