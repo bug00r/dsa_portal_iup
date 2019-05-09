@@ -1,7 +1,7 @@
 #include "resource.h"
 
 /*
-	################### EOF PRIVATE SECTION ###################
+	################### PRIVATE SECTION ###################
 */
 
 static void* __resource_reade_entry_data_byte(la_int64_t entry_size, struct archive *a, int *status) {
@@ -35,68 +35,6 @@ static unsigned char* __resource_read_entry_data_string(struct archive *a, struc
 	return data;
 }
 
-static char * __resource_copy_string(const char * string) {
-	size_t size = strlen(string) + 1;
-	char * copy = malloc(size*sizeof(char));
-	memcpy(copy, string, size);
-	return copy;
-}
-
-static char * __resource_path_from_full_filepath(const char * full_file_path) {
-	const char *pLastSlash = strrchr(full_file_path, '/');
-	char *path = NULL;
-	if ( pLastSlash ) {
-		size_t count = pLastSlash - full_file_path;
-		count++;
-		path = malloc((count+1)*sizeof(char));
-		strncpy(path, full_file_path, count);
-		path[count] = '\0';
-	}
-	
-	return path;
-}
-
-static char * __resource_file_from_full_filepath(const char * full_file_path) {
-	const char *pLastSlash = strrchr(full_file_path, '/');
-	if ( !pLastSlash ) { pLastSlash = full_file_path; }
-	else { pLastSlash++; }
-	
-	char * file = NULL;
-	if (strlen(pLastSlash) > 0) {
-		file = __resource_copy_string(pLastSlash);
-	}
-	return file;
-}
-
-static char * __resource_type_from_filename(const char * file_name) {
-
-	const char *pLastPoint = strrchr(file_name, '.');
-	if ( !pLastPoint ) { pLastPoint = file_name; }
-	else { pLastPoint++; }
-	char *type = NULL;
-	if ( strlen(pLastPoint) > 0) {
-		type = __resource_copy_string(pLastPoint);
-	}
-	
-	return type;
-}
-
-static char * __resource_name_from_filename(const char * file_name) {
-
-	const char *pLastSlash = strrchr(file_name, '/');
-	if ( !pLastSlash ) { pLastSlash = file_name; }
-	else { pLastSlash++; }
-	
-	const char *pLastPoint = strrchr(pLastSlash, '.');
-	size_t count = 0;
-	if ( !pLastPoint ) { count = strlen(pLastSlash); }
-	else { count = pLastPoint - pLastSlash; }
-	char *name = malloc((count+1)*sizeof(char));
-	strncpy(name, pLastSlash, count);
-	name[count] = '\0';
-	return name;
-}
-
 static resource_file_t* __resource_read_entry(struct archive *a, struct archive_entry *entry) {
 
 	la_int64_t entry_size = archive_entry_size(entry);
@@ -109,7 +47,7 @@ static resource_file_t* __resource_read_entry(struct archive *a, struct archive_
 		size_t readed_bytes;
 		unsigned char *data = __resource_read_entry_data_string(a, entry, &data_read_status, &readed_bytes);
 		
-		char * copy_path = __resource_copy_string(entry_pathname);
+		char * copy_path = copy_string(entry_pathname);
 
 		result = resource_file_new(copy_path, data, readed_bytes);
 	
@@ -266,25 +204,25 @@ resource_file_t * resource_file_new_empty() {
 
 resource_file_t * resource_file_new(const char *full_file_path, unsigned char 	*data, size_t	data_size) {
 	resource_file_t *new_file = resource_file_new_empty();
-	new_file->complete 	= __resource_copy_string(full_file_path);
+	new_file->complete 	= copy_string(full_file_path);
 	new_file->data 		= data;
 	new_file->file_size = data_size;
 	
-	new_file->path = __resource_path_from_full_filepath(full_file_path);
-	new_file->file = __resource_file_from_full_filepath(full_file_path);
-	new_file->name = __resource_name_from_filename(new_file->file);
-	new_file->type = __resource_type_from_filename(new_file->file);
+	new_file->path = path_from_full_filepath(full_file_path);
+	new_file->file = file_from_full_filepath(full_file_path);
+	new_file->name = name_from_filename(new_file->file);
+	new_file->type = type_from_filename(new_file->file);
 	
 	return new_file;
 }
 
 resource_file_t * resource_file_copy_deep(resource_file_t *file) {
 	resource_file_t *copy_file = resource_file_new_empty();
-	copy_file->complete 	= __resource_copy_string(file->complete);
-	copy_file->path = __resource_copy_string(file->path);
-	copy_file->file = __resource_copy_string(file->file);
-	copy_file->name = __resource_copy_string(file->name);
-	copy_file->type = __resource_copy_string(file->type);
+	copy_file->complete 	= copy_string(file->complete);
+	copy_file->path = copy_string(file->path);
+	copy_file->file = copy_string(file->file);
+	copy_file->name = copy_string(file->name);
+	copy_file->type = copy_string(file->type);
 	
 	copy_file->file_size = file->file_size;
 	copy_file->data = malloc(file->file_size*sizeof(unsigned char));

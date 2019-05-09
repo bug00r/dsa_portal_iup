@@ -17,7 +17,7 @@ INCLUDEDIR+=$(patsubst %,-I$(THIRD_PARTY_LIB_DIR)%,$(IUP_INCLUDE))
 INCLUDEDIR+=$(patsubst %,-I$(THIRD_PARTY_LIB_DIR)%,pcre2_bin/include libarchive_bin/include libxml_bin/include/libxml2 libxslt_bin/include)
 # $(RENDERER_LIB_DIR))
 
-_SRC_FILES=main app iup_app plugin resource plugin_ui_main regex_utils
+_SRC_FILES=main app iup_app plugin resource plugin_ui_main regex_utils string_utils file_path_utils
 _SRC_PLUGIN_FILES=plugin_ui_lexicon plugin_ui_taw_calc
 # regexp not working because invalid stack usage inside of function and using deprecated pcre not pcre2
 #SRC=./../_third_/libxslt-plugin-regexp-0.3/regexp.c

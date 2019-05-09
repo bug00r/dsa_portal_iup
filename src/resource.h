@@ -9,6 +9,8 @@
 #include <archive_entry.h>
 
 #include "regex_utils.h"
+#include "string_utils.h"
+#include "file_path_utils.h"
 
 #include <libxml/parser.h>
 #include <libxml/tree.h>
