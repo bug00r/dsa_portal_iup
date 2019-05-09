@@ -19,20 +19,6 @@ typedef struct {
 	xmlXPathObjectPtr *xpath_result;
 } lexicon_search_result_selection_t;
 
-static char * create_string(const char * msg, ...)
-{
-	va_list vl;
-	va_start(vl, msg);
-	int buffsize = vsnprintf(NULL, 0, msg, vl);
-	va_end(vl);
-	buffsize += 1;
-	char * buffer = malloc(buffsize);
-	va_start(vl, msg);
-	vsnprintf(buffer, buffsize, msg, vl);
-	va_end( vl);
-	return buffer;
-}
-
 static void __reset_search_selection(lexicon_search_selection_t	*lss) {
 	
 	if(lss != NULL) {
@@ -158,27 +144,6 @@ static void __update_group_list() {
 	IupSetAttribute(groups, "VALUE", "1");
 	
 }
-
-static void	regexmatch_xpath_func(xmlXPathParserContextPtr ctxt, int nargs) {
-	if ( nargs != 2 ) return;
-	
-	xmlChar *regex = xmlXPathPopString(ctxt);
-    if (xmlXPathCheckError(ctxt) || (regex == NULL)) {
-        return;
-    }
-	
-	xmlChar *text = xmlXPathPopString(ctxt);
-    if (xmlXPathCheckError(ctxt) || (text == NULL)) {
-		xmlFree(regex);
-        return;
-    }
-		
-	xmlXPathReturnBoolean(ctxt, regex_match(regex, text));
-	
-	xmlFree(regex);
-	xmlFree(text);
-}
-
 
 static char* __add_node_as_string(Ihandle *text, xmlNodePtr node) {
 	
@@ -326,12 +291,12 @@ static void __search() {
 				char *gen_xpath = NULL;
 				if ( IupGetInt(groups, "VALUE") == 1 ) {
 					//regex is not working in current version, have to add own regex function
-					gen_xpath = create_string("//group/*[regexmatch(@name,'%s')]", search_string);
-					//gen_xpath = create_string("//group/*[contains(@name,'%s')]", search_string);
+					gen_xpath = format_string_new("//group/*[regexmatch(@name,'%s')]", search_string);
+					//gen_xpath = format_string_new("//group/*[contains(@name,'%s')]", search_string);
 				} else {
 					//regex is not working in current version, have to add own regex function
-					gen_xpath = create_string("//group[@name = '%s']/*[regexmatch(@name,'%s')]", selected_group, search_string);
-					//gen_xpath = create_string("//group[@name = '%s']/*[contains(@name,'%s')]", selected_group, search_string);
+					gen_xpath = format_string_new("//group[@name = '%s']/*[regexmatch(@name,'%s')]", selected_group, search_string);
+					//gen_xpath = format_string_new("//group[@name = '%s']/*[contains(@name,'%s')]", selected_group, search_string);
 				}
 				
 				#if debug > 0
