@@ -118,36 +118,6 @@ static resource_file_t* __resource_read_entry(struct archive *a, struct archive_
 	return result;
 }
 
-static bool __resource_match_pattern(const char *_pattern, const char *_text) {
-	bool found = false;
-	
-	pcre2_code *re;
-	pcre2_match_data *match_data;
-	
-	PCRE2_SIZE erroffset;
-	int errorcode;
-	
-	PCRE2_SPTR pattern = (PCRE2_SPTR)_pattern;
-	re = pcre2_compile(pattern, -1, 0, &errorcode, &erroffset, NULL);
-	
-	if (re == NULL) {
-		PCRE2_UCHAR buffer[120];
-		(void)pcre2_get_error_message(errorcode, buffer, 120);
-		printf("pcre2 compile error: %s\n", buffer);
-	} else {
-		int rc;
-		PCRE2_SPTR value = (PCRE2_SPTR)_text;
-		match_data = pcre2_match_data_create(20, NULL);
-		rc = pcre2_match(re, value, -1, 0, 0, match_data, NULL);
-		found = rc > 0;
-	}
-	
-	pcre2_match_data_free(match_data);
-	pcre2_code_free(re);
-	
-	return found;
-}
-
 typedef struct _sr_item {
 	resource_file_t *file;
 	struct _sr_item *next;
@@ -187,7 +157,7 @@ static resource_search_result_t * __resource_load_resource(archive_resource_t * 
 		struct archive_entry *entry;
 		while (archive_read_next_header(a, &entry) == ARCHIVE_OK) {
 		  const char *pathname = archive_entry_pathname(entry);
-		  if ( __resource_match_pattern(pattern, pathname) ) {
+		  if ( regex_match(pattern, pathname) ) {
 
 			resource_file_t *new_file = __resource_read_entry(a, entry);
 			if ( new_file != NULL ) {

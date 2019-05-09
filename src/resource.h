@@ -8,11 +8,11 @@
 #include <archive.h>
 #include <archive_entry.h>
 
-#define PCRE2_CODE_UNIT_WIDTH 8
-#include <pcre2.h>
+#include "regex_utils.h"
 
 #include <libxml/parser.h>
 #include <libxml/tree.h>
+
 
 
 typedef struct {

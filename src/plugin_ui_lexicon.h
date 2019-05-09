@@ -15,8 +15,8 @@
 #include <libxml/xpathInternals.h>
 
 #include "plugin.h"
-
 #include "resource.h"
+#include "regex_utils.h"
 
 typedef struct _lexicon_ctx_ {
 	Ihandle *frame;
