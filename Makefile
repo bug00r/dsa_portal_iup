@@ -1,11 +1,9 @@
 include ../make_config
+
+CFLAGS+=-std=c11
+
 #-ggdb  -mwindows
 #-pg for profiling 
-
-#MATH_ALGORITHM_DIR=$(patsubst %,algorithm/%,fractals noise)
-#MATH_LIB_DIR=$(patsubst %,math/%, $(MATH_ALGORITHM_DIR) statistics utils mat vec)
-#COLLECTION_LIB_DIR=$(patsubst %,collections/%,array)
-#RENDERER_LIB_DIR=renderer scene mesh shape color texture $(MATH_LIB_DIR) $(COLLECTION_LIB_DIR)
 
 #iup2.4
 #IUP_INCLUDE=$(patsubst %,tec_tools/%/include/,iup cd im)
@@ -15,15 +13,11 @@ THIRD_PARTY_LIB_DIR=./../_third_/
 INCLUDEDIR=-I.  
 INCLUDEDIR+=$(patsubst %,-I$(THIRD_PARTY_LIB_DIR)%,$(IUP_INCLUDE))
 INCLUDEDIR+=$(patsubst %,-I$(THIRD_PARTY_LIB_DIR)%,pcre2_bin/include libarchive_bin/include libxml_bin/include/libxml2 libxslt_bin/include)
-# $(RENDERER_LIB_DIR))
 
-_SRC_FILES=main app iup_app plugin resource plugin_ui_main regex_utils string_utils file_path_utils xpath_utils
+_SRC_FILES=main app iup_app plugin resource plugin_ui_main regex_utils string_utils file_path_utils xpath_utils taw
 _SRC_PLUGIN_FILES=plugin_ui_lexicon plugin_ui_taw_calc
-# regexp not working because invalid stack usage inside of function and using deprecated pcre not pcre2
-#SRC=./../_third_/libxslt-plugin-regexp-0.3/regexp.c
+
 SRC+=$(patsubst %,src/%,$(patsubst %,%.c,$(_SRC_FILES) $(_SRC_PLUGIN_FILES)))
-#SRC+=$(patsubst %,src/%,$(patsubst %,%.h,$(_SRC_FILES)))
-#$(info $$_SRC is [${_SRC}])
 BIN=dsa_portal.exe
 
 DSA_PORTAL_LIBS=
@@ -37,8 +31,6 @@ OS_LIBS=kernel32 user32 gdi32 winspool comdlg32 advapi32 shell32 uuid ole32 olea
 
 USED_LIBS=$(patsubst %,-l%,$(DSA_PORTAL_LIBS) $(IUP_LIBS) $(REGEX_LIBS) $(THIRD_PARTY_LIBS) $(OS_LIBS) )
 
-
-#USED_LIBSDIR=-L$(BUILDDIR) $(patsubst %,%/$(BUILDDIR),$(patsubst %,-L./../%,$(RENDERER_LIB_DIR))) -L./../_third_/tec_tools/release/static/ 
 #iup2.4
 #USED_LIBSDIR=-L$(BUILDPATH) -L$(THIRD_PARTY_LIB_DIR)tec_tools/release/static/ -LC:/dev/opt/msys64/mingw64/lib
 #iup2.7
@@ -68,7 +60,11 @@ $(BUILDPATH)$(BIN): $(SRC)
 test_resource: mkbuilddir mkzip addzip 
 	$(CC) $(CFLAGS) ./test/test_resource.c ./src/resource.c -o $(BUILDPATH)test_resource.exe -I./src/ $(INCLUDEDIR) $(RES_O_PATH) $(USED_LIBSDIR) -static $(USED_LIBS) $(debug)
 	$(BUILDPATH)test_resource.exe
-	
+
+test_taw:
+	$(CC) $(CFLAGS) ./test/test_taw.c ./src/taw.c -o $(BUILDPATH)test_taw.exe -I./src/ $(INCLUDEDIR) $(USED_LIBSDIR) -static $(USED_LIBS) $(debug)
+	$(BUILDPATH)test_taw.exe
+
 .PHONY: clean mkbuilddir mkzip addzip small
 	
 addzip:

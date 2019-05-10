@@ -1,43 +1,5 @@
 #include "plugin_ui_taw_calc.h"
 
-static const unsigned int taws[] = {
-	5,    5,    10,   15,    20,    25,    40,    50,   100,
-	5,    5,    10,   15,    20,    25,    40,    50,   100,
-	5,    5,    10,   15,    20,    25,    40,    50,   100,
-	5,    5,    10,   15,    20,    25,    40,    50,   100,
-	1,    1,     2,    2,     3,     4,     6,     8,    16,
-	1,    2,     4,    6,     7,     9,    14,    18,    35,
-	1,    3,     6,    9,    12,    15,    22,    30,    60,
-	2,    4,     8,   13,    17,    21,    32,    42,    85,
-	4,    6,    11,   17,    22,    28,    41,    55,   110,
-	5,    7,    14,   21,    27,    34,    50,    70,   140,
-	6,    8,    17,   25,    33,    41,    60,    85,   165,
-	8,   10,    19,   29,    39,    48,    75,    95,   195,
-	9,   11,    22,   34,    45,    55,    85,   110,   220,
-   11,   13,    25,   38,    50,    65,    95,   125,   250,
-   12,   14,    28,   43,    55,    70,   105,   140,   280,
-   14,   16,    32,   47,    65,    80,   120,   160,   320,
-   15,   17,    35,   51,    70,    85,   130,   175,   350,
-   17,   19,    38,   55,    75,    95,   140,   190,   380,
-   19,   21,    41,   60,    85,   105,   155,   210,   410,
-   20,   22,    45,   65,    90,   110,   165,   220,   450,
-   22,   24,    48,   70,    95,   120,   180,   240,   480,
-   24,   26,    51,   75,   105,   130,   195,   260,   510,
-   25,   27,    55,   80,   110,   135,   210,   270,   550,
-   27,   29,    58,   85,   115,   145,   220,   290,   580,
-   29,   31,    62,   95,   125,   155,   230,   310,   620,
-   31,   33,    65,  100,   130,   165,   250,   330,   650,
-   32,   34,    69,  105,   140,   170,   260,   340,   690,
-   34,   36,    73,  110,   145,   180,   270,   360,   720,
-   36,   38,    76,  115,   150,   190,   290,   380,   760,
-   38,   40,    80,  120,   160,   200,   300,   400,   800,
-   40,   42,    84,  125,   165,   210,   310,   420,   830,
-   42,   44,    87,  130,   170,   220,   330,   440,   870,
-   43,   45,    91,  135,   180,   230,   340,   460,   910,
-   45,   47,    95,  140,   190,   240,   350,   480,   950,
-   48,   50,   100,  150,   200,   250,   375,   500,   1000
-};
-
 static int __calc_taw_button_callback(Ihandle *search_button) {
 
 	#if debug > 0
@@ -53,53 +15,33 @@ static int __calc_taw_button_callback(Ihandle *search_button) {
 	Ihandle *taw_end 			= IupGetHandle("taw_end");
 	int end = IupGetInt(taw_end, "VALUE");
 	
-	int delta = end - start;
-	
-	int add = ( delta < 0 ? -1 : 1 );
-	
 	--col;
-	//--start;
 	--end;
 	
 	#if debug > 0
 		printf("col: %i, start: %i, end: %i \n", col, start, end);
 	#endif
 	
-	int sum = 0;
-	int cur = start;
 	Ihandle *taw_calc_result 	= IupGetHandle("taw_calc_result");
 	int show_details = IupGetInt(IupGetHandle("taw_details"), "VALUE");
-	IupSetStrf(taw_calc_result, "APPEND", "%s: ", IupGetAttribute(taw_column, "VALUESTRING"));
-	int cur_value = 0;
-	for (int i = 0; i < delta; ++i) {
-		
-		cur_value = taws[cur * 9 + col];
-		
-		sum += cur_value;
-		
-		#if debug > 0
-			printf("(%i -> %i = %i)\n", (cur-3-1), (cur-3-1+add), cur_value);
-		#endif
-		
-		if(show_details == 1) {
-			IupSetStrf(taw_calc_result, "APPEND", "(%i->%i=%i) ", cur-4, cur-4+add, cur_value);
-		}
-		
-		cur += add;
-	}
+	
+	taw_col_t column = (taw_col_t)col;
+	taw_result_t *taw_result = taw_calc(&column, start-4, end-3);
 
-	if(show_details == 0) {
-		IupSetStrf(taw_calc_result, "APPEND", "(%i->%i=%i) ", start-4, end-3, cur_value);
+	if(taw_result->complete) {
+		IupSetStrf(taw_calc_result, "APPEND", "%s: ", IupGetAttribute(taw_column, "VALUESTRING"));
+		if(show_details == 1) {
+			for (int i = 0; i < taw_result->cnt_details; ++i) {
+				taw_result_item_t *cur_item = &taw_result->details[i];
+				IupSetStrf(taw_calc_result, "APPEND", "(%i->%i=%i) ", cur_item->start, cur_item->end, cur_item->ap);
+			}
+		}
+
+		IupSetStrf(taw_calc_result, "APPEND", "sum: %i\n", taw_result->complete->ap);
 	}
 	
-	IupSetStrf(taw_calc_result, "APPEND", "sum: %i\n", sum);
-	
-	#if debug > 0
-		printf("sum: %i\n", sum);
-	#endif
-	
-	
-	
+	taw_result_free(&taw_result);
+
 	return IUP_DEFAULT;
 }
 

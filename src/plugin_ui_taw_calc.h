@@ -9,6 +9,7 @@
 #include <wd.h>
 
 #include "plugin.h"
+#include "taw.h"
 
 typedef struct _taw_calc_ctx_ {
 	Ihandle *frame;
