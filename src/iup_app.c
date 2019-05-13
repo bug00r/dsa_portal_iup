@@ -14,9 +14,11 @@
 #endif
 
 void iup_init_app(app_t * app, app_param_t * param) {
+	
 	#if debug > 0
 		printf("calling iup init app\n");
 	#endif
+
 	#if 0
 		/** 
 			Iup should opened here to setup iup app environment.
@@ -47,21 +49,24 @@ void iup_init_app(app_t * app, app_param_t * param) {
 
 	Ihandle * maindlg = plugin->frame(plugin->data);
 	IupShowXY(maindlg, IUP_CENTER, IUP_CENTER);
+
 	plugin->prepare(plugin->data);
 	
 	param->app_data = (void*)plugin;
 }
 
 void iup_init_app_param(app_param_t * param) {
+	(void)param;
+	
 	#if debug > 0
 		printf("calling iup init param\n");
-	#else
-		(void)param;
 	#endif
 }
 
 bool iup_run_app(app_t * app)
 { 
+	(void)app;
+
 	#if debug > 0
   		printf("call main loop\n");
 	#endif

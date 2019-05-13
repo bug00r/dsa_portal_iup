@@ -314,7 +314,7 @@ static void __search() {
 					//regex is not working in current version, have to add own regex function
 					//gen_xpath = format_string_new("//group[@name = '%s']/*[contains(@name,'%s')]", selected_group, search_string);
 					#endif
-					
+
 					gen_xpath = format_string_new("//group[@name = '%s']/*[regexmatch(@name,'%s')]", selected_group, search_string);
 					
 				}
@@ -342,6 +342,8 @@ static void __search() {
 
 static int __search_button_callback(Ihandle *search_button) {
 
+	(void)search_button;
+
 	#if debug > 0
 		printf("trigger search\n");
 	#endif
@@ -352,6 +354,8 @@ static int __search_button_callback(Ihandle *search_button) {
 }
 
 static int __search_input_key_callback(Ihandle *ih, int c) {
+
+	(void)ih;
 
 	if ( c == K_CR ) {
 	
@@ -447,6 +451,9 @@ static void _lexicon_init_(void * data) {
 }
 
 static void _lexicon_free_(void * data) {
+
+	(void)data;
+
 	#if debug > 0
 		printf("lexicon free\n");
 	#endif
@@ -454,6 +461,8 @@ static void _lexicon_free_(void * data) {
 
 static const char * _lexicon_name_(void * data) {
 	
+	(void)data;
+
 	#if debug > 0
 		printf("lexicon name\n");
 	#endif
@@ -481,6 +490,10 @@ void * _lexicon_frame_(void * data) {
 
 static int on_category_changed_cb(Ihandle *ih, char *text, int item, int state) {
 	
+	(void)ih;
+	(void)text;
+	(void)item;
+
 	if ( state == 1 ) {
 	
 		#if debug > 0
@@ -496,6 +509,10 @@ static int on_category_changed_cb(Ihandle *ih, char *text, int item, int state) 
 
 static int on_group_changed_cb(Ihandle *ih, char *text, int item, int state) {
 	
+	(void)ih;
+	(void)text;
+	(void)item;
+
 	if ( state == 1 ) {
 	
 		#if debug > 0
@@ -510,6 +527,9 @@ static int on_group_changed_cb(Ihandle *ih, char *text, int item, int state) {
 
 static int on_result_list_changed_cb(Ihandle *ih, char *text, int item, int state) {
 	
+	(void)ih;
+	(void)text;
+
 	if ( state == 1 ) {
 	
 		#if debug > 0
