@@ -14,7 +14,9 @@
 #endif
 
 void iup_init_app(app_t * app, app_param_t * param) {
-	printf("calling iup init app\n");
+	#if debug > 0
+		printf("calling iup init app\n");
+	#endif
 	#if 0
 		/** 
 			Iup should opened here to setup iup app environment.
@@ -38,7 +40,11 @@ void iup_init_app(app_t * app, app_param_t * param) {
 	main_plugin(plugin);
 	plugin->init(plugin->data);
 	main_ctx_t * mainctx = (main_ctx_t *)plugin->data;
+	
+	#if debug > 0
 	printf("load main ctx with: %i\n", mainctx->frame);
+	#endif
+
 	Ihandle * maindlg = plugin->frame(plugin->data);
 	IupShowXY(maindlg, IUP_CENTER, IUP_CENTER);
 	plugin->prepare(plugin->data);
@@ -59,14 +65,18 @@ bool iup_run_app(app_t * app)
 	#if debug > 0
   		printf("call main loop\n");
 	#endif
-	
+
 	IupMainLoop(); 
 
 	return true;
 }
 
 void iup_free_app(app_t * app) {
-	printf("iup app free\n");
+
+	#if debug > 0
+		printf("iup app free\n");
+	#endif
+	
 	app_param_t * param = app->param;
 	plugin_t *plugin = (plugin_t *)param->app_data;
 	plugin->cleanup(plugin->data);

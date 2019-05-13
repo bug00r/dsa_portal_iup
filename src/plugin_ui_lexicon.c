@@ -149,7 +149,11 @@ static char* __add_node_as_string(Ihandle *text, xmlNodePtr node) {
 	
 	IupSetStrAttribute(text, "VALUE", "");
 	xmlAttr * attr = node->properties;
+	
+	#if 0
 	//void IupSetStrfV (Ihandle* ih, const char* name, const char* format, va_list arglist);
+	#endif
+
 	while(attr != NULL) {
 		xmlChar *sattr = xmlGetProp(node, attr->name);
 		IupSetStrf(text, "APPEND", "%s:\t\t%s", attr->name, sattr);
@@ -274,8 +278,11 @@ static void __search() {
 		lsrs->cnt_cache = cnt_files;
 		
 		for( int cur_file = 0; cur_file < cnt_files ; ++cur_file ) {
-	
+			
+			#if 0
 			//resource_file_t *file = result->files[file_offset + cur_file];
+			#endif
+
 			xmlDocPtr doc = lctx->docs[file_offset + cur_file];
 			
 			if (doc == NULL) continue;
@@ -283,20 +290,33 @@ static void __search() {
 			xmlXPathContextPtr xpathCtx = xmlXPathNewContext(doc);
 			xmlXPathRegisterAllFunctions(xpathCtx);
 			xmlXPathRegisterFunc(xpathCtx,(const xmlChar *) "regexmatch", regexmatch_xpath_func);
-			//xmlXPathRegisterNs(xpathCtx, (xmlChar *)"re", (xmlChar *)"http://exslt.org/regular-expressions");
 			
+			#if 0
+			//xmlXPathRegisterNs(xpathCtx, (xmlChar *)"re", (xmlChar *)"http://exslt.org/regular-expressions");
+			#endif
+
 			if ( xpathCtx != NULL ) {
 				
 				
 				char *gen_xpath = NULL;
 				if ( IupGetInt(groups, "VALUE") == 1 ) {
+
+					#if 0
 					//regex is not working in current version, have to add own regex function
-					gen_xpath = format_string_new("//group/*[regexmatch(@name,'%s')]", search_string);
 					//gen_xpath = format_string_new("//group/*[contains(@name,'%s')]", search_string);
+					#endif
+
+					gen_xpath = format_string_new("//group/*[regexmatch(@name,'%s')]", search_string);
+					
 				} else {
+
+					#if 0
 					//regex is not working in current version, have to add own regex function
-					gen_xpath = format_string_new("//group[@name = '%s']/*[regexmatch(@name,'%s')]", selected_group, search_string);
 					//gen_xpath = format_string_new("//group[@name = '%s']/*[contains(@name,'%s')]", selected_group, search_string);
+					#endif
+					
+					gen_xpath = format_string_new("//group[@name = '%s']/*[regexmatch(@name,'%s')]", selected_group, search_string);
+					
 				}
 				
 				#if debug > 0

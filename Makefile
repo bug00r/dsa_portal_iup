@@ -11,8 +11,7 @@ CFLAGS+=-std=c11
 IUP_INCLUDE=tec_tools/v27/release/include/
 THIRD_PARTY_LIB_DIR=./../_third_/
 INCLUDEDIR=-I. -I../dsa_core/src 
-INCLUDEDIR+=$(patsubst %,-I$(THIRD_PARTY_LIB_DIR)%,$(IUP_INCLUDE))
-INCLUDEDIR+=$(patsubst %,-I$(THIRD_PARTY_LIB_DIR)%,pcre2_bin/include libarchive_bin/include libxml_bin/include/libxml2 libxslt_bin/include)
+INCLUDEDIR+=$(patsubst %,-I$(THIRD_PARTY_LIB_DIR)%,$(IUP_INCLUDE) pcre2_bin/include libarchive_bin/include libxml_bin/include/libxml2 libxslt_bin/include)
 
 _SRC_FILES=main app iup_app plugin plugin_ui_main 
 #regex_utils string_utils file_path_utils xpath_utils taw resource

@@ -10,12 +10,20 @@ void free_app_param(app_param_t * param) {
 }
 
 static void default_init_app(app_t * app, app_param_t * param) {
-	printf("You not implement init_app function!!\n");
-	
+	(void)app;
+	(void)param;
+
+	#if debug > 0 
+		printf("You not implement init_app function!!\n");
+	#endif
 }
 
 static void default_init_app_param(app_param_t * param) {
-	printf("You not implement init_app_param function!!\n");
+	(void)param;
+	
+	#if debug > 0 
+		printf("You not implement init_app_param function!!\n");
+	#endif
 }
 
 static app_param_t * default_create_app_param() {
@@ -23,7 +31,12 @@ static app_param_t * default_create_app_param() {
 }
 
 static bool default_run_app(app_t * app) {
-	printf("You not implement run_app function!!\n");
+	(void)app;
+	
+	#if debug > 0 
+		printf("You not implement run_app function!!\n");
+	#endif
+	
 	return false;
 }
 
@@ -62,12 +75,18 @@ void run_app(app_t * app) {
 		app->param = params;	
 		bool runsuccess = app->run_app(app);
 		if (!runsuccess) {
-			printf("runnig app failed => exit()\n");
+			#if debug > 0 
+				printf("runnig app failed => exit()\n");
+			#endif
+
 			return;
 		}
 		app->free_app(app);
 	} else {
-		printf("invalid app!!\n");
+		#if debug > 0 
+			printf("invalid app!!\n");
+		#endif
+		
 		return;
 	}
 }
