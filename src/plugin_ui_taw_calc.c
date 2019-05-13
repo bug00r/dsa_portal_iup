@@ -29,12 +29,19 @@ static int __calc_taw_button_callback(Ihandle *search_button) {
 	taw_result_t *taw_result = taw_calc(&column, start-4, end-3);
 
 	if(taw_result->complete) {
+
 		IupSetStrf(taw_calc_result, "APPEND", "%s: ", IupGetAttribute(taw_column, "VALUESTRING"));
+		
 		if(show_details == 1) {
+		
 			for (int i = 0; i < taw_result->cnt_details; ++i) {
+		
 				taw_result_item_t *cur_item = &taw_result->details[i];
+		
 				IupSetStrf(taw_calc_result, "APPEND", "(%i->%i=%i) ", cur_item->start, cur_item->end, cur_item->ap);
+		
 			}
+		
 		}
 
 		IupSetStrf(taw_calc_result, "APPEND", "sum: %i\n", taw_result->complete->ap);
@@ -109,7 +116,11 @@ static Ihandle * __create_taw_calc_frame()
 //###########
 
 static void _taw_calc_init_(void * data) {
-	printf("taw_calc init\n");
+	
+	#if debug > 0
+		printf("taw_calc init\n");
+	#endif
+
 	#if 0
 		/** init context here
 			All needed things:

@@ -12,7 +12,7 @@
 #include <archive.h>
 #include <archive_entry.h>
 
-#include "dsa_portal_defs.h"
+#include "dsa_core_defs.h"
 #include "plugin.h"
 
 #include "resource.h"

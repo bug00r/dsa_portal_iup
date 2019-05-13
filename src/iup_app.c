@@ -28,7 +28,11 @@ void iup_init_app(app_t * app, app_param_t * param) {
 	#endif
 	IupOpen(&app->argc, &app->argv);
 	
-	IupSetGlobal("UTF8MODE", "YES"); //works for windows and motif, bad, so we have to use multiple languages
+	#if 0
+		//works for windows and motif, bad, so we have to use multiple languages
+	#endif
+
+	IupSetGlobal("UTF8MODE", "YES"); 
 	
 	plugin_t * plugin = new_plugin(); 
 	main_plugin(plugin);
@@ -43,15 +47,22 @@ void iup_init_app(app_t * app, app_param_t * param) {
 }
 
 void iup_init_app_param(app_param_t * param) {
-	printf("calling iup init param\n");
+	#if debug > 0
+		printf("calling iup init param\n");
+	#else
+		(void)param;
+	#endif
 }
 
 bool iup_run_app(app_t * app)
 { 
-  printf("call main loop\n");
-  IupMainLoop(); 
+	#if debug > 0
+  		printf("call main loop\n");
+	#endif
+	
+	IupMainLoop(); 
 
-  return true;
+	return true;
 }
 
 void iup_free_app(app_t * app) {
