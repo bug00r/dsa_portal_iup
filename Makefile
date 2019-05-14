@@ -38,33 +38,16 @@ USED_LIBSDIR=-L$(BUILDPATH) -L$(THIRD_PARTY_LIB_DIR)tec_tools/v27/release/lib -L
 USED_LIBSDIR+=$(patsubst %,-L$(THIRD_PARTY_LIB_DIR)%,pcre2_bin/lib libarchive_bin/lib libxml_bin/lib libxslt_bin/lib)
 USED_LIBSDIR+=-L./../dsa_core/$(BUILDPATH)
 
-#wc -c < filename => if needed for after compression size of bytes
-RES=zip_resource
-RES_O=$(RES).o
-RES_O_PATH=$(BUILDPATH)$(RES_O)
-RES_7Z=$(RES).7z
-RES_FILES_PATTERN=./../dsa_core/data/*
-ZIP=7z
-ZIP_ARGS=a -t7z
-ZIP_CMD=$(ZIP) $(ZIP_ARGS)
-
 ifeq ($(isdebug),1)
 	debug+=-ggdb
 endif
 
-all: mkbuilddir mkzip addzip $(BUILDPATH)$(BIN)
-	
+all: mkbuilddir $(BUILDPATH)$(BIN)
+
 $(BUILDPATH)$(BIN): $(SRC)
-	$(CC) $(CFLAGS) $(SRC) -o $(BUILDPATH)$(BIN) $(INCLUDEDIR) $(RES_O_PATH) $(USED_LIBSDIR) -static $(USED_LIBS) $(debug) $(release)
+	$(CC) $(CFLAGS) $(SRC) -o $(BUILDPATH)$(BIN) $(INCLUDEDIR)  $(USED_LIBSDIR) -static $(USED_LIBS) $(debug) $(release)
 
-.PHONY: clean mkbuilddir mkzip addzip small
-	
-addzip:
-	cd $(BUILDPATH); \
-	ld -r -b binary $(RES_7Z) -o $(RES_O)
-
-mkzip:
-	-$(ZIP_CMD) $(BUILDPATH)$(RES_7Z) $(RES_FILES_PATTERN)
+.PHONY: clean mkbuilddir small
 
 mkbuilddir:
 	mkdir -p $(BUILDDIR)
