@@ -19,10 +19,12 @@
 #include "regex_utils.h"
 #include "xpath_utils.h"
 
+#include "xml_utils.h"
+
 typedef struct _lexicon_ctx_ {
 	Ihandle *frame;
 	resource_search_result_t *xml_result;
-	xmlDocPtr *docs;
+	xml_ctx_t **ctxs;
 } lexicon_ctx_t;
 
 plugin_t * lexicon_plugin(plugin_t * plugin);

@@ -113,29 +113,26 @@ static void __update_group_list() {
 	
 		for( int cur_file = 0; cur_file < cnt_files ; ++cur_file ) {
 	
-			xmlDocPtr doc = lctx->docs[file_offset + cur_file];
+			xml_ctx_t *xml_ctx = lctx->ctxs[file_offset + cur_file];
+
+			if (xml_ctx == NULL) continue;
 			
-			if (doc == NULL) continue;
-			
-			xmlXPathContextPtr xpathCtx = xmlXPathNewContext(doc);
-			if ( xpathCtx != NULL ) {
-				xmlXPathObjectPtr xpathObj = xmlXPathEvalExpression((const xmlChar*)"//group", xpathCtx);
-				
-				if ( xpathObj != NULL ) {
-					xmlNodeSetPtr nodes = xpathObj->nodesetval;
-					int size = (nodes) ? nodes->nodeNr : 0;
-					xmlNodePtr cur;
-					for(int i = 0; i < size; ++i) {
-						cur = nodes->nodeTab[i];
-						
-						xmlChar *attr = xmlGetProp(cur, "name");
-						IupSetStrAttribute(groups, "APPENDITEM", attr);
-						xmlFree(attr);
-					}
+			xmlXPathObjectPtr xpathObj = xml_ctx_xpath(xml_ctx, "//group");
+
+			if ( xpathObj != NULL ) {
+				xmlNodeSetPtr nodes = xpathObj->nodesetval;
+				int size = (nodes) ? nodes->nodeNr : 0;
+				xmlNodePtr cur;
+				for(int i = 0; i < size; ++i) {
+					cur = nodes->nodeTab[i];
+					
+					xmlChar *attr = xmlGetProp(cur, "name");
+					IupSetStrAttribute(groups, "APPENDITEM", attr);
+					xmlFree(attr);
 				}
-				xmlXPathFreeObject(xpathObj);
 			}
-			xmlXPathFreeContext(xpathCtx);
+
+			xmlXPathFreeObject(xpathObj);
 			
 		}
 	
@@ -283,54 +280,23 @@ static void __search() {
 			//resource_file_t *file = result->files[file_offset + cur_file];
 			#endif
 
-			xmlDocPtr doc = lctx->docs[file_offset + cur_file];
+			xml_ctx_t *xml_ctx = lctx->ctxs[file_offset + cur_file];
+
+			if (xml_ctx == NULL) continue;
 			
-			if (doc == NULL) continue;
-			
-			xmlXPathContextPtr xpathCtx = xmlXPathNewContext(doc);
-			xmlXPathRegisterAllFunctions(xpathCtx);
-			xmlXPathRegisterFunc(xpathCtx,(const xmlChar *) "regexmatch", regexmatch_xpath_func);
-			
-			#if 0
-			//xmlXPathRegisterNs(xpathCtx, (xmlChar *)"re", (xmlChar *)"http://exslt.org/regular-expressions");
-			#endif
+			xmlXPathObjectPtr xpathObj = NULL;
 
-			if ( xpathCtx != NULL ) {
-				
-				
-				char *gen_xpath = NULL;
-				if ( IupGetInt(groups, "VALUE") == 1 ) {
+			if ( IupGetInt(groups, "VALUE") == 1 ) {
 
-					#if 0
-					//regex is not working in current version, have to add own regex function
-					//gen_xpath = format_string_new("//group/*[contains(@name,'%s')]", search_string);
-					#endif
+				xpathObj = xml_ctx_xpath_format(xml_ctx, "//group/*[regexmatch(@name,'%s')]", search_string);
 
-					gen_xpath = format_string_new("//group/*[regexmatch(@name,'%s')]", search_string);
-					
-				} else {
+			} else {
 
-					#if 0
-					//regex is not working in current version, have to add own regex function
-					//gen_xpath = format_string_new("//group[@name = '%s']/*[contains(@name,'%s')]", selected_group, search_string);
-					#endif
-
-					gen_xpath = format_string_new("//group[@name = '%s']/*[regexmatch(@name,'%s')]", selected_group, search_string);
-					
-				}
+				xpathObj = xml_ctx_xpath_format(xml_ctx, "//group[@name = '%s']/*[regexmatch(@name,'%s')]", selected_group, search_string);
 				
-				#if debug > 0
-					printf("used search xpath: %s\n", gen_xpath);
-				#endif
-				
-				xmlXPathObjectPtr xpathObj = xmlXPathEvalExpression((const xmlChar*)gen_xpath, xpathCtx);
-				free(gen_xpath);
-				
-				lsrs->xpath_result[cur_file] = xpathObj;
-					
 			}
 			
-			xmlXPathFreeContext(xpathCtx);
+			lsrs->xpath_result[cur_file] = xpathObj;
 			
 		}
 	
@@ -445,7 +411,7 @@ static void _lexicon_init_(void * data) {
 	#endif
 
 	lexicon_ctx_t * mctx = (lexicon_ctx_t *)data;
-	mctx->docs  = NULL;
+	mctx->ctxs  = NULL;
 	mctx->frame = NULL;
 	
 }
@@ -565,25 +531,14 @@ void _lexicon_prepare_(void * data) {
 	lexicon_ctx_t *lctx = (lexicon_ctx_t *)data;
 	resource_search_result_t *result = lctx->xml_result;
 	
-	lctx->docs = malloc(result->cnt*sizeof(xmlDocPtr));
-	
+	lctx->ctxs = malloc(result->cnt*sizeof(xml_ctx_t *));
+
 	for(unsigned int cnt_files = 0; cnt_files < result->cnt; ++cnt_files) {
 	
 		resource_file_t *file = result->files[cnt_files];
 		
-		lctx->docs[cnt_files] = xmlReadMemory(file->data, file->file_size, "noname.xml", NULL, 0);
-		
-		#if debug > 0
-		
-			printf("full: %s(%i)\npath: %s(%i)\nfile: %s(%i)\nname: %s(%i)\ntype: %s(%i)\nfile_size: %i\n", file->complete, strlen(file->complete), file->path, strlen(file->path), file->file, strlen(file->file), file->name, strlen(file->name), file->type, strlen(file->type), file->file_size);
-		
-			if (lctx->docs[cnt_files] == NULL) {
-				printf("Failed to parse document\n");
-			} else {
-				printf("success to parse document %p\n", lctx->docs[cnt_files]);
-			}
-			
-		#endif
+		xml_source_t * xml_src = xml_source_from_resfile(file);
+		lctx->ctxs[cnt_files] = xml_ctx_new(xml_src);
 		
 		IupSetAttribute(categories, "APPENDITEM", file->name);
 	}
@@ -608,7 +563,7 @@ void _lexicon_cleanup_(void * data) {
 	
 	lexicon_ctx_t *lctx = (lexicon_ctx_t *)data;
 	
-	if ( lctx->docs != NULL ) {
+	if ( lctx->ctxs != NULL ) {
 		
 		free(IupGetGlobal("lss"));
 	
@@ -619,32 +574,14 @@ void _lexicon_cleanup_(void * data) {
 		
 		unsigned int max_docs =  lctx->xml_result->cnt;
 		
-		#if debug > 0
-			printf("lctx->docs != NULL \n");
-			printf("max_docs: %i\n", max_docs);
-		#endif
-		
 		for ( unsigned int cur_doc = 0; cur_doc < max_docs ; ++cur_doc) {
 			
-			xmlDocPtr doc = lctx->docs[cur_doc];
-			
-			#if debug > 0
-				printf("doc (%i): %p\n", cur_doc, doc);
-			#endif
-			
-			if ( doc != NULL ) {
-				
-				#if debug > 0
-					printf("try to delete\n");
-				#endif
-				
-				xmlFreeDoc(doc);
-			}
+			free_xml_ctx_src(&lctx->ctxs[cur_doc]);
+
 		}
-		
-		free(lctx->docs);
-		lctx->docs = NULL;
 	
+		free(lctx->ctxs);
+		lctx->ctxs = NULL;
 	}
 }
 
