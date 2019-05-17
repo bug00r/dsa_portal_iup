@@ -96,6 +96,21 @@ static void __update_cat_and_group_selections() {
 
 }
 
+static void __add_node_attrs_to_handle(Ihandle *handle, xmlXPathObjectPtr xpathObj) {
+	if ( xpathObj != NULL ) {
+		xmlNodeSetPtr nodes = xpathObj->nodesetval;
+		int size = (nodes) ? nodes->nodeNr : 0;
+		xmlNodePtr cur;
+		for(int i = 0; i < size; ++i) {
+			cur = nodes->nodeTab[i];
+			
+			xmlChar *attr = xmlGetProp(cur, "name");
+			IupSetStrAttribute(handle, "APPENDITEM", attr);
+			xmlFree(attr);
+		}
+	}
+}
+
 static void __update_group_list() {
 
 	lexicon_search_selection_t	*lss = (lexicon_search_selection_t	*)IupGetGlobal("lss");
@@ -118,19 +133,8 @@ static void __update_group_list() {
 			if (xml_ctx == NULL) continue;
 			
 			xmlXPathObjectPtr xpathObj = xml_ctx_xpath(xml_ctx, "//group");
-
-			if ( xpathObj != NULL ) {
-				xmlNodeSetPtr nodes = xpathObj->nodesetval;
-				int size = (nodes) ? nodes->nodeNr : 0;
-				xmlNodePtr cur;
-				for(int i = 0; i < size; ++i) {
-					cur = nodes->nodeTab[i];
-					
-					xmlChar *attr = xmlGetProp(cur, "name");
-					IupSetStrAttribute(groups, "APPENDITEM", attr);
-					xmlFree(attr);
-				}
-			}
+			
+			__add_node_attrs_to_handle(groups, xpathObj);
 
 			xmlXPathFreeObject(xpathObj);
 			
@@ -233,18 +237,7 @@ static void __refresh_search_result_list() {
 		
 		xmlXPathObjectPtr xpathObj = lsrs->xpath_result[cur_file];
 		
-		if ( xpathObj != NULL ) {
-			xmlNodeSetPtr nodes = xpathObj->nodesetval;
-			int size = (nodes) ? nodes->nodeNr : 0;
-			xmlNodePtr cur;
-			for(int i = 0; i < size; ++i) {
-				cur = nodes->nodeTab[i];
-				
-				xmlChar *attr = xmlGetProp(cur, "name");
-				IupSetStrAttribute(result_list, "APPENDITEM", attr);
-				xmlFree(attr);
-			}
-		}
+		__add_node_attrs_to_handle(result_list, xpathObj);
 	
 	}
 	
@@ -293,7 +286,7 @@ static void __search() {
 			} else {
 
 				xpathObj = xml_ctx_xpath_format(xml_ctx, "//group[@name = '%s']/*[regexmatch(@name,'%s')]", selected_group, search_string);
-				
+
 			}
 			
 			lsrs->xpath_result[cur_file] = xpathObj;
