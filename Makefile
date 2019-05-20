@@ -44,10 +44,6 @@ USED_LIBSDIR=-L$(BUILDPATH) -L$(THIRD_PARTY_LIB_DIR)tec_tools/v27/release/lib -L
 USED_LIBSDIR+=$(patsubst %,-L$(THIRD_PARTY_LIB_DIR)%,pcre2_bin/lib libarchive_bin/lib libxml_bin/lib libxslt_bin/lib)
 USED_LIBSDIR+=-L./../dsa_core/$(BUILDPATH)
 
-ifeq ($(isdebug),1)
-	debug+=-ggdb
-endif
-
 all: mkbuilddir $(BUILDPATH)$(BIN)
 
 $(BUILDPATH)$(BIN): $(SRC)
@@ -60,6 +56,7 @@ mkbuilddir:
 
 small:
 	-strip $(BUILDPATH)$(BIN)
+	-upx $(BUILDPATH)$(BIN)
 	
 clean:
 	-rm -dr $(BUILDROOT)

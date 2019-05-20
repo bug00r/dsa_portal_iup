@@ -1,6 +1,6 @@
 #include "plugin_taw_calc.h"
 
-static int __calc_taw_button_callback(Ihandle *search_button) {
+static int on_param_change_cb(Ihandle *ih, char *text, int item, int state) {
 
 	#if debug > 0
 		printf("trigger calc\n");
@@ -23,28 +23,14 @@ static int __calc_taw_button_callback(Ihandle *search_button) {
 	#endif
 	
 	Ihandle *taw_calc_result 	= IupGetHandle("taw_calc_result");
-	int show_details = IupGetInt(IupGetHandle("taw_details"), "VALUE");
 	
 	taw_col_t column = (taw_col_t)col;
 	taw_result_t *taw_result = taw_calc(&column, start-4, end-3);
 
 	if(taw_result->complete) {
 
-		IupSetStrf(taw_calc_result, "APPEND", "%s: ", IupGetAttribute(taw_column, "VALUESTRING"));
-		
-		if(show_details == 1) {
-		
-			for (int i = 0; i < taw_result->cnt_details; ++i) {
-		
-				taw_result_item_t *cur_item = &taw_result->details[i];
-		
-				IupSetStrf(taw_calc_result, "APPEND", "(%i->%i=%i) ", cur_item->start, cur_item->end, cur_item->ap);
-		
-			}
-		
-		}
+		IupSetStrf(taw_calc_result, "TITLE", "%i AP", taw_result->complete->ap);
 
-		IupSetStrf(taw_calc_result, "APPEND", "sum: %i\n", taw_result->complete->ap);
 	}
 	
 	taw_result_free(&taw_result);
@@ -57,7 +43,8 @@ static Ihandle * __create_taw_calc_searchbar()
 	Ihandle *column_input = IupList(NULL);
 	IupSetAttributes(column_input, "DROPDOWN=YES, EXPAND=HORIZONTAL, VISIBLEITEMS=15, VALUE=1");
 	IupSetAttributes(column_input, "1=A*, 2=A, 3=B, 4=C, 5=D, 6=E, 7=F, 8=G, 9=H");
-	
+	IupSetCallback(column_input, "ACTION", (Icallback)on_param_change_cb);
+
 	Ihandle *column_label = IupLabel("column:");
 	Ihandle *column = IupHbox(column_label, column_input, NULL);
 	
@@ -68,34 +55,30 @@ static Ihandle * __create_taw_calc_searchbar()
 	IupSetAttributes(taw_start_input, "1=-3, 2=-2, 3=-1, 4=0, 5=1, 6=2, 7=3, 8=4, 9=5, 10=6, 11=7, 12=8, 13=9, 14=10, 15=11");
 	IupSetAttributes(taw_start_input, "16=12, 17=13, 18=14, 19=15, 20=16, 21=17, 22=18, 23=19, 24=20, 25=21, 26=22, 27=23, 28=24, 29=25");
 	IupSetAttributes(taw_start_input, "30=26, 31=27, 32=28, 33=29, 34=30, 35=31+");
+	IupSetCallback(taw_start_input, "ACTION", (Icallback)on_param_change_cb);
+
 	Ihandle *taw_start_label = IupLabel("taw_start:");
 	Ihandle *taw_start = IupHbox(taw_start_label, taw_start_input, NULL);
 	IupSetAttribute(taw_start, "ALIGNMENT", "ACENTER");
+	
 	
 	Ihandle *taw_end_input = IupList(NULL);
 	IupSetAttributes(taw_end_input, "DROPDOWN=YES, EXPAND=HORIZONTAL, VISIBLEITEMS=15, VALUE=1");
 	IupSetAttributes(taw_end_input, "1=-3, 2=-2, 3=-1, 4=0, 5=1, 6=2, 7=3, 8=4, 9=5, 10=6, 11=7, 12=8, 13=9, 14=10, 15=11");
 	IupSetAttributes(taw_end_input, "16=12, 17=13, 18=14, 19=15, 20=16, 21=17, 22=18, 23=19, 24=20, 25=21, 26=22, 27=23, 28=24, 29=25");
 	IupSetAttributes(taw_end_input, "30=26, 31=27, 32=28, 33=29, 34=30, 35=31+");
-	
+	IupSetCallback(taw_end_input, "ACTION", (Icallback)on_param_change_cb);
+
 	Ihandle *taw_end_label = IupLabel("taw_end:");
 	Ihandle *taw_end = IupHbox(taw_end_label, taw_end_input, NULL);
 	IupSetAttribute(taw_end, "ALIGNMENT", "ACENTER");
-		
-	Ihandle *details_toggle = IupToggle("Details", NULL);
-	IupSetAttributes(details_toggle, "ALIGNMENT=ACENTER");
 	
-	Ihandle *search_button = IupButton("search", NULL);
-	IupSetCallback(search_button, "ACTION", (Icallback)__calc_taw_button_callback);
-	IupSetAttributes(search_button, "ALIGNMENT=ACENTER:ACENTER, EXPAND=HORIZONTAL");
-	
-	Ihandle *searchbar = IupHbox(column, taw_start, taw_end, details_toggle, search_button, NULL);
+	Ihandle *searchbar = IupHbox(column, taw_start, taw_end, NULL);
 	IupSetAttribute(searchbar, "GAP", "5");
 	
 	IupSetHandle("taw_column", column_input);
 	IupSetHandle("taw_start", taw_start_input);
 	IupSetHandle("taw_end", taw_end_input);
-	IupSetHandle("taw_details", details_toggle);
 	
 	return searchbar;
 }
@@ -104,9 +87,8 @@ static Ihandle * __create_taw_calc_frame()
 {
 	Ihandle *searchbar = __create_taw_calc_searchbar();
 	
-	Ihandle *result_text = IupMultiLine(NULL);
-	IupSetAttributes(result_text, "READONLY=YES, EXPAND=YES, WORDWRAP=YES, APPENDNEWLINE=NO");
-	
+	Ihandle *result_text = IupLabel("0 AP");
+	IupSetAttributes(result_text, "FONTSIZE=36, EXPAND=YES, ALIGNMENT=ACENTER:ACENTER");
 	IupSetHandle("taw_calc_result", result_text);
 	
 	Ihandle * maindlg = IupVbox(searchbar, IupHbox(result_text, NULL), NULL);
