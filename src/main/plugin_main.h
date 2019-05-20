@@ -19,7 +19,7 @@
 
 //plugins
 #include "plugin_lexicon.h"
-#include "plugin_ui_taw_calc.h"
+#include "plugin_taw_calc.h"
 
 typedef struct _main_ctx_ {
 	Ihandle *frame;

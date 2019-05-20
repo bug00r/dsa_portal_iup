@@ -11,7 +11,7 @@
 
 #include "app.h"
 #include "plugin.h"
-#include "plugin_ui_main.h"
+#include "plugin_main.h"
 
 #if 0
 	/**

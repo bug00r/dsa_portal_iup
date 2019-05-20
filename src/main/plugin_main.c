@@ -1,4 +1,4 @@
-#include "plugin_ui_main.h"
+#include "plugin_main.h"
 
 EXTERN_BLOB(zip_resource, 7z);
 
