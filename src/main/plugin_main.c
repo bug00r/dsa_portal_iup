@@ -8,19 +8,12 @@ static void _main_init_(void * data) {
 		printf("main init\n");
 	#endif
 	
-	#if 0
-		/** init context here
-			All needed things:
-		  */
-	#endif
 	main_ctx_t * mctx = (main_ctx_t *)data;
-	mctx->cntplugins = 0;
-	mctx->plugins  = NULL;
 	
 	mctx->archive = archive_resource_memory(&_binary_zip_resource_7z_start, (size_t)&_binary_zip_resource_7z_size);
 	mctx->xml_result = archive_resource_search(mctx->archive, "xml/.*.xml");
 	
-	mctx->cntplugins = 2;
+	mctx->cntplugins = 3;
 	mctx->plugins = malloc( mctx->cntplugins * sizeof(plugin_t));
 	
 	plugin_t *plugin = &mctx->plugins[0];
@@ -30,6 +23,10 @@ static void _main_init_(void * data) {
 
 	plugin = &mctx->plugins[1];
 	taw_calc_plugin(plugin);
+	plugin->init(plugin->data);
+
+	plugin = &mctx->plugins[2];
+	hgen_plugin(plugin);
 	plugin->init(plugin->data);
 	
 	mctx->frame=NULL;
@@ -262,14 +259,14 @@ void _main_prepare_(void * data) {
 	#endif
 	
 	Ihandle *navtree = IupGetHandle("tree");
-	IupSetAttribute(navtree, "TITLE","System");
+	IupSetAttribute(navtree, "TITLE", "System");
 
 	main_ctx_t * mctx = (main_ctx_t *)data;
 	
 	for ( unsigned int i = mctx->cntplugins; i--;) {
 	
 		IupSetAttribute(navtree, "ADDLEAF", mctx->plugins[i].name(NULL));
-	
+
 	}	
 	
 	IupSetAttribute(navtree, "ADDLEAF","Home");
