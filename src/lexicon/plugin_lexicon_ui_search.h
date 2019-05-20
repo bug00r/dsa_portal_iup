@@ -1,5 +1,5 @@
-#ifndef PLUGIN_UI_LEXICON_SEARCH_H
-#define PLUGIN_UI_LEXICON_SEARCH_H
+#ifndef PLUGIN_LEXICON_UI_SEARCH_H
+#define PLUGIN_LEXICON_UI_SEARCH_H
 
 #include <stdlib.h>
 #include <string.h>

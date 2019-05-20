@@ -1,12 +1,12 @@
-#ifndef PLUGIN_UI_LEXICON_CALLBACK_H
-#define PLUGIN_UI_LEXICON_CALLBACK_H
+#ifndef PLUGIN_LEXICON_UI_CALLBACK_H
+#define PLUGIN_LEXICON_UI_CALLBACK_H
 
 #include <iup.h>
 #include <cd.h>
 #include <cdiup.h>
 #include <wd.h>
 
-#include "plugin_ui_lexicon_search.h"
+#include "plugin_lexicon_ui_search.h"
 
 int search_button_callback(Ihandle *search_button);
 

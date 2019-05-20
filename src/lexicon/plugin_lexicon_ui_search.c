@@ -1,4 +1,4 @@
-#include "plugin_ui_lexicon_search.h"
+#include "plugin_lexicon_ui_search.h"
 
 void update_cat_and_group_selections() {
 	

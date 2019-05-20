@@ -18,7 +18,7 @@
 #include "resource.h"
 
 //plugins
-#include "plugin_ui_lexicon.h"
+#include "plugin_lexicon.h"
 #include "plugin_ui_taw_calc.h"
 
 typedef struct _main_ctx_ {

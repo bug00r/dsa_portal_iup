@@ -1,4 +1,4 @@
-#include "plugin_ui_lexicon_callback.h"
+#include "plugin_lexicon_ui_callback.h"
 
 int search_button_callback(Ihandle *search_button) {
 
