@@ -10,12 +10,18 @@ CFLAGS+=-std=c11
 #iup2.7
 IUP_INCLUDE=tec_tools/v27/release/include/
 THIRD_PARTY_LIB_DIR=./../_third_/
-INCLUDEDIR=-I. -I../dsa_core/src 
+
+INCLUDEDIR=-I../dsa_core/src -I./src
+INCLUDEDIR+=$(patsubst %,-I./src/%, lexicon taw_calc main)  
 INCLUDEDIR+=$(patsubst %,-I$(THIRD_PARTY_LIB_DIR)%,$(IUP_INCLUDE) pcre2_bin/include libarchive_bin/include libxml_bin/include/libxml2 libxslt_bin/include)
 
-_SRC_FILES=main app iup_app plugin plugin_ui_main 
-#regex_utils string_utils file_path_utils xpath_utils taw resource
-_SRC_PLUGIN_FILES=plugin_ui_lexicon plugin_ui_taw_calc
+_SRC_FILES=main app iup_app plugin 
+
+_SRC_PLUGIN_MAIN=main/plugin_ui_main
+_SRC_PLUGIN_LEXICON=lexicon/plugin_ui_lexicon lexicon/plugin_ui_lexicon_callback lexicon/plugin_ui_lexicon_search
+_SRC_PLUGIN_TAW_CALC=taw_calc/plugin_ui_taw_calc
+
+_SRC_PLUGIN_FILES=$(_SRC_PLUGIN_MAIN) $(_SRC_PLUGIN_LEXICON) $(_SRC_PLUGIN_TAW_CALC)
 
 SRC+=$(patsubst %,src/%,$(patsubst %,%.c,$(_SRC_FILES) $(_SRC_PLUGIN_FILES)))
 BIN=dsa_portal.exe

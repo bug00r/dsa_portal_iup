@@ -21,11 +21,8 @@
 
 #include "xml_utils.h"
 
-typedef struct _lexicon_ctx_ {
-	Ihandle *frame;
-	resource_search_result_t *xml_result;
-	xml_ctx_t **ctxs;
-} lexicon_ctx_t;
+#include "plugin_ui_lexicon_search.h"
+#include "plugin_ui_lexicon_callback.h"
 
 plugin_t * lexicon_plugin(plugin_t * plugin);
 
