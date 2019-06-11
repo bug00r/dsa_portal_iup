@@ -13,9 +13,12 @@ static void _hgen_init_(void * data) {
 	#endif
 	hgen_ctx_t * mctx = (hgen_ctx_t *)data;
 	mctx->frame=NULL;
+
+	mctx->heros = dsa_heros_new_archiv(mctx->archive);
 }
 
 static void _hgen_free_(void * data) {
+	free(data);
 }
 
 static const char * _hgen_name_(void * data) {
@@ -31,9 +34,20 @@ void * _hgen_frame_(void * data) {
 }
 
 void _hgen_prepare_(void * data) {
+
+	IupSetGlobal("hero_ctx", data);
+
+	hgen_ctx_t * mctx = (hgen_ctx_t *)data;
+	
+	init_breeds(IupGetHandle("breeds"), mctx->heros);
+	init_cultures(IupGetHandle("cultures"), mctx->heros);
+	init_professions(IupGetHandle("professions"), mctx->heros);
+
 }
 
 void _hgen_cleanup_(void * data) {
+	hgen_ctx_t * mctx = (hgen_ctx_t *)data;
+	dsa_heros_free(&mctx->heros);
 }
 
 plugin_t * hgen_plugin(plugin_t * plugin) {
@@ -43,7 +57,7 @@ plugin_t * hgen_plugin(plugin_t * plugin) {
 	plugin->free = _hgen_free_;
 	plugin->prepare = _hgen_prepare_;
 	plugin->cleanup = _hgen_cleanup_;
-	plugin->data = malloc(sizeof(hgen_ctx_t));;
+	plugin->data = malloc(sizeof(hgen_ctx_t));
 	return plugin;
 }
 

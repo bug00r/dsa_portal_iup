@@ -113,6 +113,7 @@ static void _taw_calc_init_(void * data) {
 }
 
 static void _taw_calc_free_(void * data) {
+	free(data);
 }
 
 static const char * _taw_calc_name_(void * data) {
@@ -140,7 +141,7 @@ plugin_t * taw_calc_plugin(plugin_t * plugin) {
 	plugin->free = _taw_calc_free_;
 	plugin->prepare = _taw_calc_prepare_;
 	plugin->cleanup = _taw_calc_cleanup_;
-	plugin->data = malloc(sizeof(taw_calc_ctx_t));;
+	plugin->data = malloc(sizeof(taw_calc_ctx_t));
 	return plugin;
 }
 

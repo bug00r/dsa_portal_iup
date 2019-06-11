@@ -14,19 +14,23 @@ static void _main_init_(void * data) {
 	mctx->xml_result = archive_resource_search(mctx->archive, "xml/.*.xml");
 	
 	mctx->cntplugins = 3;
-	mctx->plugins = malloc( mctx->cntplugins * sizeof(plugin_t));
+	mctx->plugins = malloc( mctx->cntplugins * sizeof(plugin_t*));
 	
-	plugin_t *plugin = &mctx->plugins[0];
+	mctx->plugins[0] = new_plugin();
+	plugin_t *plugin = mctx->plugins[0];
 	lexicon_plugin(plugin);
 	((lexicon_ctx_t*)plugin->data)->xml_result = mctx->xml_result;
 	plugin->init(plugin->data);
 
-	plugin = &mctx->plugins[1];
+	mctx->plugins[1] = new_plugin();
+	plugin = mctx->plugins[1];
 	taw_calc_plugin(plugin);
 	plugin->init(plugin->data);
 
-	plugin = &mctx->plugins[2];
+	mctx->plugins[2] = new_plugin();
+	plugin = mctx->plugins[2];
 	hgen_plugin(plugin);
+	((hgen_ctx_t*)plugin->data)->archive = mctx->archive;
 	plugin->init(plugin->data);
 	
 	mctx->frame=NULL;
@@ -45,9 +49,11 @@ static void _main_free_(void * data) {
 	main_ctx_t * mctx = (main_ctx_t *)data;
 	for ( unsigned int i = mctx->cntplugins; i--;) {
 		
-		void * plugin_data = mctx->plugins[i].data;
+		void * plugin_data = mctx->plugins[i]->data;
 		
-		mctx->plugins[i].free(plugin_data);
+		mctx->plugins[i]->free(plugin_data);
+
+		free_plugin(mctx->plugins[i]);
 	
 	}
 	
@@ -190,9 +196,9 @@ static Ihandle * create_plugin_menu(main_ctx_t * mctx) {
 	
 	for ( unsigned int i = 0; i < mctx->cntplugins ; ++i ) {
 	
-		Ihandle *mitem = IupItem(mctx->plugins[i].name(NULL), NULL);
+		Ihandle *mitem = IupItem(mctx->plugins[i]->name(NULL), NULL);
 		IupSetCallback(mitem, "ACTION", (Icallback)plugin_cb);
-		IupSetAttribute(mitem, "PLUGIN_OBJ", (void *)&mctx->plugins[i]);
+		IupSetAttribute(mitem, "PLUGIN_OBJ", (void *)mctx->plugins[i]);
 		
 		IupAppend( pmenu, mitem);
 	
@@ -265,7 +271,7 @@ void _main_prepare_(void * data) {
 	
 	for ( unsigned int i = mctx->cntplugins; i--;) {
 	
-		IupSetAttribute(navtree, "ADDLEAF", mctx->plugins[i].name(NULL));
+		IupSetAttribute(navtree, "ADDLEAF", mctx->plugins[i]->name(NULL));
 
 	}	
 	
@@ -282,9 +288,9 @@ void _main_cleanup_(void * data) {
 	
 	for ( unsigned int i = mctx->cntplugins; i--;) {
 		
-		void * plugin_data = mctx->plugins[i].data;
+		void * plugin_data = mctx->plugins[i]->data;
 		
-		mctx->plugins[i].cleanup(plugin_data);
+		mctx->plugins[i]->cleanup(plugin_data);
 	
 	}
 }

@@ -8,6 +8,8 @@
 #include <cdiup.h>
 #include <wd.h>
 
+#include "plugin_hgen_ui_callback.h"
+
 Ihandle* create_hgen_frame();
 
 #endif

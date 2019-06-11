@@ -25,7 +25,7 @@
 typedef struct _main_ctx_ {
 	Ihandle *frame;
 	unsigned int cntplugins;
-	plugin_t *plugins;
+	plugin_t **plugins;
 	archive_resource_t *archive;
 	resource_search_result_t *xml_result;
 } main_ctx_t;

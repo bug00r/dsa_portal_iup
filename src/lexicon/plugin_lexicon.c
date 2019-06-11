@@ -14,7 +14,7 @@ static void _lexicon_init_(void * data) {
 
 static void _lexicon_free_(void * data) {
 
-	(void)data;
+	free(data);
 
 	#if debug > 0
 		printf("lexicon free\n");

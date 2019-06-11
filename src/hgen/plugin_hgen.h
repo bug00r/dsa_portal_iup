@@ -10,9 +10,14 @@
 
 #include "plugin.h"
 #include "plugin_hgen_ui.h"
+#include "plugin_hgen_ui_init.h"
+
+#include "hero.h"
 
 typedef struct _hgen_ctx_ {
 	Ihandle *frame;
+	archive_resource_t* archive;
+	dsa_heros_t * heros;
 } hgen_ctx_t;
 
 plugin_t * hgen_plugin(plugin_t * plugin);

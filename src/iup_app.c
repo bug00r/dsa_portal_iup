@@ -86,6 +86,8 @@ void iup_free_app(app_t * app) {
 	plugin_t *plugin = (plugin_t *)param->app_data;
 	plugin->cleanup(plugin->data);
 	plugin->free(plugin->data);
+	free_plugin(plugin);
+	plugin = NULL;
 	IupClose();
 }
 
