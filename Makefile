@@ -12,17 +12,18 @@ IUP_INCLUDE=tec_tools/v27/release/include/
 THIRD_PARTY_LIB_DIR=./../_third_/
 
 INCLUDEDIR=-I../dsa_core/src -I./src
-INCLUDEDIR+=$(patsubst %,-I./src/%, lexicon taw_calc main hgen)  
+INCLUDEDIR+=$(patsubst %,-I./src/%, lexicon taw_calc main hgen utils)  
 INCLUDEDIR+=$(patsubst %,-I$(THIRD_PARTY_LIB_DIR)%,$(IUP_INCLUDE) pcre2_bin/include libarchive_bin/include libxml_bin/include/libxml2 libxslt_bin/include)
 
 _SRC_FILES=main app iup_app plugin 
 
+_SRC_UTILS=utils/iup_std_callbacks
 _SRC_PLUGIN_MAIN=main/plugin_main
 _SRC_PLUGIN_LEXICON=lexicon/plugin_lexicon lexicon/plugin_lexicon_ui lexicon/plugin_lexicon_ui_callback lexicon/plugin_lexicon_ui_search
 _SRC_PLUGIN_TAW_CALC=taw_calc/plugin_taw_calc
 _SRC_PLUGIN_HGEN=hgen/plugin_hgen hgen/plugin_hgen_ui hgen/plugin_hgen_ui_callback hgen/plugin_hgen_ui_init
 
-_SRC_PLUGIN_FILES=$(_SRC_PLUGIN_MAIN) $(_SRC_PLUGIN_LEXICON) $(_SRC_PLUGIN_TAW_CALC) $(_SRC_PLUGIN_HGEN)
+_SRC_PLUGIN_FILES=$(_SRC_PLUGIN_MAIN) $(_SRC_PLUGIN_LEXICON) $(_SRC_PLUGIN_TAW_CALC) $(_SRC_PLUGIN_HGEN) $(_SRC_UTILS)
 #$(_SRC_PLUGIN_MAIN) $(_SRC_PLUGIN_LEXICON) $(_SRC_PLUGIN_TAW_CALC) $(_SRC_PLUGIN_HGEN)
 
 SRC+=$(patsubst %,src/%,$(patsubst %,%.c,$(_SRC_FILES) $(_SRC_PLUGIN_FILES)))

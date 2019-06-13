@@ -225,10 +225,11 @@ void * _main_frame_(void * data) {
 		
 		Ihandle * home = IupScrollBox(IupVbox(IupLabel("Home Tab"), IupFill(),NULL));
 		IupSetAttribute(home, "EXPANDCHILDREN", "yes");
-		IupSetAttribute(home, "TABTITLE", "Home");
+		IupSetAttribute(home, "TABTITLE", "Alveran-News");
 		
 		Ihandle * tabs = IupTabs(home, NULL);
 		IupSetAttribute(tabs, "SHOWCLOSE", "yes");
+		IupSetCallback(tabs,"TABCLOSE_CB",(Icallback)do_not_close_first_tab_callback);
 		
 		Ihandle * navtree = IupTree();
 		IupSetAttribute(navtree, "EXPAND", "VERTICAL");
