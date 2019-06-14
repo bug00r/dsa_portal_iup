@@ -11,7 +11,7 @@ CFLAGS+=-std=c11
 IUP_INCLUDE=tec_tools/v27/release/include/
 THIRD_PARTY_LIB_DIR=./../_third_/
 
-INCLUDEDIR=-I../dsa_core/src -I./src
+INCLUDEDIR=-I../dsa_core/src -I./src -I../collections/dl_list
 INCLUDEDIR+=$(patsubst %,-I./src/%, lexicon taw_calc main hgen utils)  
 INCLUDEDIR+=$(patsubst %,-I$(THIRD_PARTY_LIB_DIR)%,$(IUP_INCLUDE) pcre2_bin/include libarchive_bin/include libxml_bin/include/libxml2 libxslt_bin/include)
 
@@ -29,7 +29,7 @@ _SRC_PLUGIN_FILES=$(_SRC_PLUGIN_MAIN) $(_SRC_PLUGIN_LEXICON) $(_SRC_PLUGIN_TAW_C
 SRC+=$(patsubst %,src/%,$(patsubst %,%.c,$(_SRC_FILES) $(_SRC_PLUGIN_FILES)))
 BIN=dsa_portal.exe
 
-DSA_PORTAL_LIBS=dsa_core
+DSA_PORTAL_LIBS=dsa_core dl_list
 IUP_LIBS=cdcontextplus gdiplus im iupcd iup cd
 THIRD_PARTY_LIBS=exslt xslt xml2 archive crypto nettle regex lzma z lz4 bz2 bcrypt freetype6 iconv
 REGEX_LIBS=pcre2-8
@@ -45,7 +45,7 @@ USED_LIBS=$(patsubst %,-l%,$(DSA_PORTAL_LIBS) $(IUP_LIBS) $(REGEX_LIBS) $(THIRD_
 #iup2.7
 USED_LIBSDIR=-L$(BUILDPATH) -L$(THIRD_PARTY_LIB_DIR)tec_tools/v27/release/lib -LC:/dev/opt/msys64/mingw64/lib
 USED_LIBSDIR+=$(patsubst %,-L$(THIRD_PARTY_LIB_DIR)%,pcre2_bin/lib libarchive_bin/lib libxml_bin/lib libxslt_bin/lib)
-USED_LIBSDIR+=-L./../dsa_core/$(BUILDPATH)
+USED_LIBSDIR+=-L./../dsa_core/$(BUILDPATH) -L./../collections/dl_list/$(BUILDPATH)
 
 all: mkbuilddir $(BUILDPATH)$(BIN)
 

@@ -78,7 +78,7 @@ void _lexicon_prepare_(void * data) {
 	
 		resource_file_t *file = result->files[cnt_files];
 		
-		xml_source_t * xml_src = xml_source_from_resfile(file);
+		xml_source_t * xml_src = xml_source_from_resfile(resource_file_copy_deep(file));
 		lctx->ctxs[cnt_files] = xml_ctx_new(xml_src);
 		
 		IupSetAttribute(categories, "APPENDITEM", file->name);

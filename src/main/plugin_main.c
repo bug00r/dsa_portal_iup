@@ -67,7 +67,8 @@ static void _main_free_(void * data) {
 		printf("free  xml_result\n");
 	#endif
 	
-	resource_search_result_free(&mctx->xml_result);
+	//resource_search_result_free(&mctx->xml_result);
+	resource_search_result_full_free(&mctx->xml_result);
 
 	#if debug > 0
 		printf("free archive\n");

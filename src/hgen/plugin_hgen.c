@@ -15,6 +15,7 @@ static void _hgen_init_(void * data) {
 	mctx->frame=NULL;
 
 	mctx->heros = dsa_heros_new_archiv(mctx->archive);
+	mctx->nav_heros = dl_list_new();
 }
 
 static void _hgen_free_(void * data) {
@@ -48,6 +49,15 @@ void _hgen_prepare_(void * data) {
 void _hgen_cleanup_(void * data) {
 	hgen_ctx_t * mctx = (hgen_ctx_t *)data;
 	dsa_heros_free(&mctx->heros);
+
+	dl_list_item_t *cur_item = mctx->nav_heros->first;
+
+	while(cur_item != NULL) {
+		dsa_hero_free((dsa_hero_t **)&cur_item->data);
+		cur_item = cur_item->next;
+	}
+
+	dl_list_free(&mctx->nav_heros);
 }
 
 plugin_t * hgen_plugin(plugin_t * plugin) {
