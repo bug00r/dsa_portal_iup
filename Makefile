@@ -21,7 +21,7 @@ _SRC_UTILS=utils/iup_std_callbacks
 _SRC_PLUGIN_MAIN=main/plugin_main
 _SRC_PLUGIN_LEXICON=lexicon/plugin_lexicon lexicon/plugin_lexicon_ui lexicon/plugin_lexicon_ui_callback lexicon/plugin_lexicon_ui_search
 _SRC_PLUGIN_TAW_CALC=taw_calc/plugin_taw_calc
-_SRC_PLUGIN_HGEN=hgen/plugin_hgen hgen/plugin_hgen_ui hgen/plugin_hgen_ui_callback hgen/plugin_hgen_ui_init
+_SRC_PLUGIN_HGEN=hgen/plugin_hgen hgen/plugin_hgen_ui hgen/plugin_hgen_ui_callback hgen/plugin_hgen_ui_init hgen/plugin_hgen_ui_funcs
 
 _SRC_PLUGIN_FILES=$(_SRC_PLUGIN_MAIN) $(_SRC_PLUGIN_LEXICON) $(_SRC_PLUGIN_TAW_CALC) $(_SRC_PLUGIN_HGEN) $(_SRC_UTILS)
 #$(_SRC_PLUGIN_MAIN) $(_SRC_PLUGIN_LEXICON) $(_SRC_PLUGIN_TAW_CALC) $(_SRC_PLUGIN_HGEN)

@@ -16,6 +16,10 @@ static void _hgen_init_(void * data) {
 
 	mctx->heros = dsa_heros_new_archiv(mctx->archive);
 	mctx->nav_heros = dl_list_new();
+	mctx->selected_hero = NULL;
+	mctx->selected_list_pos = -1;
+
+	IupSetGlobal("hero_ctx", data);
 }
 
 static void _hgen_free_(void * data) {
@@ -36,8 +40,6 @@ void * _hgen_frame_(void * data) {
 
 void _hgen_prepare_(void * data) {
 
-	IupSetGlobal("hero_ctx", data);
-
 	hgen_ctx_t * mctx = (hgen_ctx_t *)data;
 	
 	init_breeds(IupGetHandle("breeds"), mctx->heros);
@@ -53,7 +55,9 @@ void _hgen_cleanup_(void * data) {
 	dl_list_item_t *cur_item = mctx->nav_heros->first;
 
 	while(cur_item != NULL) {
-		dsa_hero_free((dsa_hero_t **)&cur_item->data);
+		hero_nav_item_t * curnav = cur_item->data;
+		dsa_hero_free((dsa_hero_t **)&curnav->hero);
+		free(curnav);
 		cur_item = cur_item->next;
 	}
 
