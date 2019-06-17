@@ -31,10 +31,7 @@ _SRC_PLUGIN_HGEN=hgen/plugin_hgen hgen/plugin_hgen_ui \
 _SRC_PLUGIN_FILES=$(_SRC_PLUGIN_MAIN) $(_SRC_PLUGIN_LEXICON) $(_SRC_PLUGIN_TAW_CALC) $(_SRC_PLUGIN_HGEN) $(_SRC_UTILS)
 #$(_SRC_PLUGIN_MAIN) $(_SRC_PLUGIN_LEXICON) $(_SRC_PLUGIN_TAW_CALC) $(_SRC_PLUGIN_HGEN)
 
-_SRC_FILES+=$(_SRC_PLUGIN_FILES)
-
-SRC+=$(patsubst %,src/%,$(patsubst %,%.c,$(_SRC_FILES)))
-OBJ=$(patsubst %,$(BUILDPATH)/%,$(patsubst %,%.o,$(_SRC_FILES)))
+SRC+=$(patsubst %,src/%,$(patsubst %,%.c,$(_SRC_FILES) $(_SRC_PLUGIN_FILES)))
 BIN=dsa_portal.exe
 
 DSA_PORTAL_LIBS=dsa_core dl_list
@@ -57,21 +54,13 @@ USED_LIBSDIR+=-L./../dsa_core/$(BUILDPATH) -L./../collections/dl_list/$(BUILDPAT
 
 all: mkbuilddir $(BUILDPATH)$(BIN)
 
-$(BUILDPATH)$(BIN): $(_SRC_FILES)
-	$(CC) $(CFLAGS) $(OBJ) -o $(BUILDPATH)$(BIN) $(INCLUDEDIR)  $(USED_LIBSDIR) -static $(USED_LIBS) $(debug) $(release)
-
-$(_SRC_FILES):
-	$(CC) $(CFLAGS) -c src/$@.c -o $(BUILDPATH)$@.o $(INCLUDEDIR) $(debug)
+$(BUILDPATH)$(BIN): $(SRC)
+	$(CC) $(CFLAGS) $(SRC) -o $(BUILDPATH)$(BIN) $(INCLUDEDIR)  $(USED_LIBSDIR) -static $(USED_LIBS) $(debug) $(release)
 
 .PHONY: clean mkbuilddir small
 
 mkbuilddir:
 	mkdir -p $(BUILDDIR)
-	mkdir -p $(BUILDDIR)/hgen
-	mkdir -p $(BUILDDIR)/lexicon
-	mkdir -p $(BUILDDIR)/main
-	mkdir -p $(BUILDDIR)/taw_calc
-	mkdir -p $(BUILDDIR)/utils
 
 small:
 	-strip $(BUILDPATH)$(BIN)

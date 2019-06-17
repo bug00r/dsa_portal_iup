@@ -18,6 +18,7 @@ Ihandle* create_hgen_frame() {
 
 	Ihandle *hero_list = IupList(NULL);
 	IupSetAttributes(hero_list, "EXPAND=YES, VISIBLELINES=1");
+	IupSetCallback(hero_list,"DBLCLICK_CB",(Icallback)hgen_show_hero_callback);
 	IupSetCallback(hero_list,"ACTION",(Icallback)hgen_select_hero_callback);
 	mctx->ctrls.hero_list = hero_list;
 

@@ -13,6 +13,8 @@
 #include "xml_utils.h"
 
 #include "plugin_hgen_ui_types.h"
+#include "plugin_hgen_ui_hero_details.h"
+
 
 #include "hero.h"
 
