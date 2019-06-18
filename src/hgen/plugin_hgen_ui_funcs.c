@@ -46,13 +46,13 @@ void create_andor_open_hero(hgen_ctx_t *hgen_ctx) {
 	#endif
 	
 	Ihandle *tabs = hgen_ctx->ctrls.hero_tabs;
-	
-	#if debug > 0
-		printf("child count %i\n", i);
-	#endif
 
     int child_index = iup_tap_index_by_title(tabs, hero_name);
 	
+    #if debug > 0
+		printf("found tab index %i \n", child_index);
+	#endif
+
 	if ( child_index == -1 ) {
         
         Ihandle * hero_frame = hero_item->detail_frame;
@@ -64,6 +64,7 @@ void create_andor_open_hero(hgen_ctx_t *hgen_ctx) {
 			#endif
 
 		    hero_frame = hgen_hero_sheet_new(hero);
+            IupSetStrAttribute(hero_frame, "hero_name", hero_name);
             hero_item->detail_frame = hero_frame;
         }
 
@@ -87,16 +88,14 @@ void create_andor_open_hero(hgen_ctx_t *hgen_ctx) {
 			
 		}
 	} else {
-	
-		int tabpos = IupGetInt(IupGetChild(tabs, child_index), "TABPOS");
 		
 		#if debug > 0
-			printf("set current tab %i\n", tabpos);
+			printf("set current tab %i\n", child_index);
 		#endif
 		
-		IupSetAttributeId(tabs, "TABVISIBLE", tabpos, "YES");
+		IupSetAttributeId(tabs, "TABVISIBLE", child_index, "YES");
 		
-		IupSetInt(tabs, "VALUEPOS", tabpos);
+		IupSetInt(tabs, "VALUEPOS", child_index);
 	}
 	
 	IupRefresh(tabs);

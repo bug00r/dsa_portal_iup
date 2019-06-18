@@ -61,7 +61,11 @@ void hgen_rem_sel_hero_callback(Ihandle *ih) {
 
 int  hgen_select_hero_callback(Ihandle *ih, char *text, int item, int state) {
 
-     int index = item - 1;
+    int index = item - 1;
+
+    #if debug > 0
+        printf("state: %i index: %i \n", state, index);
+    #endif 
 
     if ( state == 1 && index >= 0) {
         hgen_ctx_t * mctx = (hgen_ctx_t *)IupGetGlobal("hero_ctx");
@@ -74,15 +78,64 @@ int  hgen_select_hero_callback(Ihandle *ih, char *text, int item, int state) {
         }
 
         hgen_check_refresh_rem_hero_btn(mctx);
+
+        create_andor_open_hero(mctx);
     }
 }
 
-int  hgen_show_hero_callback(Ihandle *ih, int item, char *text) {
-    int index = item - 1;
-    if (/* state == 1 && */index >= 0) {
+int hgen_on_close_hero_tab(Ihandle* ih, int pos) {
+    int _return = IUP_DEFAULT;
 
+    if ( pos == 0 ) {
+        _return = IUP_IGNORE;
+    } else {    
         hgen_ctx_t * mctx = (hgen_ctx_t *)IupGetGlobal("hero_ctx");
-        create_andor_open_hero(mctx);
-
+        IupSetAttribute(mctx->ctrls.hero_list, "VALUE", "0");
+        mctx->selected_hero = NULL;
+        mctx->selected_list_pos = -1;
+        hgen_check_refresh_rem_hero_btn(mctx);
     }
+
+    return _return;
+}
+
+/*typedef struct {
+	dsa_hero_t *hero;
+	Ihandle * detail_frame;
+} hero_nav_item_t; */
+static bool __hgen_search_nav_hero_tabtitle(void *item, void* searchdata) {
+    char *hero_id = (char*)searchdata;
+    hero_nav_item_t *nav_item = (hero_nav_item_t *)item;
+
+    const char * tabtitle = IupGetAttribute(nav_item->detail_frame, "hero_name");
+
+    return (strcmp(tabtitle, hero_id) == 0);
+}
+
+int hgen_on_change_hero_tab(Ihandle* ih, int new_pos, int old_pos) {
+    
+    hgen_ctx_t * mctx = (hgen_ctx_t *)IupGetGlobal("hero_ctx");
+
+    if (new_pos > 0) {
+        Ihandle *child = IupGetChild(ih, new_pos); 
+        char * tab_title = IupGetAttribute(child, "TABTITLE");
+        
+        dl_list_t * nav = mctx->nav_heros;
+        int id = hgen_search_once_id(nav, (void*)tab_title, __hgen_search_nav_hero_tabtitle);
+        if (id >= 0) {
+            IupSetInt(mctx->ctrls.hero_list, "VALUE", id+1);
+            mctx->selected_hero = (hero_nav_item_t *)dl_list_get(nav, id);
+            mctx->selected_list_pos = id+1;
+            hgen_check_refresh_rem_hero_btn(mctx);
+        } 
+    } else {
+
+        IupSetInt(mctx->ctrls.hero_list, "VALUE", 0);
+        mctx->selected_hero = NULL;
+        mctx->selected_list_pos = -1;
+        hgen_check_refresh_rem_hero_btn(mctx);
+        
+    }
+
+    return IUP_DEFAULT;
 }

@@ -11,7 +11,9 @@
 void hgen_add_new_hero_callback(Ihandle *ih);
 void hgen_rem_sel_hero_callback(Ihandle *ih);
 
-int hgen_show_hero_callback(Ihandle *ih, int item, char *text);
 int hgen_select_hero_callback(Ihandle *ih, char *text, int item, int state);
+
+int hgen_on_close_hero_tab(Ihandle* ih, int pos);
+int hgen_on_change_hero_tab(Ihandle* ih, int new_pos, int old_pos);
 
 #endif

@@ -18,7 +18,6 @@ Ihandle* create_hgen_frame() {
 
 	Ihandle *hero_list = IupList(NULL);
 	IupSetAttributes(hero_list, "EXPAND=YES, VISIBLELINES=1");
-	IupSetCallback(hero_list,"DBLCLICK_CB",(Icallback)hgen_show_hero_callback);
 	IupSetCallback(hero_list,"ACTION",(Icallback)hgen_select_hero_callback);
 	mctx->ctrls.hero_list = hero_list;
 
@@ -30,7 +29,9 @@ Ihandle* create_hgen_frame() {
 
 	Ihandle * hero_tabs = IupTabs(home, NULL);
 	IupSetAttributes(hero_tabs, "SHOWCLOSE=yes, EXPAND=YES");
-	IupSetCallback(hero_tabs,"TABCLOSE_CB",(Icallback)do_not_close_first_tab_callback);
+	//IupSetCallback(hero_tabs,"TABCLOSE_CB",(Icallback)do_not_close_first_tab_callback);
+	IupSetCallback(hero_tabs,"TABCLOSE_CB",(Icallback)hgen_on_close_hero_tab);
+	IupSetCallback(hero_tabs,"TABCHANGEPOS_CB",(Icallback)hgen_on_change_hero_tab);
 
 	mctx->ctrls.hero_tabs = hero_tabs;
 
