@@ -136,16 +136,14 @@ static void create_andor_open_plugin(plugin_t * plugin) {
 			plugin->prepare(plugin->data);
 		}
 	} else {
-
-		int tabpos = IupGetInt(IupGetChild(tabs, child_index), "TABPOS");
 		
 		#if debug > 0
-			printf("set current tab %i\n", tabpos);
+			printf("set current tab %i\n", child_index);
 		#endif
 		
-		IupSetAttributeId(tabs, "TABVISIBLE", tabpos, "YES");
+		IupSetAttributeId(tabs, "TABVISIBLE", child_index, "YES");
 		
-		IupSetInt(tabs, "VALUEPOS", tabpos);
+		IupSetInt(tabs, "VALUEPOS", child_index);
 	}
 	
 	IupRefresh(tabs);
@@ -198,21 +196,17 @@ void * _main_frame_(void * data) {
 		#endif
 		
 		Ihandle * home = IupScrollBox(IupVbox(IupLabel("Home Tab"), IupFill(),NULL));
-		IupSetAttribute(home, "EXPANDCHILDREN", "yes");
-		IupSetAttribute(home, "TABTITLE", "Alveran-News");
+		IupSetAttributes(home, "EXPANDCHILDREN=yes, TABTITLE=Alveran-News");
 		
 		Ihandle * tabs = IupTabs(home, NULL);
 		IupSetAttribute(tabs, "SHOWCLOSE", "yes");
 		IupSetCallback(tabs,"TABCLOSE_CB",(Icallback)do_not_close_first_tab_callback);
 		
 		Ihandle * navtree = IupTree();
-		IupSetAttribute(navtree, "EXPAND", "VERTICAL");
-		IupSetAttribute(navtree, "SIZE", "100x");
+		IupSetAttributes(navtree, "EXPAND=VERTICAL, SIZE=100x");
 		
 		Ihandle * expand_tree = IupExpander(navtree);
-		IupSetAttribute(expand_tree, "STATE", "CLOSE");
-		IupSetAttribute(expand_tree, "BARPOSITION", "LEFT");
-		IupSetAttribute(expand_tree, "EXPAND", "VERTICAL");
+		IupSetAttributes(expand_tree, "STATE=CLOSE, BARPOSITION=LEFT, EXPAND=VERTICAL");
 		
 		Ihandle * main_box = IupHbox(expand_tree, tabs, NULL);
 		frame = IupDialog(main_box);
@@ -277,6 +271,6 @@ plugin_t * main_plugin(plugin_t * plugin) {
 	plugin->free = _main_free_;
 	plugin->prepare = _main_prepare_;
 	plugin->cleanup = _main_cleanup_;
-	plugin->data = malloc(sizeof(main_ctx_t)); //here malloc
+	plugin->data = malloc(sizeof(main_ctx_t));
 	return plugin;
 }
