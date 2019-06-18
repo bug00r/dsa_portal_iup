@@ -53,10 +53,7 @@ void hgen_rem_sel_hero_callback(Ihandle *ih) {
     mctx->selected_hero = NULL;
     mctx->selected_list_pos = -1;
 
-    //TODO REMOVE Tab and destroy Ihandle  => olddetail_frame
-    //manually found childindex by iteration an compare by name. extracting utility function "tabindex by tab title" 
-    //replace in give other main and hgen
-    //closing found index and destroy Ihandle => 1. IupUnmap 2.IupDetach 3.IupDestroy
+    iup_tab_remove_by_child(mctx->ctrls.hero_tabs, olddetail_frame);
 
     hgen_check_refresh_rem_hero_btn(mctx);
 

@@ -113,38 +113,11 @@ static void create_andor_open_plugin(plugin_t * plugin) {
 		printf("create_andor_open_plugin %s\n", pName);
 	#endif
 	
-	
-	bool exist = false;
-	Ihandle * child = NULL;
-	
 	Ihandle *tabs = IupGetHandle("tabs");
-	int i = IupGetChildCount(tabs);
+
+	int child_index = iup_tap_index_by_title(tabs, pName);
 	
-	#if debug > 0
-		printf("child count %i\n", i);
-	#endif
-	
-	for (;i--;) {
-		
-		child = IupGetChild(tabs, i);
-		
-		if ( child ) {
-		
-			char * tabname = IupGetAttribute(child,"TABTITLE");
-			
-			#if debug > 0
-				printf("found child tab: %s\n",tabname);
-			#endif
-			
-			exist = imStrEqual(tabname, pName);
-			
-			if ( exist )
-				break;
-		}
-	
-	}
-	
-	if ( !exist ) {
+	if ( child_index == -1 ) {
 	
 		Ihandle * plugin_frame = plugin->frame(plugin->data);
 		
@@ -163,8 +136,8 @@ static void create_andor_open_plugin(plugin_t * plugin) {
 			plugin->prepare(plugin->data);
 		}
 	} else {
-	
-		int tabpos = IupGetInt(child, "TABPOS");
+
+		int tabpos = IupGetInt(IupGetChild(tabs, child_index), "TABPOS");
 		
 		#if debug > 0
 			printf("set current tab %i\n", tabpos);

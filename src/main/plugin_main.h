@@ -18,7 +18,7 @@
 #include "resource.h"
 
 #include "iup_std_callbacks.h"
-
+#include "iup_tab_utils.h"
 //plugins
 #include "plugin_lexicon.h"
 #include "plugin_taw_calc.h"

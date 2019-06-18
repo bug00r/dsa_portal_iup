@@ -45,42 +45,15 @@ void create_andor_open_hero(hgen_ctx_t *hgen_ctx) {
 		printf("create andor open hero %s\n", hero_name);
 	#endif
 	
-	
-	bool exist = false;
-	Ihandle * child = NULL;
-	
 	Ihandle *tabs = hgen_ctx->ctrls.hero_tabs;
-	int i = IupGetChildCount(tabs);
 	
 	#if debug > 0
 		printf("child count %i\n", i);
 	#endif
-	
-	for (;i--;) {
-		
-		child = IupGetChild(tabs, i);
-		
-		if ( child ) {
-		
-			char * tabname = IupGetAttribute(child,"TABTITLE");
-			
-			#if debug > 0
-				printf("found child tab: %s\n",tabname);
-			#endif
-			
-			exist = (strcmp(tabname, hero_name) == 0);
-			
-            #if debug > 0
-				printf("tab: %s heroname: %s  exist: %i\n",tabname, hero_name, exist);
-			#endif
 
-			if ( exist )
-				break;
-		}
+    int child_index = iup_tap_index_by_title(tabs, hero_name);
 	
-	}
-	
-	if ( !exist ) {
+	if ( child_index == -1 ) {
         
         Ihandle * hero_frame = hero_item->detail_frame;
         
@@ -115,7 +88,7 @@ void create_andor_open_hero(hgen_ctx_t *hgen_ctx) {
 		}
 	} else {
 	
-		int tabpos = IupGetInt(child, "TABPOS");
+		int tabpos = IupGetInt(IupGetChild(tabs, child_index), "TABPOS");
 		
 		#if debug > 0
 			printf("set current tab %i\n", tabpos);

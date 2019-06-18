@@ -17,7 +17,7 @@ INCLUDEDIR+=$(patsubst %,-I$(THIRD_PARTY_LIB_DIR)%,$(IUP_INCLUDE) pcre2_bin/incl
 
 _SRC_FILES=main app iup_app plugin 
 
-_SRC_UTILS=utils/iup_std_callbacks
+_SRC_UTILS=utils/iup_std_callbacks utils/iup_tab_utils
 _SRC_PLUGIN_MAIN=main/plugin_main
 _SRC_PLUGIN_LEXICON=lexicon/plugin_lexicon lexicon/plugin_lexicon_ui lexicon/plugin_lexicon_ui_callback lexicon/plugin_lexicon_ui_search
 _SRC_PLUGIN_TAW_CALC=taw_calc/plugin_taw_calc
