@@ -59,6 +59,8 @@ void create_andor_open_hero(hgen_ctx_t *hgen_ctx) {
 			IupMap(hero_frame); //important: IupCreate  -> IupAppend -> IupMap
 			
 			IupSetInt(tabs, "VALUEPOS", tabpos);
+
+            hgen_hero_sheet_init(hero_frame, hgen_ctx->heros, hero);
 			
 		}
 	} else {

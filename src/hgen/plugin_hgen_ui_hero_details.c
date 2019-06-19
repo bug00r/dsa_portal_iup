@@ -13,22 +13,9 @@ static int __hgen_on_change_hero_name(Ihandle *ih, int c, char *new_value) {
         DEBUG_LOG_ARGS("[I] Hero should not be null (%p)\n", hero);
 
         if ( hero != NULL ) {
-            //change hero name
-            /*dsa_heros_set_name(hero, (const unsigned char*)new_value);
-            //change list entry,
-            hgen_ctx_t * mctx = (hgen_ctx_t *)IupGetGlobal("hero_ctx");
-            char * pos = IupGetAttribute(mctx->ctrls.hero_list, "VALUE");
-            IupSetStrAttribute(mctx->ctrls.hero_list, pos, new_value);
-            IupSetStrAttribute(mctx->ctrls.hero_list, "VALUE", pos);
             
-            int tabpos = IupGetInt(mctx->ctrls.hero_tabs, "VALUEPOS");
-            char * hero_name = hgen_hero_name_id(hero);
-            IupSetStrAttributeId(mctx->ctrls.hero_tabs, "TABTITLE", tabpos, hero_name);
-
-            IupSetStrAttribute(mctx->selected_hero->detail_frame, "hero_name", hero_name);
-            //change tabtitle
-            free(hero_name);*/
             hgen_change_hero_name(hero, new_value);
+        
         }
 
     }
@@ -90,11 +77,24 @@ Ihandle* hgen_hero_sheet_new(dsa_hero_t *hero) {
 	IupSetAttribute(gbox,"ALIGNMENTLIN","ACENTER");
 	IupSetAttribute(gbox,"ALIGNMENTCOL","ALEFT");
 
-	IupSetHandle("breeds", lst_breed);
-	IupSetHandle("cultures", lst_culture);
-	IupSetHandle("professions", lst_prof);
-
     Ihandle *detail_frame = IupHbox(gbox, NULL);
 
+    IupSetAttribute(detail_frame, "culture_list", (void*)lst_culture);
+    IupSetAttribute(detail_frame, "breed_list", (void*)lst_breed);
+    IupSetAttribute(detail_frame, "prof_list", (void*)lst_prof);
+    IupSetAttribute(detail_frame, "name_txt", (void*)txt_name);
+
 	return detail_frame;
+}
+
+void hgen_hero_sheet_init(Ihandle *sheet, dsa_heros_t *heros, dsa_hero_t *hero) {
+
+    xmlChar * name =  dsa_heros_get_name(hero);
+    IupSetStrAttribute((Ihandle *)IupGetAttribute(sheet, "name_txt"), "VALUE", (const char*) name);
+    xmlFree(name);
+
+    init_breeds((Ihandle *)IupGetAttribute(sheet, "breed_list"), heros);
+	init_cultures((Ihandle *)IupGetAttribute(sheet, "culture_list"), heros);
+	init_professions((Ihandle *)IupGetAttribute(sheet, "prof_list"), heros);
+
 }

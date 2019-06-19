@@ -14,4 +14,6 @@
 
 Ihandle* hgen_hero_sheet_new(dsa_hero_t *hero);
 
+void hgen_hero_sheet_init(Ihandle *sheet, dsa_heros_t *heros, dsa_hero_t *hero);
+
 #endif

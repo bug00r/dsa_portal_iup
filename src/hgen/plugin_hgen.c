@@ -38,12 +38,7 @@ void * _hgen_frame_(void * data) {
 
 void _hgen_prepare_(void * data) {
 
-	hgen_ctx_t * mctx = (hgen_ctx_t *)data;
-	
-	init_breeds(IupGetHandle("breeds"), mctx->heros);
-	init_cultures(IupGetHandle("cultures"), mctx->heros);
-	init_professions(IupGetHandle("professions"), mctx->heros);
-
+	UNUSED(data);
 }
 
 void _hgen_cleanup_(void * data) {

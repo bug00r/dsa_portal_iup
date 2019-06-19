@@ -15,7 +15,6 @@
 #include "hero.h"
 #include "plugin.h"
 #include "plugin_hgen_ui.h"
-#include "plugin_hgen_ui_init.h"
 
 #include "plugin_hgen_ui_types.h"
 
