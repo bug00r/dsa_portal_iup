@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<state>
+    <ideas></ideas>
+    <features>
+    </features>
+    <todos>
+        <new></new>
+        <change></change>
+        <done></done>
+    </todos>
+    <issues>
+        <blocker></blocker>
+        <major></major>
+        <minor></minor>
+        <cleanup>
+            <module name="main">
+                <e name="bad plugin interface" src="src/plugin.[hc]" example="plugin_main.c:_main_init_:+11" >Must improve the interface to avoid ugly plugin init.</e>
+            </module>
+            <module name="hgen">
+                <e name="redundant selected hero" src="src/hgen/plugin_hgen_ui_callback.c" example=":hgen_on_close_hero_tab:+8" >extract code for later usage in aother callbacks.</e>
+            </module>
+        </cleanup>
+    </issues>
+</state>
