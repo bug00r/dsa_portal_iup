@@ -99,33 +99,32 @@ static void create_andor_open_plugin(plugin_t * plugin) {
 	
 	Ihandle *tabs = IupGetHandle("tabs");
 
-	int child_index = iup_tap_index_by_title(tabs, pName);
-	
-	if ( child_index == -1 ) {
-	
-		Ihandle * plugin_frame = plugin->frame(plugin->data);
+	Ihandle * plugin_frame = plugin->frame(plugin->data);
+
+	int childid = IupGetChildPos(tabs, plugin_frame);
+
+	if ( childid == -1 ) {
 		
-		if(plugin_frame) {
-			int tabpos = IupGetChildCount(tabs);
-			IupSetAttribute(plugin_frame, "EXPANDCHILDREN", "YES");
-			IupSetAttribute(plugin_frame, "TABTITLE", pName);
-			IupSetInt(plugin_frame, "TABPOS", tabpos);
-			
-			IupAppend(tabs, plugin_frame);
-			
-			IupMap(plugin_frame); //important: IupCreate  -> IupAppend -> IupMap
-			
-			IupSetInt(tabs, "VALUEPOS", tabpos);
-			
-			plugin->prepare(plugin->data);
-		}
+		DEBUG_LOG_ARGS("create new %s\n", pName);
+
+		IupSetAttribute(plugin_frame, "EXPANDCHILDREN", "YES");
+		IupSetAttribute(plugin_frame, "TABTITLE", pName);
+		
+		IupAppend(tabs, plugin_frame);
+		
+		IupMap(plugin_frame); //important: IupCreate  -> IupAppend -> IupMap
+
+		plugin->prepare(plugin->data);
+
+		IupSetAttribute(tabs, "VALUE_HANDLE", (void*)plugin_frame);
+
 	} else {
-		
-		DEBUG_LOG_ARGS("set current tab %i\n", child_index);
-		
-		IupSetAttributeId(tabs, "TABVISIBLE", child_index, "YES");
-		
-		IupSetInt(tabs, "VALUEPOS", child_index);
+
+		DEBUG_LOG_ARGS("use existing %s\n", pName);
+
+		IupSetAttribute(tabs, "VALUE_HANDLE", (void*)plugin_frame);
+
+		IupSetAttributeId(tabs, "TABVISIBLE", childid, "YES");
 	}
 	
 	IupRefresh(tabs);
