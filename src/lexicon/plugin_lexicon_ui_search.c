@@ -17,11 +17,10 @@ void update_cat_and_group_selections() {
 	
 	lss->groups.selected = IupGetInt(groups, "VALUE");
 	
-	#if debug > 0
-		printf("lss->categories.selected: %i\n", lss->categories.selected);
-		printf("lss->categories.cnt_files: %i\n", lss->categories.cnt_files);
-		printf("lss->groups.selected: %i\n", lss->groups.selected );
-	#endif
+	
+	DEBUG_LOG_ARGS("lss->categories.selected: %i\n", lss->categories.selected);
+	DEBUG_LOG_ARGS("lss->categories.cnt_files: %i\n", lss->categories.cnt_files);
+	DEBUG_LOG_ARGS("lss->groups.selected: %i\n", lss->groups.selected );
 
 }
 
@@ -94,9 +93,7 @@ char* add_node_as_string(Ihandle *text, xmlNodePtr node) {
 
 void update_result_display(int sel_list_idx) {
 
-	#if debug > 0
-		printf("----- sel result idx: %i\n", sel_list_idx);
-	#endif
+	DEBUG_LOG_ARGS("----- sel result idx: %i\n", sel_list_idx);
 
 	if ( sel_list_idx >= 0 ) {
 	
@@ -110,37 +107,27 @@ void update_result_display(int sel_list_idx) {
 		
 			xmlXPathObjectPtr cur_result = result[cnt_cache];
 			
-			#if debug > 0
-				printf("check result cache %p %i\n", cur_result, cnt_cache);
-			#endif
+			DEBUG_LOG_ARGS("check result cache %p %i\n", cur_result, cnt_cache);
 			
 			if ( cur_result != NULL ) {
 				xmlNodeSetPtr nodes = cur_result->nodesetval;
 				int size = (nodes) ? nodes->nodeNr : 0;
 				
-				#if debug > 0
-					printf("cache exist with %i entries\n", size);
-				#endif
+				DEBUG_LOG_ARGS("cache exist with %i entries\n", size);
 				
 				if ( size > 0 ) {
 					
-					#if debug > 0
-						printf("global cache change %i => %i \n", cnt_global_cache, cnt_global_cache + size);
-					#endif
+					DEBUG_LOG_ARGS("global cache change %i => %i \n", cnt_global_cache, cnt_global_cache + size);
 					
 					cnt_global_cache += size;
 				
 					if ( sel_list_idx <= cnt_global_cache ) {
 					
-						#if debug > 0
-							printf("selected item is inside current cache %i < %i\n", sel_list_idx, cnt_global_cache);
-						#endif
+						DEBUG_LOG_ARGS("selected item is inside current cache %i < %i\n", sel_list_idx, cnt_global_cache);
 					
 						int cur_cache_index = sel_list_idx - (cnt_global_cache - size) - 1;
 						
-						#if debug > 0
-							printf("selected item cache index %i = %i - %i - 1\n", cur_cache_index, cnt_global_cache, sel_list_idx);
-						#endif
+						DEBUG_LOG_ARGS("selected item cache index %i = %i - %i - 1\n", cur_cache_index, cnt_global_cache, sel_list_idx);
 						
 						add_node_as_string(IupGetHandle("result_text"), nodes->nodeTab[cur_cache_index]);
 						
@@ -255,9 +242,7 @@ void reset_search_result_selection(lexicon_search_result_selection_t	*lsrs) {
 	
 	if(lsrs != NULL) {
 	
-		#if debug > 0
-			printf("lsrs (%p) must clean result (%p)\n", lsrs, lsrs->xpath_result);
-		#endif
+		DEBUG_LOG_ARGS("lsrs (%p) must clean result (%p)\n", lsrs, lsrs->xpath_result);
 	
 		for ( unsigned int cnt_cache = lsrs->cnt_cache ; cnt_cache--; ) {
 			xmlXPathFreeObject(lsrs->xpath_result[cnt_cache]);	

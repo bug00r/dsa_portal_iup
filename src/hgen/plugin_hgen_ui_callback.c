@@ -63,9 +63,7 @@ int  hgen_select_hero_callback(Ihandle *ih, char *text, int item, int state) {
 
     int index = item - 1;
 
-    #if debug > 0
-        printf("state: %i index: %i \n", state, index);
-    #endif 
+    DEBUG_LOG_ARGS("state: %i index: %i \n", state, index);
 
     if ( state == 1 && index >= 0) {
         hgen_ctx_t * mctx = (hgen_ctx_t *)IupGetGlobal("hero_ctx");

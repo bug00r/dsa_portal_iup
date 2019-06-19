@@ -1,6 +1,8 @@
 #ifndef APP_H
 #define APP_H
 
+#include "dsa_core_defs.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>

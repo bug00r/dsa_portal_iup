@@ -41,17 +41,13 @@ void create_andor_open_hero(hgen_ctx_t *hgen_ctx) {
 
     char * hero_name = __hgen_hero_name_id(hero);
 
-	#if debug > 0
-		printf("create andor open hero %s\n", hero_name);
-	#endif
-	
+	DEBUG_LOG_ARGS("create andor open hero %s\n", hero_name);
+
 	Ihandle *tabs = hgen_ctx->ctrls.hero_tabs;
 
     int child_index = iup_tap_index_by_title(tabs, hero_name);
 	
-    #if debug > 0
-		printf("found tab index %i \n", child_index);
-	#endif
+	DEBUG_LOG_ARGS("found tab index %i \n", child_index);
 
 	if ( child_index == -1 ) {
         
@@ -59,10 +55,8 @@ void create_andor_open_hero(hgen_ctx_t *hgen_ctx) {
         
         if (hero_frame == NULL) {
 
-            #if debug > 0
-				printf("create new : %s\n",hero_name);
-			#endif
-
+			DEBUG_LOG_ARGS("create new : %s\n",hero_name);
+	
 		    hero_frame = hgen_hero_sheet_new(hero);
             IupSetStrAttribute(hero_frame, "hero_name", hero_name);
             hero_item->detail_frame = hero_frame;
@@ -70,9 +64,7 @@ void create_andor_open_hero(hgen_ctx_t *hgen_ctx) {
 
 		if(hero_frame) {
 
-            #if debug > 0
-				printf("map new : %s\n",hero_name);
-			#endif
+			DEBUG_LOG_ARGS("map new : %s\n",hero_name);
 			
 			int tabpos = IupGetChildCount(tabs);
 
@@ -89,9 +81,7 @@ void create_andor_open_hero(hgen_ctx_t *hgen_ctx) {
 		}
 	} else {
 		
-		#if debug > 0
-			printf("set current tab %i\n", child_index);
-		#endif
+		DEBUG_LOG_ARGS("set current tab %i\n", child_index);
 		
 		IupSetAttributeId(tabs, "TABVISIBLE", child_index, "YES");
 		

@@ -2,9 +2,7 @@
 
 static int on_param_change_cb(Ihandle *ih, char *text, int item, int state) {
 
-	#if debug > 0
-		printf("trigger calc\n");
-	#endif
+	DEBUG_LOG("trigger calc\n");
 	
 	Ihandle *taw_column 		= IupGetHandle("taw_column");
 	int col = IupGetInt(taw_column, "VALUE");
@@ -18,9 +16,7 @@ static int on_param_change_cb(Ihandle *ih, char *text, int item, int state) {
 	--col;
 	--end;
 	
-	#if debug > 0
-		printf("col: %i, start: %i, end: %i \n", col, start, end);
-	#endif
+	DEBUG_LOG_ARGS("col: %i, start: %i, end: %i \n", col, start, end);
 	
 	Ihandle *taw_calc_result 	= IupGetHandle("taw_calc_result");
 	
@@ -99,9 +95,7 @@ static Ihandle * __create_taw_calc_frame()
 
 static void _taw_calc_init_(void * data) {
 	
-	#if debug > 0
-		printf("taw_calc init\n");
-	#endif
+	DEBUG_LOG("taw_calc init\n");
 
 	#if 0
 		/** init context here

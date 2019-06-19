@@ -1,6 +1,8 @@
 #ifndef PLUGIN_HGEN_UI_CALLBACK_H
 #define PLUGIN_HGEN_UI_CALLBACK_H
 
+#include "dsa_core_defs.h"
+
 #include <string.h>
 
 #include "plugin_hgen_ui_types.h"

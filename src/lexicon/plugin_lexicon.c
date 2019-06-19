@@ -2,9 +2,7 @@
 
 static void _lexicon_init_(void * data) {
 
-	#if debug > 0
-		printf("lexicon init\n");
-	#endif
+	DEBUG_LOG("lexicon init\n");
 
 	lexicon_ctx_t * mctx = (lexicon_ctx_t *)data;
 	mctx->ctxs  = NULL;
@@ -16,34 +14,26 @@ static void _lexicon_free_(void * data) {
 
 	free(data);
 
-	#if debug > 0
-		printf("lexicon free\n");
-	#endif
+	DEBUG_LOG("lexicon free\n");
 }
 
 static const char * _lexicon_name_(void * data) {
 	
 	(void)data;
 
-	#if debug > 0
-		printf("lexicon name\n");
-	#endif
-	
+	DEBUG_LOG("lexicon name\n");
+
 	return "Lexicon";
 }
 
 void * _lexicon_frame_(void * data) {
 
-	#if debug > 0
-		printf("lexicon frame\n");
-	#endif
+	DEBUG_LOG("lexicon frame\n");
 	
 	lexicon_ctx_t * mctx = (lexicon_ctx_t *)data;
 	if ( mctx->frame == NULL ) {
 		
-		#if debug > 0
-			printf("lexicon frame create new\n");
-		#endif
+		DEBUG_LOG("lexicon frame create new\n");
 	
 		mctx->frame = create_lexicon_frame();
 	}
@@ -52,9 +42,7 @@ void * _lexicon_frame_(void * data) {
 
 void _lexicon_prepare_(void * data) {
 	
-	#if debug > 0
-		printf("lexicon prepare\n");
-	#endif
+	DEBUG_LOG("lexicon prepare\n");
 	
 	IupSetGlobal("lctx", data);
 	
@@ -98,9 +86,7 @@ void _lexicon_prepare_(void * data) {
 
 void _lexicon_cleanup_(void * data) {
 	
-	#if debug > 0
-		printf("lexicon plugin cleanup\n");
-	#endif
+	DEBUG_LOG("lexicon plugin cleanup\n");
 	
 	lexicon_ctx_t *lctx = (lexicon_ctx_t *)data;
 	

@@ -1,6 +1,8 @@
 #ifndef PLUGIN_LEXICON_UI_SEARCH_H
 #define PLUGIN_LEXICON_UI_SEARCH_H
 
+#include "dsa_core_defs.h"
+
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>

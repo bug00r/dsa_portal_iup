@@ -2,9 +2,7 @@
 
 static void _hgen_init_(void * data) {
 	
-	#if debug > 0
-		printf("hgen init\n");
-	#endif
+	DEBUG_LOG("hgen init\n");
 
 	#if 0
 		/** init context here

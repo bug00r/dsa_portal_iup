@@ -1,6 +1,8 @@
 #ifndef PLUGIN_UI_HGEN_H
 #define PLUGIN_UI_HGEN_H
 
+#include "dsa_core_defs.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <iup.h>

@@ -4,9 +4,7 @@ int search_button_callback(Ihandle *search_button) {
 
 	(void)search_button;
 
-	#if debug > 0
-		printf("trigger search\n");
-	#endif
+	DEBUG_LOG("trigger search\n");
 
 	search();
 	
@@ -19,10 +17,8 @@ int search_input_key_callback(Ihandle *ih, int c) {
 
 	if ( c == K_CR ) {
 	
-		#if debug > 0
-			printf("hit enter key in search input\n");
-		#endif
-	
+		DEBUG_LOG("hit enter key in search input\n");
+
 		search();
 	}
 	
@@ -37,9 +33,7 @@ int on_category_changed_cb(Ihandle *ih, char *text, int item, int state) {
 
 	if ( state == 1 ) {
 	
-		#if debug > 0
-			printf("changed to %s\n", IupGetAttribute(ih, "VALUESTRING"));
-		#endif
+		DEBUG_LOG_ARGS("changed to %s\n", IupGetAttribute(ih, "VALUESTRING"));
 		
 		update_cat_and_group_selections();
 		update_group_list();
@@ -56,9 +50,7 @@ int on_group_changed_cb(Ihandle *ih, char *text, int item, int state) {
 
 	if ( state == 1 ) {
 	
-		#if debug > 0
-			printf("changed to %s\n", IupGetAttribute(ih, "VALUESTRING"));
-		#endif
+		DEBUG_LOG_ARGS("changed to %s\n", IupGetAttribute(ih, "VALUESTRING"));
 		
 		update_cat_and_group_selections();
 	}
@@ -73,9 +65,7 @@ int on_result_list_changed_cb(Ihandle *ih, char *text, int item, int state) {
 
 	if ( state == 1 ) {
 	
-		#if debug > 0
-			printf("changed to %s or %s\n", IupGetAttribute(ih, "VALUESTRING"), text);
-		#endif
+		DEBUG_LOG_ARGS("changed to %s or %s\n", IupGetAttribute(ih, "VALUESTRING"), text);
 		
 		update_result_display(item);
 		

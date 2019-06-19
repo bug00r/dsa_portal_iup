@@ -15,9 +15,7 @@
 
 void iup_init_app(app_t * app, app_param_t * param) {
 	
-	#if debug > 0
-		printf("calling iup init app\n");
-	#endif
+	DEBUG_LOG("calling iup init app\n");
 
 	#if 0
 		/** 
@@ -43,9 +41,7 @@ void iup_init_app(app_t * app, app_param_t * param) {
 	plugin->init(plugin->data);
 	main_ctx_t * mainctx = (main_ctx_t *)plugin->data;
 	
-	#if debug > 0
-	printf("load main ctx with: %i\n", mainctx->frame);
-	#endif
+	DEBUG_LOG_ARGS("load main ctx with: %i\n", mainctx->frame);
 
 	Ihandle * maindlg = plugin->frame(plugin->data);
 	IupShowXY(maindlg, IUP_CENTER, IUP_CENTER);
@@ -56,20 +52,16 @@ void iup_init_app(app_t * app, app_param_t * param) {
 }
 
 void iup_init_app_param(app_param_t * param) {
-	(void)param;
+	UNUSED(param);
 	
-	#if debug > 0
-		printf("calling iup init param\n");
-	#endif
+	DEBUG_LOG("calling iup init param\n");
 }
 
 bool iup_run_app(app_t * app)
 { 
-	(void)app;
+	UNUSED(app);
 
-	#if debug > 0
-  		printf("call main loop\n");
-	#endif
+  	DEBUG_LOG("call main loop\n");
 
 	IupMainLoop(); 
 
@@ -78,9 +70,8 @@ bool iup_run_app(app_t * app)
 
 void iup_free_app(app_t * app) {
 
-	#if debug > 0
-		printf("iup app free\n");
-	#endif
+	
+	DEBUG_LOG("iup app free\n");
 	
 	app_param_t * param = app->param;
 	plugin_t *plugin = (plugin_t *)param->app_data;

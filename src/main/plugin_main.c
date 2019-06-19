@@ -4,9 +4,7 @@ EXTERN_BLOB(zip_resource, 7z);
 
 static void _main_init_(void * data) {
 	
-	#if debug > 0
-		printf("main init\n");
-	#endif
+	DEBUG_LOG("main init\n");
 	
 	main_ctx_t * mctx = (main_ctx_t *)data;
 	
@@ -38,9 +36,7 @@ static void _main_init_(void * data) {
 
 static void _main_free_(void * data) {
 	
-	#if debug > 0
-		printf("main free\n");
-	#endif
+	DEBUG_LOG("main free\n");
 
 	#if 0
 		/** remove all special allocated things from init method..
@@ -57,37 +53,27 @@ static void _main_free_(void * data) {
 	
 	}
 	
-	#if debug > 0
-		printf("free plugin container\n");
-	#endif
-	
+	DEBUG_LOG("free plugin container\n");
+
 	free(mctx->plugins);
-	
-	#if debug > 0
-		printf("free  xml_result\n");
-	#endif
-	
+
+	DEBUG_LOG("free  xml_result\n");
+
 	//resource_search_result_free(&mctx->xml_result);
 	resource_search_result_full_free(&mctx->xml_result);
 
-	#if debug > 0
-		printf("free archive\n");
-	#endif
+	DEBUG_LOG("free archive\n");
 	
 	archive_resource_free(&mctx->archive);
 	
-	#if debug > 0
-		printf("main context\n");
-	#endif
+	DEBUG_LOG("main context\n");
 	
 	free(mctx);
 }
 
 static const char * _main_name_(void * data) {
-	
-	#if debug > 0
-		printf("main name\n");
-	#endif
+		
+	DEBUG_LOG("main name\n");
 	
 	return "DSA - Tools of Alveran";
 }
@@ -109,9 +95,7 @@ static void create_andor_open_plugin(plugin_t * plugin) {
 	
 	const char * pName = plugin->name(NULL);
 	
-	#if debug > 0
-		printf("create_andor_open_plugin %s\n", pName);
-	#endif
+	DEBUG_LOG_ARGS("create_andor_open_plugin %s\n", pName);
 	
 	Ihandle *tabs = IupGetHandle("tabs");
 
@@ -137,9 +121,7 @@ static void create_andor_open_plugin(plugin_t * plugin) {
 		}
 	} else {
 		
-		#if debug > 0
-			printf("set current tab %i\n", child_index);
-		#endif
+		DEBUG_LOG_ARGS("set current tab %i\n", child_index);
 		
 		IupSetAttributeId(tabs, "TABVISIBLE", child_index, "YES");
 		
@@ -183,17 +165,13 @@ static Ihandle * create_plugin_menu(main_ctx_t * mctx) {
 
 void * _main_frame_(void * data) {
 
-	#if debug > 0
-		printf("main frame\n");
-	#endif
+	DEBUG_LOG("main frame\n");
 	
 	main_ctx_t * mctx = (main_ctx_t *)data;
 	Ihandle * frame = mctx->frame;
 	if ( mctx->frame == NULL ) {
 		
-		#if debug > 0
-			printf("create new\n");
-		#endif
+		DEBUG_LOG("create new\n");
 		
 		Ihandle * home = IupScrollBox(IupVbox(IupLabel("Home Tab"), IupFill(),NULL));
 		IupSetAttributes(home, "EXPANDCHILDREN=yes, TABTITLE=Alveran-News");
@@ -229,9 +207,7 @@ void * _main_frame_(void * data) {
 
 void _main_prepare_(void * data) {
 
-	#if debug > 0
-		printf("handle main prepare\n");
-	#endif
+	DEBUG_LOG("handle main prepare\n");
 	
 	Ihandle *navtree = IupGetHandle("tree");
 	IupSetAttribute(navtree, "TITLE", "System");
@@ -249,9 +225,7 @@ void _main_prepare_(void * data) {
 
 void _main_cleanup_(void * data) {
 
-	#if debug > 0
-		printf("main plugin cleanup\n");
-	#endif
+	DEBUG_LOG("main plugin cleanup\n");
 	
 	main_ctx_t * mctx = (main_ctx_t *)data;
 	
