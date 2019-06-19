@@ -25,7 +25,8 @@ _SRC_PLUGIN_HGEN=hgen/plugin_hgen hgen/plugin_hgen_ui \
 				 hgen/plugin_hgen_ui_callback \
 				 hgen/plugin_hgen_ui_init \
 				 hgen/plugin_hgen_ui_hero_details \
-				 hgen/plugin_hgen_ui_funcs
+				 hgen/plugin_hgen_ui_funcs \
+				 hgen/plugin_hgen_ui_utils
 				 
 
 _SRC_PLUGIN_FILES=$(_SRC_PLUGIN_MAIN) $(_SRC_PLUGIN_LEXICON) $(_SRC_PLUGIN_TAW_CALC) $(_SRC_PLUGIN_HGEN) $(_SRC_UTILS)

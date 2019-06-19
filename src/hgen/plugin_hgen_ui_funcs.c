@@ -1,23 +1,5 @@
 #include "plugin_hgen_ui_funcs.h"
 
-static char* __hgen_hero_name_id(dsa_hero_t *hero) {
-
-    xmlChar * xmlhaname = dsa_heros_get_name(hero);
-    xmlChar * xmlhid = dsa_heros_get_id(hero);
-
-    char * hero_name = format_string_new("%s (%s)", xmlhaname, xmlhid);
-
-	xmlFree(xmlhaname);
-    xmlFree(xmlhid);
-
-    return hero_name;
-}
-
-#if 0 
-//#####################################################################################################
-//EOF private Section
-//#####################################################################################################
-#endif
 
 void hgen_check_refresh_rem_hero_btn(hgen_ctx_t *hgen_ctx) {
 
@@ -39,7 +21,7 @@ void create_andor_open_hero(hgen_ctx_t *hgen_ctx) {
     hero_nav_item_t *hero_item = hgen_ctx->selected_hero;
     dsa_hero_t *hero = hero_item->hero;
 
-    char * hero_name = __hgen_hero_name_id(hero);
+    char * hero_name = hgen_hero_name_id(hero);
 
 	DEBUG_LOG_ARGS("create andor open hero %s\n", hero_name);
 

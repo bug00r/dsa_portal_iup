@@ -14,8 +14,21 @@ static int __hgen_on_change_hero_name(Ihandle *ih, int c, char *new_value) {
 
         if ( hero != NULL ) {
             //change hero name
+            /*dsa_heros_set_name(hero, (const unsigned char*)new_value);
             //change list entry,
+            hgen_ctx_t * mctx = (hgen_ctx_t *)IupGetGlobal("hero_ctx");
+            char * pos = IupGetAttribute(mctx->ctrls.hero_list, "VALUE");
+            IupSetStrAttribute(mctx->ctrls.hero_list, pos, new_value);
+            IupSetStrAttribute(mctx->ctrls.hero_list, "VALUE", pos);
+            
+            int tabpos = IupGetInt(mctx->ctrls.hero_tabs, "VALUEPOS");
+            char * hero_name = hgen_hero_name_id(hero);
+            IupSetStrAttributeId(mctx->ctrls.hero_tabs, "TABTITLE", tabpos, hero_name);
+
+            IupSetStrAttribute(mctx->selected_hero->detail_frame, "hero_name", hero_name);
             //change tabtitle
+            free(hero_name);*/
+            hgen_change_hero_name(hero, new_value);
         }
 
     }

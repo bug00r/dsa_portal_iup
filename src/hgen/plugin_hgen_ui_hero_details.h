@@ -8,7 +8,8 @@
 #include <iup.h>
 
 #include "iup_std_callbacks.h"
-
+#include "plugin_hgen_ui_types.h"
+#include "plugin_hgen_ui_utils.h"
 #include "hero.h"
 
 Ihandle* hgen_hero_sheet_new(dsa_hero_t *hero);

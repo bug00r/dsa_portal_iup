@@ -9,9 +9,9 @@
 #include "dl_list.h"
 
 #include "hero.h"
-#include "plugin.h"
-#include "plugin_hgen_ui.h"
-#include "plugin_hgen_ui_init.h"
+//#include "plugin.h"
+//#include "plugin_hgen_ui.h"
+//#include "plugin_hgen_ui_init.h"
 
 typedef struct {
 	Ihandle *hero_list;
