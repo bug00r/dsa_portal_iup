@@ -13,8 +13,17 @@ Ihandle* create_hgen_frame() {
 	IupSetCallback(rem_hero,"ACTION",(Icallback)hgen_rem_sel_hero_callback);
 	mctx->ctrls.hero_rem_button = rem_hero;
 
-	Ihandle * btn_list = IupHbox(add_hero, rem_hero, NULL);
-	IupSetAttributes(btn_list, "EXPAND=no");
+	Ihandle *save_hero = IupButton("<s>", NULL);
+	IupSetAttributes(save_hero, "RASTERSIZE=25, ACTIVE=no");
+	IupSetCallback(save_hero,"ACTION",(Icallback)hgen_save_selected_hero_callback);
+	mctx->ctrls.hero_save_button = save_hero;
+
+	Ihandle *save_heros = IupButton("<s+>", NULL);
+	IupSetAttributes(save_heros, "RASTERSIZE=25");
+	IupSetCallback(save_heros,"ACTION",(Icallback)hgen_save_all_heros_callback);
+
+	Ihandle * btn_list = IupHbox(add_hero, rem_hero, save_hero, save_heros, NULL);
+	IupSetAttributes(btn_list, "EXPAND=no, GAP=3");
 
 	Ihandle *hero_list = IupList(NULL);
 	IupSetAttributes(hero_list, "EXPAND=YES, VISIBLELINES=1");
@@ -29,7 +38,7 @@ Ihandle* create_hgen_frame() {
 
 	Ihandle * hero_tabs = IupTabs(home, NULL);
 	IupSetAttributes(hero_tabs, "SHOWCLOSE=yes, EXPAND=YES");
-	//IupSetCallback(hero_tabs,"TABCLOSE_CB",(Icallback)do_not_close_first_tab_callback);
+
 	IupSetCallback(hero_tabs,"TABCLOSE_CB",(Icallback)hgen_on_close_hero_tab);
 	IupSetCallback(hero_tabs,"TABCHANGEPOS_CB",(Icallback)hgen_on_change_hero_tab);
 

@@ -24,6 +24,8 @@
 #include "hero.h"
 
 void hgen_check_refresh_rem_hero_btn(hgen_ctx_t *hgen_ctx);
+void hgen_check_refresh_save_hero_btn(hgen_ctx_t *hgen_ctx);
+
 void create_andor_open_hero(hgen_ctx_t *hgen_ctx);
 
 #endif

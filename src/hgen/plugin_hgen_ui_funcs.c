@@ -1,10 +1,7 @@
 #include "plugin_hgen_ui_funcs.h"
 
 
-void hgen_check_refresh_rem_hero_btn(hgen_ctx_t *hgen_ctx) {
-
-    Ihandle *list = hgen_ctx->ctrls.hero_list;
-    Ihandle *btn = hgen_ctx->ctrls.hero_rem_button;
+static void __hgen_refresh_btn_by_hero_selection(Ihandle *list, Ihandle *btn) {
 
     int sel = IupGetInt(list, "VALUE");
 
@@ -13,6 +10,17 @@ void hgen_check_refresh_rem_hero_btn(hgen_ctx_t *hgen_ctx) {
     } else {
         IupSetAttribute(btn, "ACTIVE", "no");
     }
+}
+
+void hgen_check_refresh_rem_hero_btn(hgen_ctx_t *hgen_ctx) {
+
+   __hgen_refresh_btn_by_hero_selection(hgen_ctx->ctrls.hero_list, hgen_ctx->ctrls.hero_rem_button);
+
+}
+
+void hgen_check_refresh_save_hero_btn(hgen_ctx_t *hgen_ctx) {
+
+    __hgen_refresh_btn_by_hero_selection(hgen_ctx->ctrls.hero_list, hgen_ctx->ctrls.hero_save_button);
 
 }
 
@@ -31,7 +39,7 @@ void create_andor_open_hero(hgen_ctx_t *hgen_ctx) {
 
         DEBUG_LOG_ARGS("create new : %s\n",hero_name);
 
-        hero_frame = hgen_hero_sheet_new(hero);
+        hero_frame = hgen_hero_sheet_new(hgen_ctx->heros, hero);
         IupSetStrAttribute(hero_frame, "hero_name", hero_name);
         hero_item->detail_frame = hero_frame;
 
@@ -55,7 +63,11 @@ void create_andor_open_hero(hgen_ctx_t *hgen_ctx) {
         free(hero_name);
 
 	} else {
-		
+
+        int childid = IupGetChildPos(tabs, hero_frame);
+
+        IupSetAttributeId(tabs, "TABVISIBLE", childid, "YES");
+
         IupSetAttribute(tabs, "VALUE_HANDLE", (void*)hero_frame);
          
 	}

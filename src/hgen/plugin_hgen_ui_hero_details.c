@@ -24,7 +24,43 @@ static int __hgen_on_change_hero_name(Ihandle *ih, int c, char *new_value) {
 
 }
 
-Ihandle* hgen_hero_sheet_new(dsa_hero_t *hero) {
+static int __hgen_on_change_breed(Ihandle *ih, char *text, int item, int state) {
+
+	dsa_hero_t *hero = (dsa_hero_t *)IupGetAttribute(ih, "hero");
+	dsa_heros_t *heros = (dsa_heros_t *)IupGetAttribute(ih, "heros");
+
+	dsa_heros_add_breed(heros, hero, (const unsigned char *)text);
+
+	return IUP_DEFAULT;
+}
+
+static int __hgen_on_change_culture(Ihandle *ih, char *text, int item, int state) {
+
+	dsa_hero_t *hero = (dsa_hero_t *)IupGetAttribute(ih, "hero");
+	dsa_heros_t *heros = (dsa_heros_t *)IupGetAttribute(ih, "heros");
+
+	dsa_heros_add_culture(heros, hero, (const unsigned char *)text);
+
+	return IUP_DEFAULT;
+}
+
+static int __hgen_on_change_profession(Ihandle *ih, char *text, int item, int state) {
+
+	dsa_hero_t *hero = (dsa_hero_t *)IupGetAttribute(ih, "hero");
+	dsa_heros_t *heros = (dsa_heros_t *)IupGetAttribute(ih, "heros");
+
+	dsa_heros_add_profession(heros, hero, (const unsigned char *)text);
+
+	return IUP_DEFAULT;
+}
+
+#if 0
+//############################################################################################################################
+//EOF private SEction
+//############################################################################################################################
+#endif
+
+Ihandle* hgen_hero_sheet_new(dsa_heros_t *heros, dsa_hero_t *hero) {
 	Ihandle *lbl_name = IupLabel("Name:");
 	
 	Ihandle *txt_name = IupText(NULL);
@@ -39,6 +75,9 @@ Ihandle* hgen_hero_sheet_new(dsa_hero_t *hero) {
 	
 	Ihandle *lst_breed = IupList(NULL);
 	IupSetAttributes(lst_breed, "RASTERSIZE=125, DROPDOWN=YES, VISIBLEITEMS=15");
+	IupSetAttribute(lst_breed, "hero", (void*)hero);
+	IupSetAttribute(lst_breed, "heros", (void*)heros);
+	IupSetCallback(lst_breed, "ACTION", (Icallback)__hgen_on_change_breed);
 
 	Ihandle *btn_edt_breed = IupButton("<e>",NULL);
 	IupSetCallback(btn_edt_breed,"ACTION",(Icallback)default_action_callback);
@@ -47,6 +86,9 @@ Ihandle* hgen_hero_sheet_new(dsa_hero_t *hero) {
 	
 	Ihandle *lst_culture = IupList(NULL);
 	IupSetAttributes(lst_culture, "RASTERSIZE=125, DROPDOWN=YES, VISIBLEITEMS=15");
+	IupSetAttribute(lst_culture, "hero", (void*)hero);
+	IupSetAttribute(lst_culture, "heros", (void*)heros);
+	IupSetCallback(lst_culture, "ACTION", (Icallback)__hgen_on_change_culture);
 
 	Ihandle *btn_edt_culture = IupButton("<e>",NULL);
 	IupSetCallback(btn_edt_culture,"ACTION",(Icallback)default_action_callback);
@@ -55,6 +97,9 @@ Ihandle* hgen_hero_sheet_new(dsa_hero_t *hero) {
 	
 	Ihandle *lst_prof = IupList(NULL);
 	IupSetAttributes(lst_prof, "RASTERSIZE=125, DROPDOWN=YES, VISIBLEITEMS=15");
+	IupSetAttribute(lst_prof, "hero", (void*)hero);
+	IupSetAttribute(lst_prof, "heros", (void*)heros);
+	IupSetCallback(lst_prof, "ACTION", (Icallback)__hgen_on_change_profession);
 
 	Ihandle *btn_edt_prof = IupButton("<e>",NULL);
 	IupSetCallback(btn_edt_prof,"ACTION",(Icallback)default_action_callback);

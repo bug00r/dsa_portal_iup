@@ -16,6 +16,7 @@
 typedef struct {
 	Ihandle *hero_list;
 	Ihandle *hero_rem_button;
+	Ihandle *hero_save_button;
 	Ihandle *hero_tabs;
 } hgen_ui_ctrls_t;
 
