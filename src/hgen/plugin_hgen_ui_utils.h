@@ -17,5 +17,6 @@ void hgen_change_hero_name(dsa_hero_t *hero, const char* newname);
 void init_breeds(Ihandle* ih, dsa_heros_t *heros);
 void init_cultures(Ihandle* ih, dsa_heros_t *heros);
 void init_professions(Ihandle* ih, dsa_heros_t *heros);
-
+void init_eye_colors(Ihandle* ih, dsa_hero_t *hero);
+void init_hair_colors(Ihandle* ih, dsa_hero_t *hero);
 #endif

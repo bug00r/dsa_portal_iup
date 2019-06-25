@@ -4,6 +4,7 @@
 #include "dsa_core_defs.h"
 
 #include <string.h>
+#include "string_utils.h"
 
 #include <iup.h>
 
