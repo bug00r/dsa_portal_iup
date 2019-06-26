@@ -1,5 +1,23 @@
 #include "plugin_hgen_ui_hero_details.h"
 
+static int __hgen_on_change_gp(Ihandle *ih, int pos) {
+	
+	char * new_gp = format_string_new("%i", pos);
+
+	DEBUG_LOG_ARGS("new gp: %s\n", new_gp);
+
+	dsa_hero_t *hero = (dsa_hero_t *)IupGetAttribute(ih, "hero");
+
+	dsa_heros_set_gp(hero, new_gp);
+
+	IupSetInt(ih, "VALUE", pos);
+	IupSetInt(ih, "SPINVALUE", pos);
+
+	free(new_gp);
+
+	return IUP_DEFAULT;
+}
+
 static int __hgen_on_change_hero_name(Ihandle *ih, int c, char *new_value) {
 
     DEBUG_LOG_ARGS("new name: %s ctrl: %i \n", new_value, c);
@@ -24,24 +42,6 @@ static int __hgen_on_change_hero_name(Ihandle *ih, int c, char *new_value) {
 
 }
 
-static int __hgen_on_change_breed(Ihandle *ih, char *text, int item, int state) {
-
-	dsa_hero_t *hero = (dsa_hero_t *)IupGetAttribute(ih, "hero");
-	dsa_heros_t *heros = (dsa_heros_t *)IupGetAttribute(ih, "heros");
-
-	dsa_heros_add_breed(heros, hero, (const unsigned char *)text);
-
-	Ihandle *hair_list = (Ihandle *)IupGetAttribute(ih, "hair_list");
-	Ihandle *eye_list = (Ihandle *)IupGetAttribute(ih, "eye_list");
-
-	IupSetAttribute(hair_list,"REMOVEITEM", NULL);
-	IupSetAttribute(eye_list,"REMOVEITEM", NULL);
-
-	init_hair_colors(hair_list, hero);
-	init_eye_colors(eye_list, hero);
-
-	return IUP_DEFAULT;
-}
 
 static int __hgen_on_change_culture(Ihandle *ih, char *text, int item, int state) {
 
@@ -112,6 +112,55 @@ static void __hgen_on_change_height_dice(Ihandle *ih) {
 	dsa_heros_set_height_weight_by_dice(hero);
 
 	__hgen_set_height_raw(height_field, hero);
+
+	char * val = IupGetAttribute(height_field, "VALUE");
+	xmlChar * base_val = dsa_heros_get_base_height(hero);
+
+	int spin_val = (int)((atof(val) - atof(base_val)) * 100.f);
+
+	DEBUG_LOG_ARGS("spin value height: %i\n", spin_val);
+
+	IupSetInt(height_field, "SPINVALUE", spin_val);
+
+	xmlFree(base_val);
+}
+
+static int __hgen_on_change_breed(Ihandle *ih, char *text, int item, int state) {
+
+	dsa_hero_t *hero = (dsa_hero_t *)IupGetAttribute(ih, "hero");
+	dsa_heros_t *heros = (dsa_heros_t *)IupGetAttribute(ih, "heros");
+
+	dsa_heros_add_breed(heros, hero, (const unsigned char *)text);
+
+	Ihandle *hair_list = (Ihandle *)IupGetAttribute(ih, "hair_list");
+	Ihandle *eye_list = (Ihandle *)IupGetAttribute(ih, "eye_list");
+
+	IupSetAttribute(hair_list,"REMOVEITEM", NULL);
+	IupSetAttribute(eye_list,"REMOVEITEM", NULL);
+
+	init_hair_colors(hair_list, hero);
+	init_eye_colors(eye_list, hero);
+
+	Ihandle *height_txt = (Ihandle *)IupGetAttribute(ih, "height_txt");
+
+	int height_min = dsa_heros_get_height_min(hero);
+
+	DEBUG_LOG_ARGS("height min int: %i\n", height_min);
+
+	IupSetInt(height_txt, "SPINVALUE", height_min);
+	char * h_min_chr = format_string_new("%i", height_min);
+
+	DEBUG_LOG_ARGS("height min str: %s\n", h_min_chr);
+
+	dsa_heros_set_height_weight_by_value(hero, (const unsigned char*)h_min_chr);
+	__hgen_set_height_raw(height_txt, hero);
+
+	IupSetInt(height_txt, "SPINMIN", height_min);
+	IupSetInt(height_txt, "SPINMAX", dsa_heros_get_height_max(hero));
+
+	free(h_min_chr);
+
+	return IUP_DEFAULT;
 }
 
 static int __hgen_on_change_hair_col(Ihandle *ih, char *text, int item, int state) {
@@ -182,6 +231,14 @@ static void __hgen_on_change_eye_col_dice(Ihandle *ih) {
 #endif
 
 Ihandle* hgen_hero_sheet_new(dsa_heros_t *heros, dsa_hero_t *hero) {
+
+	Ihandle *lbl_gp = IupLabel("GP:");
+
+	Ihandle *txt_gp = IupText(NULL);
+	IupSetAttributes(txt_gp,"RASTERSIZE=125, MULTILINE=NO, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200");
+    IupSetAttribute(txt_gp, "hero", (void*)hero);
+	IupSetCallback(txt_gp,"SPIN_CB",(Icallback)__hgen_on_change_gp);
+
 	Ihandle *lbl_name = IupLabel("Name:");
 	
 	Ihandle *txt_name = IupText(NULL);
@@ -228,7 +285,7 @@ Ihandle* hgen_hero_sheet_new(dsa_heros_t *heros, dsa_hero_t *hero) {
 	Ihandle *lbl_height = IupLabel("Height:");
 
 	Ihandle *txt_height = IupText(NULL);
-	IupSetAttributes(txt_height,"RASTERSIZE=125, MULTILINE=NO, SPIN=yes, SPININC=1, SPINAUTO=no");
+	IupSetAttributes(txt_height,"RASTERSIZE=125, MULTILINE=NO, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMAX=300");
     IupSetAttribute(txt_height, "hero", (void*)hero);
 	IupSetCallback(txt_height,"SPIN_CB",(Icallback)__hgen_on_change_height);
 
@@ -266,9 +323,10 @@ Ihandle* hgen_hero_sheet_new(dsa_heros_t *heros, dsa_hero_t *hero) {
 
 	IupSetAttribute(lst_breed, "eye_list", (void*)lst_eye_col);
 	IupSetAttribute(lst_breed, "hair_list", (void*)lst_hair_col);
-
+	IupSetAttribute(lst_breed, "height_txt", (void*)txt_height);
 
 	Ihandle *gbox = IupGridBox(
+		lbl_gp, txt_gp, IupLabel(NULL),
 		lbl_name, txt_name, btn_rnd_name,
 		lbl_breed, lst_breed, btn_edt_breed,
 		lbl_culture, lst_culture, btn_edt_culture,
@@ -296,15 +354,21 @@ Ihandle* hgen_hero_sheet_new(dsa_heros_t *heros, dsa_hero_t *hero) {
     IupSetAttribute(detail_frame, "breed_list", (void*)lst_breed);
     IupSetAttribute(detail_frame, "prof_list", (void*)lst_prof);
     IupSetAttribute(detail_frame, "name_txt", (void*)txt_name);
+	IupSetAttribute(detail_frame, "gp_txt", (void*)txt_gp);
 
 	return detail_frame;
 }
 
 void hgen_hero_sheet_init(Ihandle *sheet, dsa_heros_t *heros, dsa_hero_t *hero) {
 
-    xmlChar * name =  dsa_heros_get_name(hero);
-    IupSetStrAttribute((Ihandle *)IupGetAttribute(sheet, "name_txt"), "VALUE", (const char*) name);
-    xmlFree(name);
+    xmlChar * val =  dsa_heros_get_name(hero);
+    IupSetStrAttribute((Ihandle *)IupGetAttribute(sheet, "name_txt"), "VALUE", (const char*) val);
+    xmlFree(val);
+
+	val =  dsa_heros_get_gp(hero);
+	IupSetStrAttribute((Ihandle *)IupGetAttribute(sheet, "gp_txt"), "VALUE", (const char*) val);
+    IupSetStrAttribute((Ihandle *)IupGetAttribute(sheet, "gp_txt"), "SPINVALUE", (const char*) val);
+    xmlFree(val);
 
     init_breeds((Ihandle *)IupGetAttribute(sheet, "breed_list"), heros);
 	init_cultures((Ihandle *)IupGetAttribute(sheet, "culture_list"), heros);
