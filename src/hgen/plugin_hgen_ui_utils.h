@@ -1,7 +1,7 @@
 #ifndef PLUGIN_HGEN_UI_UTILS_H
 #define PLUGIN_HGEN_UI_UTILS_H
 
-#include "dsa_core_defs.h"
+#include "defs.h"
 
 #include <string.h>
 

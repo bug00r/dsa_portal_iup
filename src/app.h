@@ -1,7 +1,7 @@
 #ifndef APP_H
 #define APP_H
 
-#include "dsa_core_defs.h"
+#include "defs.h"
 
 #include <stdlib.h>
 #include <stdio.h>

@@ -1,7 +1,7 @@
 #ifndef PLUGIN_UI_LEXICON_H
 #define PLUGIN_UI_LEXICON_H
 
-#include "dsa_core_defs.h"
+#include "defs.h"
 
 #include <stdlib.h>
 #include <string.h>

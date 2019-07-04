@@ -1,7 +1,7 @@
 #ifndef PLUGIN_LEXICON_UI_CALLBACK_H
 #define PLUGIN_LEXICON_UI_CALLBACK_H
 
-#include "dsa_core_defs.h"
+#include "defs.h"
 
 #include <iup.h>
 #include <cd.h>
