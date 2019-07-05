@@ -12,11 +12,15 @@
 
 #include "plugin.h"
 #include "taw.h"
+#include "xml_utils.h"
+#include "iup_xml_builder.h"
 
 typedef struct _taw_calc_ctx_ {
 	Ihandle *frame;
+	xml_source_t *ui_res;
+	iup_xml_builder_t *builder;
 } taw_calc_ctx_t;
 
-plugin_t * taw_calc_plugin(plugin_t * plugin);
+plugin_t * taw_calc_plugin(plugin_t * plugin, void *data);
 
 #endif

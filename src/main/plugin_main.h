@@ -30,6 +30,7 @@ typedef struct _main_ctx_ {
 	unsigned int cntplugins;
 	plugin_t **plugins;
 	archive_resource_t *archive;
+	archive_resource_t *ui_archive;
 	resource_search_result_t *xml_result;
 } main_ctx_t;
 

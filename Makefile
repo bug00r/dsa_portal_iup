@@ -11,7 +11,7 @@ CFLAGS+=-std=c11
 IUP_INCLUDE=tec_tools/v27/release/include/
 THIRD_PARTY_LIB_DIR=./../_third_/
 
-INCLUDEDIR=-I../dsa_core/src -I./src -I../utils/src -I../collections/dl_list
+INCLUDEDIR=-I../dsa_core/src -I./src  -I../iup_xml_builder/src -I../utils/src -I../collections/dl_list
 INCLUDEDIR+=$(patsubst %,-I./src/%, lexicon taw_calc main hgen utils)  
 INCLUDEDIR+=$(patsubst %,-I$(THIRD_PARTY_LIB_DIR)%,$(IUP_INCLUDE) pcre2_bin/include libarchive_bin/include libxml_bin/include/libxml2 libxslt_bin/include)
 
@@ -37,7 +37,7 @@ SRC+=$(patsubst %,src/%,$(patsubst %,%.c,$(_SRC_FILES)))
 OBJ=$(patsubst %,$(BUILDPATH)/%,$(patsubst %,%.o,$(_SRC_FILES)))
 BIN=dsa_portal.exe
 
-DSA_PORTAL_LIBS=dsa_core utils dl_list
+DSA_PORTAL_LIBS=dsa_core utils dl_list iup_xml_builder
 IUP_LIBS=cdcontextplus gdiplus im iupcd iup cd
 THIRD_PARTY_LIBS=exslt xslt xml2 archive crypto nettle regex lzma z lz4 bz2 bcrypt freetype6 iconv
 REGEX_LIBS=pcre2-8
@@ -53,17 +53,34 @@ USED_LIBS=$(patsubst %,-l%,$(DSA_PORTAL_LIBS) $(IUP_LIBS) $(REGEX_LIBS) $(THIRD_
 #iup2.7
 USED_LIBSDIR=-L$(BUILDPATH) -L$(THIRD_PARTY_LIB_DIR)tec_tools/v27/release/lib -LC:/dev/opt/msys64/mingw64/lib
 USED_LIBSDIR+=$(patsubst %,-L$(THIRD_PARTY_LIB_DIR)%,pcre2_bin/lib libarchive_bin/lib libxml_bin/lib libxslt_bin/lib)
-USED_LIBSDIR+=-L./../dsa_core/$(BUILDPATH) -L./../utils/$(BUILDPATH) -L./../collections/dl_list/$(BUILDPATH)
+USED_LIBSDIR+=-L./../dsa_core/$(BUILDPATH) -L./../iup_xml_builder/$(BUILDPATH) -L./../utils/$(BUILDPATH) -L./../collections/dl_list/$(BUILDPATH)
 
-all: mkbuilddir $(BUILDPATH)$(BIN)
+RES=zip_ui_resource
+RES_O=$(RES).o
+RES_O_PATH=$(BUILDPATH)$(RES_O)
+RES_7Z=$(RES).7z
+RES_FILES_PATTERN=./data/*
+ZIP=7z
+ZIP_ARGS=a -t7z
+ZIP_CMD=$(ZIP) $(ZIP_ARGS)
+
+all: mkbuilddir mkzip addzip $(BUILDPATH)$(BIN)
 
 $(BUILDPATH)$(BIN): $(_SRC_FILES)
-	$(CC) $(CFLAGS) $(OBJ) -o $(BUILDPATH)$(BIN) $(INCLUDEDIR)  $(USED_LIBSDIR) -static $(USED_LIBS) $(debug) $(release)
+	$(CC) $(CFLAGS) $(OBJ) $(RES_O_PATH) -o $(BUILDPATH)$(BIN) $(INCLUDEDIR)  $(USED_LIBSDIR) -static $(USED_LIBS) $(debug) $(release)
 
 $(_SRC_FILES):
 	$(CC) $(CFLAGS) -c src/$@.c -o $(BUILDPATH)$@.o $(INCLUDEDIR) $(debug)
 
 .PHONY: clean mkbuilddir small
+
+addzip:
+	cd $(BUILDPATH); \
+	ld -r -b binary $(RES_7Z) -o $(RES_O)
+
+mkzip:
+	-$(ZIP_CMD) $(BUILDPATH)$(RES_7Z) $(RES_FILES_PATTERN)
+
 
 mkbuilddir:
 	mkdir -p $(BUILDDIR)

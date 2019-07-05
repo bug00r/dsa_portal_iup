@@ -2,6 +2,8 @@
 
 EXTERN_BLOB(zip_resource, 7z);
 
+EXTERN_BLOB(zip_ui_resource, 7z);
+
 static void _main_init_(void * data) {
 	
 	DEBUG_LOG("main init\n");
@@ -9,6 +11,8 @@ static void _main_init_(void * data) {
 	main_ctx_t * mctx = (main_ctx_t *)data;
 	
 	mctx->archive = archive_resource_memory(&_binary_zip_resource_7z_start, (size_t)&_binary_zip_resource_7z_size);
+	mctx->ui_archive = archive_resource_memory(&_binary_zip_ui_resource_7z_start, (size_t)&_binary_zip_ui_resource_7z_size);
+	
 	mctx->xml_result = archive_resource_search(mctx->archive, "xml/.*.xml");
 	
 	mctx->cntplugins = 3;
@@ -22,7 +26,7 @@ static void _main_init_(void * data) {
 
 	mctx->plugins[1] = new_plugin();
 	plugin = mctx->plugins[1];
-	taw_calc_plugin(plugin);
+	taw_calc_plugin(plugin, mctx->ui_archive);
 	plugin->init(plugin->data);
 
 	mctx->plugins[2] = new_plugin();
@@ -65,6 +69,7 @@ static void _main_free_(void * data) {
 	DEBUG_LOG("free archive\n");
 	
 	archive_resource_free(&mctx->archive);
+	archive_resource_free(&mctx->ui_archive);
 	
 	DEBUG_LOG("main context\n");
 	
