@@ -36,6 +36,12 @@ void * _lexicon_frame_(void * data) {
 		DEBUG_LOG("lexicon frame create new\n");
 	
 		mctx->frame = create_lexicon_frame();
+
+		//TODO add xml builder here
+		//TODO refactor all iup globals with lctx as userdata
+		//TODO refactoring need all callbacks
+		//TODO lexicon_ctx_t * lctx as userdata mctx in xml builder
+
 	}
 	return mctx->frame;
 }
@@ -73,11 +79,11 @@ void _lexicon_prepare_(void * data) {
 	}
 	IupSetAttribute(categories, "VALUE", "1");
 	
-	lexicon_search_selection_t *lss = create_search_selection();	
-	IupSetGlobal("lss", (void *)lss);
+	lctx->lss = create_search_selection();	
+	IupSetGlobal("lss", (void *)lctx->lss);
 	
-	lexicon_search_result_selection_t *lsrs = create_search_result_selection(result->cnt);	
-	IupSetGlobal("lsrs", (void *)lsrs);
+	lctx->lsrs = create_search_result_selection(result->cnt);	
+	IupSetGlobal("lsrs", (void *)lctx->lsrs);
 	
 	update_cat_and_group_selections();
 	update_group_list();
@@ -112,15 +118,6 @@ void _lexicon_cleanup_(void * data) {
 	}
 }
 
-/**
-	void * data;
-	const char * (*name)(void * data);
-	void * (*frame)(void * data);
-	void (*init)(void * data);
-	void (*free)(void * data);
-	void (*prepare)(void * data);
-	void (*cleanup)(void * data);
-*/
 plugin_t * lexicon_plugin(plugin_t * plugin) {
 	plugin->name = _lexicon_name_;
 	plugin->frame = _lexicon_frame_;

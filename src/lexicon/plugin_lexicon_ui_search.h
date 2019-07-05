@@ -23,12 +23,6 @@
 
 #include "xml_utils.h"
 
-typedef struct _lexicon_ctx_ {
-	Ihandle *frame;
-	resource_search_result_t *xml_result;
-	xml_ctx_t **ctxs;
-} lexicon_ctx_t;
-
 typedef struct {
 	int selected;
 	int cnt_files;
@@ -47,6 +41,14 @@ typedef struct {
 	int cnt_cache;
 	xmlXPathObjectPtr *xpath_result;
 } lexicon_search_result_selection_t;
+
+typedef struct _lexicon_ctx_ {
+	Ihandle *frame;
+	resource_search_result_t *xml_result;
+	xml_ctx_t **ctxs;
+	lexicon_search_selection_t	*lss;
+	lexicon_search_result_selection_t *lsrs;
+} lexicon_ctx_t;
 
 void reset_search_selection(lexicon_search_selection_t	*lss);
 

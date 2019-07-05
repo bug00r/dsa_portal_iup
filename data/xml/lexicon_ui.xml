@@ -1,0 +1,57 @@
+<vbox>
+    <attrs value="GAP=5, MARGIN=2x2" />
+    <!-- searchbar -->
+    <hbox>
+        <hbox>
+            <attr name="ALIGNMENT" value="ACENTER" />
+            <label>
+                <attr name="TITLE" value="Search:" />
+            </label>
+            <text name="search_input">
+                <attr name="EXPAND" value="HORIZONTAL" />
+                <callback event="K_ANY" name="on_input_search" />
+                <user-data name="lctx" value="lctx" />
+            </text>
+        </hbox>
+        <hbox>
+            <attr name="ALIGNMENT" value="ACENTER" />
+            <label>
+                <attr name="TITLE" value="Category:" />
+            </label>
+            <list name="categories">
+                <attrs value="DROPDOWN=YES, EXPAND=HORIZONTAL, VISIBLEITEMS=15" />
+                <callback event="ACTION" name="on_category_changed" />
+                <user-data name="lctx" value="lctx" />
+            </list>
+        </hbox>
+        <hbox>
+            <attr name="ALIGNMENT" value="ACENTER" />
+            <label>
+                <attr name="TITLE" value="Category:" />
+            </label>
+            <list name="groups">
+                <attrs value="DROPDOWN=YES, EXPAND=HORIZONTAL, VISIBLEITEMS=15" />
+                <callback event="ACTION" name="on_group_changed" />
+                <user-data name="lctx" value="lctx" />
+            </list>
+            <button>
+                <attrs value='TITLE="search", ALIGNMENT=ACENTER, EXPAND=HORIZONTAL' />
+                <callback event="ACTION" name="on_search" />
+                <user-data name="lctx" value="lctx" />
+            </button>
+        </hbox>
+        <attr name="GAP" value="5" />
+    </hbox>
+    <!-- result frame -->
+    <split>
+        <attrs value="MINMAX=100:400, VALUE=150" />
+        <list name="result_list">
+            <attrs value='EXPAND=YES, VISIBLELINES=1' />
+            <callback event="ACTION" name="on_result_list_changed" />
+            <user-data name="lctx" value="lctx" />
+        </list>
+        <text name="result_text">
+            <attrs value='EXPAND=YES, VISIBLELINES=1' />
+        </text>
+    </split>
+</vbox>
