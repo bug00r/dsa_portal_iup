@@ -60,6 +60,7 @@ static const char * _taw_calc_name_(void * data) {
 
 void * _taw_calc_frame_(void * data) {
 	taw_calc_ctx_t * mctx = (taw_calc_ctx_t *)data;
+	
 	if ( mctx->frame == NULL ) {
 		//mctx->frame = __create_taw_calc_frame();
 		mctx->builder = iup_xml_builder_new();
@@ -76,6 +77,7 @@ void * _taw_calc_frame_(void * data) {
 
 		mctx->frame = iup_xml_builder_get_main(mres);
 	}
+
 	return mctx->frame;
 }
 
@@ -96,6 +98,7 @@ plugin_t * taw_calc_plugin(plugin_t * plugin, void *data) {
 	plugin->data = plg_data;
 	archive_resource_t *archive = (archive_resource_t *)data;
 	plg_data->ui_res = xml_source_from_resname(archive, "taw_ui");
+	plg_data->builder = NULL;
 	return plugin;
 }
 

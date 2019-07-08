@@ -20,7 +20,7 @@ static void _main_init_(void * data) {
 	
 	mctx->plugins[0] = new_plugin();
 	plugin_t *plugin = mctx->plugins[0];
-	lexicon_plugin(plugin);
+	lexicon_plugin(plugin, mctx->ui_archive);
 	((lexicon_ctx_t*)plugin->data)->xml_result = mctx->xml_result;
 	plugin->init(plugin->data);
 

@@ -19,7 +19,7 @@ _SRC_FILES=main app iup_app plugin
 
 _SRC_UTILS=utils/iup_std_callbacks utils/iup_tab_utils utils/iup_dlg_utils
 _SRC_PLUGIN_MAIN=main/plugin_main
-_SRC_PLUGIN_LEXICON=lexicon/plugin_lexicon lexicon/plugin_lexicon_ui lexicon/plugin_lexicon_ui_callback lexicon/plugin_lexicon_ui_search
+_SRC_PLUGIN_LEXICON=lexicon/plugin_lexicon lexicon/plugin_lexicon_ui_callback lexicon/plugin_lexicon_ui_search
 _SRC_PLUGIN_TAW_CALC=taw_calc/plugin_taw_calc
 _SRC_PLUGIN_HGEN=hgen/plugin_hgen hgen/plugin_hgen_ui \
 				 hgen/plugin_hgen_ui_callback \

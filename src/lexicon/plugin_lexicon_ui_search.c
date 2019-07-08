@@ -1,11 +1,10 @@
 #include "plugin_lexicon_ui_search.h"
 
-void update_cat_and_group_selections() {
+void update_cat_and_group_selections(lexicon_ctx_t *lctx) {
 	
-	lexicon_search_selection_t	*lss = (lexicon_search_selection_t	*)IupGetGlobal("lss");
-	Ihandle * categories = IupGetHandle("categories");
-	Ihandle * groups = IupGetHandle("groups");
-	lexicon_ctx_t *lctx = (lexicon_ctx_t *)IupGetGlobal("lctx");
+	lexicon_search_selection_t	*lss = lctx->lss;
+	Ihandle * categories = lctx->ctrls.categories;
+	Ihandle * groups = lctx->ctrls.groups;
 	
 	int selectCategory = IupGetInt(categories, "VALUE");
 	
@@ -39,12 +38,11 @@ void add_node_attrs_to_handle(Ihandle *handle, xmlXPathObjectPtr xpathObj) {
 	}
 }
 
-void update_group_list() {
+void update_group_list(lexicon_ctx_t *lctx) {
 
-	lexicon_search_selection_t	*lss = (lexicon_search_selection_t	*)IupGetGlobal("lss");
-	Ihandle * groups = IupGetHandle("groups");
-	lexicon_ctx_t *lctx = (lexicon_ctx_t *)IupGetGlobal("lctx");
-	
+	lexicon_search_selection_t	*lss = lctx->lss;
+	Ihandle * groups = lctx->ctrls.groups;
+
 	IupSetAttribute(groups, "REMOVEITEM", "ALL");
 	IupSetAttribute(groups, "APPENDITEM", "ALL");
 	
@@ -76,7 +74,7 @@ void update_group_list() {
 
 char* add_node_as_string(Ihandle *text, xmlNodePtr node) {
 	
-	IupSetStrAttribute(text, "VALUE", "");
+	IupSetAttribute(text, "VALUE", "");
 	xmlAttr * attr = node->properties;
 	
 	#if 0
@@ -91,13 +89,13 @@ char* add_node_as_string(Ihandle *text, xmlNodePtr node) {
 	}
 }
 
-void update_result_display(int sel_list_idx) {
+void update_result_display(lexicon_ctx_t *lctx, int sel_list_idx) {
 
 	DEBUG_LOG_ARGS("----- sel result idx: %i\n", sel_list_idx);
 
 	if ( sel_list_idx >= 0 ) {
 	
-		lexicon_search_result_selection_t *lsrs = (lexicon_search_result_selection_t *)IupGetGlobal("lsrs");
+		lexicon_search_result_selection_t *lsrs = lctx->lsrs;
 		
 		xmlXPathObjectPtr *result = lsrs->xpath_result;
 		
@@ -129,7 +127,7 @@ void update_result_display(int sel_list_idx) {
 						
 						DEBUG_LOG_ARGS("selected item cache index %i = %i - %i - 1\n", cur_cache_index, cnt_global_cache, sel_list_idx);
 						
-						add_node_as_string(IupGetHandle("result_text"), nodes->nodeTab[cur_cache_index]);
+						add_node_as_string(lctx->ctrls.result_text, nodes->nodeTab[cur_cache_index]);
 						
 						break;
 					}
@@ -142,9 +140,10 @@ void update_result_display(int sel_list_idx) {
 	}
 }
 
-void refresh_search_result_list() {
-	lexicon_search_result_selection_t *lsrs = (lexicon_search_result_selection_t *)IupGetGlobal("lsrs");
-	Ihandle *result_list = IupGetHandle("result_list");
+void refresh_search_result_list(lexicon_ctx_t *lctx) {
+	
+	lexicon_search_result_selection_t *lsrs = lctx->lsrs;
+	Ihandle *result_list = lctx->ctrls.result_list;
 	
 	IupSetAttribute(result_list, "REMOVEITEM", "ALL");
 	IupRefresh(IupGetParent(result_list));
@@ -159,14 +158,13 @@ void refresh_search_result_list() {
 	
 	IupSetAttribute(result_list, "VALUE", "1");
 	
-	update_result_display(1);
+	update_result_display(lctx ,1);
 	
 }
 
-void search() {
+void search(lexicon_ctx_t *lctx) {
 
-	lexicon_search_selection_t	*lss = (lexicon_search_selection_t	*)IupGetGlobal("lss");
-	lexicon_ctx_t *lctx = (lexicon_ctx_t *)IupGetGlobal("lctx");
+	lexicon_search_selection_t	*lss = lctx->lss;
 	
 	resource_search_result_t *result = lctx->xml_result;
 	unsigned int file_offset = lss->categories.selected;
@@ -174,13 +172,13 @@ void search() {
 	int cnt_files = lss->categories.cnt_files;
 	if ( file_offset >= 0 ) {
 		
-		Ihandle * groups = IupGetHandle("groups");
-		Ihandle * search_input = IupGetHandle("search_input");
+		Ihandle * groups = lctx->ctrls.groups;
+		Ihandle * search_input = lctx->ctrls.search_input;
 		
 		char *selected_group = IupGetAttribute(groups, "VALUESTRING");
 		char *search_string = IupGetAttribute(search_input, "VALUE");
 		
-		lexicon_search_result_selection_t *lsrs = (lexicon_search_result_selection_t *)IupGetGlobal("lsrs");
+		lexicon_search_result_selection_t *lsrs =lctx ->lsrs;
 		reset_search_result_selection(lsrs);
 		lsrs->cnt_cache = cnt_files;
 		
@@ -212,7 +210,7 @@ void search() {
 	
 	}
 	
-	refresh_search_result_list();
+	refresh_search_result_list(lctx);
 
 }
 

@@ -51,7 +51,7 @@
             <user-data name="lctx" value="lctx" />
         </list>
         <text name="result_text">
-            <attrs value='EXPAND=YES, VISIBLELINES=1' />
+            <attrs value='MULTILINE=YES, READONLY=YES, EXPAND=YES, WORDWRAP=YES' />
         </text>
     </split>
 </vbox>

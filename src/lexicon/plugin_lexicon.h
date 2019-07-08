@@ -25,8 +25,7 @@
 
 #include "plugin_lexicon_ui_search.h"
 #include "plugin_lexicon_ui_callback.h"
-#include "plugin_lexicon_ui.h"
 
-plugin_t * lexicon_plugin(plugin_t * plugin);
+plugin_t * lexicon_plugin(plugin_t *plugin, void *data);
 
 #endif

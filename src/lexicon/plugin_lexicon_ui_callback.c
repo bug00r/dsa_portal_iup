@@ -2,24 +2,24 @@
 
 int search_button_callback(Ihandle *search_button) {
 
-	(void)search_button;
+	lexicon_ctx_t *lctx = (lexicon_ctx_t*)IupGetAttribute(search_button, "lctx");
 
 	DEBUG_LOG("trigger search\n");
 
-	search();
+	search(lctx);
 	
 	return IUP_DEFAULT;
 }
 
 int search_input_key_callback(Ihandle *ih, int c) {
 
-	(void)ih;
-
 	if ( c == K_CR ) {
 	
 		DEBUG_LOG("hit enter key in search input\n");
 
-		search();
+		lexicon_ctx_t *lctx = (lexicon_ctx_t*)IupGetAttribute(ih, "lctx");
+
+		search(lctx);
 	}
 	
 	return IUP_DEFAULT;
@@ -27,7 +27,6 @@ int search_input_key_callback(Ihandle *ih, int c) {
 
 int on_category_changed_cb(Ihandle *ih, char *text, int item, int state) {
 	
-	(void)ih;
 	(void)text;
 	(void)item;
 
@@ -35,8 +34,10 @@ int on_category_changed_cb(Ihandle *ih, char *text, int item, int state) {
 	
 		DEBUG_LOG_ARGS("changed to %s\n", IupGetAttribute(ih, "VALUESTRING"));
 		
-		update_cat_and_group_selections();
-		update_group_list();
+		lexicon_ctx_t *lctx = (lexicon_ctx_t*)IupGetAttribute(ih, "lctx");
+
+		update_cat_and_group_selections(lctx);
+		update_group_list(lctx);
 	}
 	
 	return IUP_DEFAULT;
@@ -44,7 +45,6 @@ int on_category_changed_cb(Ihandle *ih, char *text, int item, int state) {
 
 int on_group_changed_cb(Ihandle *ih, char *text, int item, int state) {
 	
-	(void)ih;
 	(void)text;
 	(void)item;
 
@@ -52,22 +52,25 @@ int on_group_changed_cb(Ihandle *ih, char *text, int item, int state) {
 	
 		DEBUG_LOG_ARGS("changed to %s\n", IupGetAttribute(ih, "VALUESTRING"));
 		
-		update_cat_and_group_selections();
+		lexicon_ctx_t *lctx = (lexicon_ctx_t*)IupGetAttribute(ih, "lctx");
+
+		update_cat_and_group_selections(lctx);
 	}
 	
 	return IUP_DEFAULT;
 }
 
 int on_result_list_changed_cb(Ihandle *ih, char *text, int item, int state) {
-	
-	(void)ih;
+
 	(void)text;
 
 	if ( state == 1 ) {
 	
 		DEBUG_LOG_ARGS("changed to %s or %s\n", IupGetAttribute(ih, "VALUESTRING"), text);
 		
-		update_result_display(item);
+		lexicon_ctx_t *lctx = (lexicon_ctx_t*)IupGetAttribute(ih, "lctx");
+
+		update_result_display(lctx, item);
 		
 	}
 	
