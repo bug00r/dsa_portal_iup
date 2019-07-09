@@ -23,6 +23,7 @@ typedef struct {
 typedef struct {
 	dsa_hero_t *hero;
 	Ihandle * detail_frame;
+	//todo add single builder for each hero nav.
 } hero_nav_item_t;
 
 typedef struct _hgen_ctx_ {

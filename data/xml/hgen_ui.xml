@@ -1,0 +1,46 @@
+<hbox>
+    <split>
+        <attrs value="MINMAX=100:400, VALUE=150" />
+        <!-- Leftpanel button list -->
+        <vbox>
+            <hbox>
+                <attrs value="EXPAND=no, GAP=3" />
+                <button>
+                    <attrs value='TITLE="+", RASTERSIZE=25' />
+                    <callback event="ACTION" name="hgen_add_new_hero_callback" />
+                </button>
+                <button>
+                    <attrs value='TITLE="-", RASTERSIZE=25, ACTIVE=no' />
+                    <callback event="ACTION" name="hgen_rem_sel_hero_callback" />
+                </button>
+                <button>
+                    <attrs value='TITLE="s", RASTERSIZE=25, ACTIVE=no' />
+                    <callback event="ACTION" name="hgen_save_selected_hero_callback" />
+                </button>
+                <button>
+                    <attrs value='TITLE="s+", RASTERSIZE=25' />
+                    <callback event="ACTION" name="hgen_save_all_heros_callback" />
+                </button>
+            </hbox>
+            <list>
+                <attrs value='EXPAND=YES, VISIBLELINES=1' />
+                <callback event="ACTION" name="hgen_select_hero_callback" />
+            </list>
+        </vbox>
+        <!-- Tabs for Heros -->
+        <tabs>
+            <attrs value='SHOWCLOSE=yes, EXPAND=YES' />
+            <callback event="TABCLOSE_CB" name="hgen_on_close_hero_tab" />
+            <callback event="TABCHANGEPOS_CB" name="hgen_on_change_hero_tab" />
+            <scrollbox>
+                <attrs value='EXPANDCHILDREN=yes, TABTITLE="Hgen-News"' />
+                <vbox>
+                    <label>
+                        <attrs value='TITLE="Infos about Hgen"' />
+                    </label>
+                    <fill />
+                </vbox>
+            </scrollbox>
+        </tabs>
+    </split>
+</hbox>
