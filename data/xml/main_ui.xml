@@ -9,7 +9,7 @@
         </expander>
         <tabs name="tabs">
             <attrs value='SHOWCLOSE=YES' />
-            <callback event="TABCLOSE_CB" name="dont_close_tab" />
+            <callback event="TABCLOSE_CB" name="do_not_close_first_tab_callback" />
             <scrollbox>
                 <attrs value='EXPANDCHILDREN=yes, TABTITLE=Alveran-News' />
                 <vbox>
@@ -27,6 +27,7 @@
             <param-menu>
                 <item>
                     <param-str value='Exit' />
+                    <param-null />
                     <callback event="ACTION" name="exit_cb" />
                 </item>
             </param-menu>

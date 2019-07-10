@@ -44,10 +44,6 @@ static void _main_free_(void * data) {
 	
 	DEBUG_LOG("main free\n");
 
-	#if 0
-		/** remove all special allocated things from init method..
-		  */
-	#endif
 	main_ctx_t * mctx = (main_ctx_t *)data;
 	for ( unsigned int i = mctx->cntplugins; i--;) {
 		
@@ -191,6 +187,8 @@ void * _main_frame_(void * data) {
 		mctx->ctrls.tree = iup_xml_builder_get_name(mres, "tree");
 		mctx->ctrls.tabs = iup_xml_builder_get_name(mres, "tabs");
 		mctx->ctrls.pluginsmenu = iup_xml_builder_get_name(mres, "pluginsmenu");
+
+		DEBUG_LOG("create plugin menu\n");
 
 		create_plugin_menu(mctx);
 
