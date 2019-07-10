@@ -1,0 +1,39 @@
+<dialog>
+    <attrs value='TITLE="DSA - Tools of Alveran" , SIZE=HALFxHALF' />
+    <hbox>
+        <expander>
+            <attrs value='STATE=CLOSE, BARPOSITION=LEFT, EXPAND=VERTICAL' />
+            <tree name="tree" >
+                <attrs value='EXPAND=VERTICAL, SIZE=100x' />
+            </tree>
+        </expander>
+        <tabs name="tabs">
+            <attrs value='SHOWCLOSE=YES' />
+            <callback event="TABCLOSE_CB" name="dont_close_tab" />
+            <scrollbox>
+                <attrs value='EXPANDCHILDREN=yes, TABTITLE=Alveran-News' />
+                <vbox>
+                    <label>
+                        <attr name="TITLE" value="Home Tab" />
+                    </label>
+                    <fill />
+                </vbox>
+            </scrollbox>
+        </tabs>
+    </hbox>
+    <attr-menu name="MENU">
+        <submenu>
+            <param-str value="File" />
+            <param-menu>
+                <item>
+                    <param-str value='Exit' />
+                    <callback event="ACTION" name="exit_cb" />
+                </item>
+            </param-menu>
+        </submenu>
+        <submenu>
+            <param-str value="Plugins" />
+            <param-menu name="pluginsmenu" />
+        </submenu>
+    </attr-menu>
+</dialog>

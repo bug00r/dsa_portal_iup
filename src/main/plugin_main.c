@@ -13,6 +13,8 @@ static void _main_init_(void * data) {
 	mctx->archive = archive_resource_memory(&_binary_zip_resource_7z_start, (size_t)&_binary_zip_resource_7z_size);
 	mctx->ui_archive = archive_resource_memory(&_binary_zip_ui_resource_7z_start, (size_t)&_binary_zip_ui_resource_7z_size);
 	
+	mctx->ui_res = xml_source_from_resname(mctx->ui_archive, "main_ui");
+
 	mctx->xml_result = archive_resource_search(mctx->archive, "xml/.*.xml");
 	
 	mctx->cntplugins = 3;
@@ -73,6 +75,10 @@ static void _main_free_(void * data) {
 	
 	DEBUG_LOG("main context\n");
 	
+	iup_xml_builder_free(&mctx->builder);
+
+	xml_source_free(&mctx->ui_res);
+
 	free(mctx);
 }
 
@@ -82,27 +88,21 @@ static const char * _main_name_(void * data) {
 	
 	return "DSA - Tools of Alveran";
 }
-//default exit callback
+
 int exit_cb(void) {
 	
 	return IUP_CLOSE;
 }
 
-static Ihandle *create_file_menu() {
-	Ihandle * item_exit = IupItem("Exit", NULL);
-	IupSetCallback(item_exit, "ACTION", (Icallback)exit_cb);
-	Ihandle * fmenu = IupMenu(item_exit, NULL); 
-	Ihandle * submenu = IupSubmenu("File", fmenu);
-	return submenu;
-}
-
-static void create_andor_open_plugin(plugin_t * plugin) {
+static void create_andor_open_plugin(plugin_t * plugin, main_ctx_t *mctx) {
 	
+	if (plugin == NULL || mctx == NULL) return;
+
 	const char * pName = plugin->name(NULL);
 	
 	DEBUG_LOG_ARGS("create_andor_open_plugin %s\n", pName);
 	
-	Ihandle *tabs = IupGetHandle("tabs");
+	Ihandle *tabs = mctx->ctrls.tabs;
 
 	Ihandle * plugin_frame = plugin->frame(plugin->data);
 
@@ -141,30 +141,28 @@ static int plugin_cb(Ihandle * handle) {
 	plugin_t * plugin = (plugin_t *)IupGetAttribute(handle, "PLUGIN_OBJ");
 	
 	if ( plugin ) {
-		create_andor_open_plugin(plugin);
+		create_andor_open_plugin(plugin, (main_ctx_t *)IupGetAttribute(handle, "mctx"));
 	}
 	
 	return IUP_DEFAULT;
 	
 }
 
-static Ihandle * create_plugin_menu(main_ctx_t * mctx) {
+static void create_plugin_menu(main_ctx_t * mctx) {
 	
-	Ihandle * pmenu = IupMenu(NULL);
+	Ihandle * pmenu = mctx->ctrls.pluginsmenu;
 	
 	for ( unsigned int i = 0; i < mctx->cntplugins ; ++i ) {
 	
 		Ihandle *mitem = IupItem(mctx->plugins[i]->name(NULL), NULL);
 		IupSetCallback(mitem, "ACTION", (Icallback)plugin_cb);
 		IupSetAttribute(mitem, "PLUGIN_OBJ", (void *)mctx->plugins[i]);
+		IupSetAttribute(mitem, "mctx", (void *)mctx);
 		
 		IupAppend( pmenu, mitem);
 	
 	}
-	
-	Ihandle * submenu = IupSubmenu("Plugins", pmenu);
-	
-	return submenu;
+
 }
 
 void * _main_frame_(void * data) {
@@ -177,46 +175,38 @@ void * _main_frame_(void * data) {
 		
 		DEBUG_LOG("create new\n");
 		
-		Ihandle * home = IupScrollBox(IupVbox(IupLabel("Home Tab"), IupFill(),NULL));
-		IupSetAttributes(home, "EXPANDCHILDREN=yes, TABTITLE=Alveran-News");
-		
-		Ihandle * tabs = IupTabs(home, NULL);
-		IupSetAttribute(tabs, "SHOWCLOSE", "yes");
-		IupSetCallback(tabs,"TABCLOSE_CB",(Icallback)do_not_close_first_tab_callback);
-		
-		Ihandle * navtree = IupTree();
-		IupSetAttributes(navtree, "EXPAND=VERTICAL, SIZE=100x");
-		
-		Ihandle * expand_tree = IupExpander(navtree);
-		IupSetAttributes(expand_tree, "STATE=CLOSE, BARPOSITION=LEFT, EXPAND=VERTICAL");
-		
-		Ihandle * main_box = IupHbox(expand_tree, tabs, NULL);
-		frame = IupDialog(main_box);
-		IupSetAttribute(frame, "TITLE", _main_name_(data));
-		IupSetAttribute(frame, "SIZE", "HALFxHALF");
-		
-		Ihandle * menu = IupMenu(create_file_menu(), create_plugin_menu(mctx), NULL);
-		IupSetAttributeHandle(frame, "MENU", menu);
-		
-		mctx->frame = frame;
-		
-		IupSetHandle("tree",navtree);
-		IupSetHandle("tabs",tabs);
-		IupSetHandle("main_frame",mctx->frame);
-	
+		mctx->builder = iup_xml_builder_new();
+
+		iup_xml_builder_add_bytes(mctx->builder, "main", (const char *)mctx->ui_res->src_data, *mctx->ui_res->src_size);
+
+		iup_xml_builder_add_callback(mctx->builder, "dont_close_tab", (Icallback)do_not_close_first_tab_callback);
+		iup_xml_builder_add_callback(mctx->builder, "exit_cb", (Icallback)exit_cb);
+
+		iup_xml_builder_parse(mctx->builder);
+
+		Ihandle *mres = iup_xml_builder_get_result(mctx->builder, "main");
+
+		mctx->frame = iup_xml_builder_get_main(mres);
+
+		mctx->ctrls.tree = iup_xml_builder_get_name(mres, "tree");
+		mctx->ctrls.tabs = iup_xml_builder_get_name(mres, "tabs");
+		mctx->ctrls.pluginsmenu = iup_xml_builder_get_name(mres, "pluginsmenu");
+
+		create_plugin_menu(mctx);
+
 	}
 	
-	return frame;
+	return mctx->frame;
 }
 
 void _main_prepare_(void * data) {
 
 	DEBUG_LOG("handle main prepare\n");
-	
-	Ihandle *navtree = IupGetHandle("tree");
-	IupSetAttribute(navtree, "TITLE", "System");
 
 	main_ctx_t * mctx = (main_ctx_t *)data;
+
+	Ihandle *navtree = mctx->ctrls.tree;
+	IupSetAttribute(navtree, "TITLE", "System");
 	
 	for ( unsigned int i = mctx->cntplugins; i--;) {
 	

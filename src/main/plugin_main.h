@@ -24,6 +24,11 @@
 #include "plugin_taw_calc.h"
 #include "plugin_hgen.h"
 
+typedef struct {
+	Ihandle *tree;
+	Ihandle *tabs;
+	Ihandle *pluginsmenu;
+} main_ctrls_t;
 
 typedef struct _main_ctx_ {
 	Ihandle *frame;
@@ -32,6 +37,9 @@ typedef struct _main_ctx_ {
 	archive_resource_t *archive;
 	archive_resource_t *ui_archive;
 	resource_search_result_t *xml_result;
+	xml_source_t *ui_res;
+	iup_xml_builder_t *builder;
+	main_ctrls_t ctrls;
 } main_ctx_t;
 
 plugin_t * main_plugin(plugin_t * plugin);
