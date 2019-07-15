@@ -1,178 +1,401 @@
-<vbox>
-    <!-- Header: Name, gb, Breed, culture, Profession  -->
-    <hbox>
-        <gridbox>
-            <attrs value='ORIENTATION=HORIZONTAL,NUMDIV=4, EXPAND=NO, SIZELIN=-1, SIZECOL=-1, GAPLIN=5, GAPCOL=5, ALIGNMENTLIN=ACENTER,ALIGNMENTCOL=ALEFT' />
-            <!-- Name -->
-            <label><attrs value='TITLE=Name:,RASTERSIZE=70' /></label>
-            <text><attrs value='RASTERSIZE=125' /></text>
-            <button><attrs value='TITLE=?, RASTERSIZE=20' /></button>
-            <fill/>
-            <!-- EO Name -->
-            <!-- Rasse -->
-            <label><attrs value='TITLE=Rasse:' /></label>
-            <list><attrs value='RASTERSIZE=125, DROPDOWN=YES, VISIBLEITEMS=15' /></list>
-            <button>
-                <attrs value='TITLE=e, RASTERSIZE=20' />
-            </button>
-            <fill />
-            <!-- EO Rasse -->
-            <!-- Kultur -->
-            <label><attrs value='TITLE=Kultur:' /></label>
-            <list><attrs value='RASTERSIZE=125, DROPDOWN=YES, VISIBLEITEMS=15' /></list>
-            <button>
-                <attrs value='TITLE=e, RASTERSIZE=20' />
-            </button>
-            <fill />
-            <!-- EO Kultur -->
-            <!-- Profession -->
-            <label><attrs value='TITLE=Profession:' /></label>
-            <list>
-                <attrs value='RASTERSIZE=125, DROPDOWN=YES, VISIBLEITEMS=15' />
-            </list>
-            <button>
-                <attrs value='TITLE=e, RASTERSIZE=20' />
-            </button>
-            <fill />
-            <!-- EO Profession -->
-        </gridbox>  
-        <gridbox>
-            <attrs value='ORIENTATION=HORIZONTAL,NUMDIV=3, EXPAND=NO, SIZELIN=-1, SIZECOL=-1, GAPLIN=13, GAPCOL=5, ALIGNMENTLIN=ACENTER,ALIGNMENTCOL=ALEFT' />
-            <!-- GP -->
-            <label><attrs value='TITLE=GP:' /></label>
-            <text>
-                <attrs value='RASTERSIZE=125, MULTILINE=NO, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
-            </text>
-            <fill/>
-            <!-- EO GP -->
-            <!-- Rasse Mods -->
-            <label><attrs value='TITLE=Mods:' /></label>
-            <label><attrs value='TITLE=-' /></label>
-            <fill/>
-            <!-- EO Rasse Mods -->
-            <!-- Kultur Mods -->
-            <label><attrs value='TITLE=Mods:' /></label>
-            <label><attrs value='TITLE=-' /></label>
-            <fill/>
-            <!-- EO Kultur Mods -->
-            <!-- Profession Mods -->
-            <label><attrs value='TITLE=Mods:' /></label>
-            <label><attrs value='TITLE=-' /></label>
-            <fill/>
-            <!-- EO Profession Mods -->
-        </gridbox>
-    </hbox>
-    <hbox>
-        <!-- Height, Size, Gender, look -->
-        <vbox>
+<scrollbox>
+    <vbox>
+        <!-- Header: Name, gb, Breed, culture, Profession  -->
+        <hbox>
             <gridbox>
                 <attrs value='ORIENTATION=HORIZONTAL,NUMDIV=4, EXPAND=NO, SIZELIN=-1, SIZECOL=-1, GAPLIN=5, GAPCOL=5, ALIGNMENTLIN=ACENTER,ALIGNMENTCOL=ALEFT' />
-                 <!-- Gender -->
-                <label><attrs value="TITLE=Geschlecht:,RASTERSIZE=70" /></label>
-                <list>
-                    <attrs value='RASTERSIZE=125, DROPDOWN=YES, VISIBLEITEMS=2, 1=männlich,2=weiblich' />
-                </list>
-                <fill/><fill/>
-                <!-- EO Gender -->
-                <!-- Age -->
-                <label><attrs value="TITLE=Alter:" /></label>
-                <text>
-                    <attrs value='RASTERSIZE=125, MULTILINE=NO, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=18, SPINMAX=500' />
-                </text>
-                <fill/><fill/>
-                <!-- EO Age -->
-                <!-- Height -->
-                <label><attrs value="TITLE=Größe:" /></label>
-                <text>
-                    <attrs value='RASTERSIZE=125, MULTILINE=NO, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMAX=300' />
-                </text>
+                <!-- Name -->
+                <label><attrs value='TITLE=Name:,RASTERSIZE=70' /></label>
+                <text><attrs value='RASTERSIZE=125' /></text>
+                <button><attrs value='TITLE=?, RASTERSIZE=20' /></button>
+                <fill/>
+                <!-- EO Name -->
+                <!-- Rasse -->
+                <label><attrs value='TITLE=Rasse:' /></label>
+                <list><attrs value='RASTERSIZE=125, DROPDOWN=YES, VISIBLEITEMS=15' /></list>
                 <button>
-                    <attrs value="TITLE=?, RASTERSIZE=20" />
+                    <attrs value='TITLE=e, RASTERSIZE=20' />
                 </button>
                 <fill />
-                <!-- EO Height -->
-                <!-- Weight -->
-                <label><attrs value="TITLE=Gewicht:" /></label>
-                <label><attr name="TITLE" value="-" /></label>
-                <fill/><fill/>
-                <!-- EO Weight -->
-                <!-- Hair Color -->
-                <label><attrs value="TITLE=Haarfarbe:" /></label>
+                <!-- EO Rasse -->
+                <!-- Kultur -->
+                <label><attrs value='TITLE=Kultur:' /></label>
+                <list><attrs value='RASTERSIZE=125, DROPDOWN=YES, VISIBLEITEMS=15' /></list>
+                <button>
+                    <attrs value='TITLE=e, RASTERSIZE=20' />
+                </button>
+                <fill />
+                <!-- EO Kultur -->
+                <!-- Profession -->
+                <label><attrs value='TITLE=Profession:' /></label>
                 <list>
-                    <attrs value='RASTERSIZE=125, DROPDOWN=YES, VISIBLEITEMS=5, 1=männlich,2=weiblich' />
+                    <attrs value='RASTERSIZE=125, DROPDOWN=YES, VISIBLEITEMS=15' />
                 </list>
                 <button>
-                    <attrs value="TITLE=?, RASTERSIZE=20" />
+                    <attrs value='TITLE=e, RASTERSIZE=20' />
                 </button>
-                <fill/>
-                <!-- Hair Color -->
-                <!-- Eye Color -->
-                <label><attrs value="TITLE=Augenfarbe:" /></label>
-                <list>
-                    <attrs value='RASTERSIZE=125, DROPDOWN=YES, VISIBLEITEMS=5, 1=männlich,2=weiblich' />
-                </list>
-                <button>
-                    <attrs value="TITLE=?, RASTERSIZE=20" />
-                </button>
-                <fill/>
-                <!-- Eye Color -->
-                <!-- look label -->
-                <label><attrs value="TITLE=Aussehen:" /></label>
-            </gridbox>
-            <!-- look txt -->
-            <text>
-                <attrs value='RASTERSIZE=225, MULTILINE=YES, VISIBLELINES=5, WORDWRAP=YES' />
-            </text>
-            <!-- EO look txt -->
-        </vbox>
-        <!-- EO Height, Size, Gender, look -->
-        <!-- Image -->
-        <vbox>
-            <attrs value="EXPAND=VERTICAL"/>
-            <label><attrs value='TITLE=Wappen/Portrait,PADDING=x5' /></label>
-            <canvas>
-                <attrs value="MAXSIZE=160x190, PADDING=x5"/>
-            </canvas>
-            <hbox>
-                <attrs value="MARGIN=x5"/>
-                <button>
-                    <attrs value='TITLE=Auswahl, RASTERSIZE=75, EXPAND=no' />
-                </button>
-                <button>
-                    <attrs value='TITLE=Bearbeiten, RASTERSIZE=75, EXPAND=no' />
-                </button>
-            </hbox>
-        </vbox>
-        <!-- EO Image -->
-        <!-- State, Title, Hoistory -->
-        <vbox>
+                <fill />
+                <!-- EO Profession -->
+            </gridbox>  
             <gridbox>
-                <attrs value='ORIENTATION=HORIZONTAL,NUMDIV=3, EXPAND=NO, SIZELIN=-1, SIZECOL=-1, GAPLIN=10, GAPCOL=5, ALIGNMENTLIN=ACENTER,ALIGNMENTCOL=ALEFT' />
-                <!-- State -->
-                <label><attrs value='TITLE=Status:,RASTERSIZE=50' /></label>
-                <text><attrs value='RASTERSIZE=170' /></text>
-                <fill />
-                <!-- EO State -->
-                <!-- Title -->
-                <label><attrs value='TITLE=Title:' /></label>
-                <text><attrs value='RASTERSIZE=170' /></text>
-                <fill />
-                <!-- EO State -->
-            </gridbox>
-            <vbox>
-                <attrs value='PADDING=1x7' />
-                <!-- History txt -->
-                <label><attrs value='TITLE=Familie/Herkunft/Hintergrund:' /></label>
+                <attrs value='ORIENTATION=HORIZONTAL,NUMDIV=3, EXPAND=NO, SIZELIN=-1, SIZECOL=-1, GAPLIN=13, GAPCOL=5, ALIGNMENTLIN=ACENTER,ALIGNMENTCOL=ALEFT' />
+                <!-- GP -->
+                <label><attrs value='TITLE=GP:' /></label>
                 <text>
-                    <attrs value='RASTERSIZE=225, MULTILINE=YES, VISIBLELINES=11, WORDWRAP=YES' />
+                    <attrs value='RASTERSIZE=125, MULTILINE=NO, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
                 </text>
-                <!-- EO History txt -->
+                <fill/>
+                <!-- EO GP -->
+                <!-- Rasse Mods -->
+                <label><attrs value='TITLE=Mods:' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <fill/>
+                <!-- EO Rasse Mods -->
+                <!-- Kultur Mods -->
+                <label><attrs value='TITLE=Mods:' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <fill/>
+                <!-- EO Kultur Mods -->
+                <!-- Profession Mods -->
+                <label><attrs value='TITLE=Mods:' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <fill/>
+                <!-- EO Profession Mods -->
+            </gridbox>
+        </hbox>
+        <hbox>
+            <!-- Height, Size, Gender, look -->
+            <vbox>
+                <gridbox>
+                    <attrs value='ORIENTATION=HORIZONTAL,NUMDIV=4, EXPAND=NO, SIZELIN=-1, SIZECOL=-1, GAPLIN=5, GAPCOL=5, ALIGNMENTLIN=ACENTER,ALIGNMENTCOL=ALEFT' />
+                    <!-- Gender -->
+                    <label><attrs value="TITLE=Geschlecht:,RASTERSIZE=70" /></label>
+                    <list>
+                        <attrs value='RASTERSIZE=125, DROPDOWN=YES, VISIBLEITEMS=2, 1=männlich,2=weiblich' />
+                    </list>
+                    <fill/><fill/>
+                    <!-- EO Gender -->
+                    <!-- Age -->
+                    <label><attrs value="TITLE=Alter:" /></label>
+                    <text>
+                        <attrs value='RASTERSIZE=125, MULTILINE=NO, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=18, SPINMAX=500' />
+                    </text>
+                    <fill/><fill/>
+                    <!-- EO Age -->
+                    <!-- Height -->
+                    <label><attrs value="TITLE=Größe:" /></label>
+                    <text>
+                        <attrs value='RASTERSIZE=125, MULTILINE=NO, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMAX=300' />
+                    </text>
+                    <button>
+                        <attrs value="TITLE=?, RASTERSIZE=20" />
+                    </button>
+                    <fill />
+                    <!-- EO Height -->
+                    <!-- Weight -->
+                    <label><attrs value="TITLE=Gewicht:" /></label>
+                    <label><attr name="TITLE" value="-" /></label>
+                    <fill/><fill/>
+                    <!-- EO Weight -->
+                    <!-- Hair Color -->
+                    <label><attrs value="TITLE=Haarfarbe:" /></label>
+                    <list>
+                        <attrs value='RASTERSIZE=125, DROPDOWN=YES, VISIBLEITEMS=5, 1=männlich,2=weiblich' />
+                    </list>
+                    <button>
+                        <attrs value="TITLE=?, RASTERSIZE=20" />
+                    </button>
+                    <fill/>
+                    <!-- Hair Color -->
+                    <!-- Eye Color -->
+                    <label><attrs value="TITLE=Augenfarbe:" /></label>
+                    <list>
+                        <attrs value='RASTERSIZE=125, DROPDOWN=YES, VISIBLEITEMS=5, 1=männlich,2=weiblich' />
+                    </list>
+                    <button>
+                        <attrs value="TITLE=?, RASTERSIZE=20" />
+                    </button>
+                    <fill/>
+                    <!-- Eye Color -->
+                    <!-- look label -->
+                    <label><attrs value="TITLE=Aussehen:" /></label>
+                </gridbox>
+                <!-- look txt -->
+                <text>
+                    <attrs value='RASTERSIZE=225, MULTILINE=YES, VISIBLELINES=5, WORDWRAP=YES' />
+                </text>
+                <!-- EO look txt -->
             </vbox>
-        </vbox>
-        <!-- EO State, Title, Hoistory -->
-    </hbox>
-    <hbox>
-        <!-- pro contra -->
-        <!-- EO pro contra -->
-    </hbox>
-</vbox>
+            <!-- EO Height, Size, Gender, look -->
+            <!-- Image -->
+            <vbox>
+                <attrs value="EXPAND=VERTICAL"/>
+                <label><attrs value='TITLE=Wappen/Portrait,PADDING=x5' /></label>
+                <canvas>
+                    <attrs value="MAXSIZE=160x190, PADDING=x5"/>
+                </canvas>
+                <hbox>
+                    <attrs value="MARGIN=x5"/>
+                    <button>
+                        <attrs value='TITLE=Auswahl, RASTERSIZE=75, EXPAND=no' />
+                    </button>
+                    <button>
+                        <attrs value='TITLE=Bearbeiten, RASTERSIZE=75, EXPAND=no' />
+                    </button>
+                </hbox>
+            </vbox>
+            <!-- EO Image -->
+            <!-- State, Title, Hoistory -->
+            <vbox>
+                <gridbox>
+                    <attrs value='ORIENTATION=HORIZONTAL,NUMDIV=3, EXPAND=NO, SIZELIN=-1, SIZECOL=-1, GAPLIN=10, GAPCOL=5, ALIGNMENTLIN=ACENTER,ALIGNMENTCOL=ALEFT' />
+                    <!-- State -->
+                    <label><attrs value='TITLE=Status:,RASTERSIZE=50' /></label>
+                    <text><attrs value='RASTERSIZE=155' /></text>
+                    <fill />
+                    <!-- EO State -->
+                    <!-- Title -->
+                    <label><attrs value='TITLE=Titel:' /></label>
+                    <text><attrs value='RASTERSIZE=155' /></text>
+                    <fill />
+                    <!-- EO State -->
+                    <!-- GP -->
+                    <label><attrs value='TITLE=Sozialstatus:' /></label>
+                    <text>
+                        <attrs value='RASTERSIZE=155, MULTILINE=NO, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                    </text>
+                    <fill/>
+                    <!-- EO GP -->
+                </gridbox>
+                <vbox>
+                    <attrs value='PADDING=1x7' />
+                    <!-- History txt -->
+                    <label><attrs value='TITLE=Familie/Herkunft/Hintergrund:' /></label>
+                    <text>
+                        <attrs value='RASTERSIZE=225, MULTILINE=YES, VISIBLELINES=11, WORDWRAP=YES' />
+                    </text>
+                    <!-- EO History txt -->
+                </vbox>
+            </vbox>
+            <!-- EO State, Title, Hoistory -->
+        </hbox>
+        <hbox>
+            <attrs value='EXPAND=YES' />
+            <!-- pro  -->
+            <frame>
+                <attrs value='TITLE=Vorteile, MAXSIZE=300x200, MINSIZE=300x200' />
+                <vbox>
+                    <scrollbox>
+                        <vbox name="pros">
+                            <!-- example for entry -->
+                            <hbox>
+                                <label><attrs value='TITLE="Adelige Abstammung",EXPAND=HORIZONTAL' /></label>
+                                <button><attrs value='TITLE=e, ACTIVE=NO' /></button>
+                                <button><attrs value='TITLE=-' /></button>
+                            </hbox>
+                        </vbox>
+                    </scrollbox>
+                    <flatseparator><attrs value='ORIENTATION=HORIZONTAL, STYLE=SUNKENLINE' /></flatseparator>
+                    <button><attrs value='TITLE=Auswahl, EXPAND=HORIZONTAL' /></button>
+                </vbox>
+            </frame>
+            <!-- EO pro  -->
+            <!-- contra  -->
+            <frame>
+                <attrs value='TITLE=Nachteile, MAXSIZE=300x200, MINSIZE=300x200' />
+                <vbox>
+                    <scrollbox>
+                        <vbox name="contras">
+                            <!-- example for entry -->
+                            <hbox>
+                                <label><attrs value='TITLE="Randgruppe",EXPAND=HORIZONTAL' /></label>
+                                <button><attrs value='TITLE=e, ACTIVE=NO' /></button>
+                                <button><attrs value='TITLE=-' /></button>
+                            </hbox>
+                        </vbox>
+                    </scrollbox>
+                    <flatseparator><attrs value='ORIENTATION=HORIZONTAL, STYLE=SUNKENLINE' /></flatseparator>
+                    <button><attrs value='TITLE=Auswahl, EXPAND=HORIZONTAL' /></button>
+                </vbox>
+            </frame>
+            <!-- EO contra  -->
+        </hbox>
+        <hbox>
+            <!-- Attributes -->
+            <gridbox>
+                <attrs value='ORIENTATION=HORIZONTAL,NUMDIV=4, EXPAND=NO, SIZELIN=-1, SIZECOL=-1, GAPLIN=4, GAPCOL=5, ALIGNMENTLIN=ACENTER,ALIGNMENTCOL=ALEFT' />
+                <!-- header -->
+                <label><attrs value='TITLE=""' /></label>
+                <label><attrs value='TITLE="Modifikator", FONTSIZE=6' /></label>
+                <label><attrs value='TITLE="Start", FONTSIZE=6' /></label>
+                <label><attrs value='TITLE="Aktuell", FONTSIZE=6' /></label>
+                <!-- MU -->
+                <label><attrs value='TITLE=Mut' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=40, MULTILINE=NO, SPIN=yes, SPINAUTO=no' />
+                </text>
+                <label><attrs value='TITLE=-' /></label>
+                <!-- KL -->
+                <label><attrs value='TITLE=Klugheit' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=40, MULTILINE=NO, SPIN=yes, SPINAUTO=no' />
+                </text>
+                <label><attrs value='TITLE=-' /></label>
+                <!-- EO KL -->
+                <!-- CH -->
+                <label><attrs value='TITLE=Charisma' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=40, MULTILINE=NO, SPIN=yes, SPINAUTO=no' />
+                </text>
+                <label><attrs value='TITLE=-' /></label>
+                <!-- EO CH -->
+                <!-- IN -->
+                <label><attrs value='TITLE=Intuition' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=40, MULTILINE=NO, SPIN=yes, SPINAUTO=no' />
+                </text>
+                <label><attrs value='TITLE=-' /></label>
+                <!-- EO IN -->
+                <!-- FF -->
+                <label><attrs value='TITLE=Fingerfertigkeit' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=40, MULTILINE=NO, SPIN=yes, SPINAUTO=no' />
+                </text>
+                <label><attrs value='TITLE=-' /></label>
+                <!-- EO FF -->
+                <!-- GE -->
+                <label><attrs value='TITLE=Gewandtheit' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=40, MULTILINE=NO, SPIN=yes, SPINAUTO=no' />
+                </text>
+                <label><attrs value='TITLE=-' /></label>
+                <!-- EO GE -->
+                <!-- KO -->
+                <label><attrs value='TITLE=Konstitution' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=40, MULTILINE=NO, SPIN=yes, SPINAUTO=no' />
+                </text>
+                <label><attrs value='TITLE=-' /></label>
+                <!-- EO KO -->
+                <!-- KK -->
+                <label><attrs value='TITLE=Körperkraft' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=40, MULTILINE=NO, SPIN=yes, SPINAUTO=no' />
+                </text>
+                <label><attrs value='TITLE=-' /></label>
+                <!-- EO KK -->
+                <!-- GS -->
+                <label><attrs value='TITLE=Geschwindigkeit' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=40, MULTILINE=NO, SPIN=yes, SPINAUTO=no' />
+                </text>
+                <label><attrs value='TITLE=-' /></label>
+                <!-- EO GS -->
+            </gridbox>
+            <!-- EO Attributes -->
+            <!-- Base Values -->
+            <gridbox>
+                <attrs value='ORIENTATION=HORIZONTAL,NUMDIV=7, EXPAND=NO, SIZELIN=-1, SIZECOL=-1, GAPLIN=10, GAPCOL=5, ALIGNMENTLIN=ACENTER,ALIGNMENTCOL=ALEFT' />
+                <!-- header -->
+                <label><attrs value='TITLE=""' /></label>
+                <label><attrs value='TITLE=""' /></label>
+                <label><attrs value='TITLE="Modifikator.", FONTSIZE=6' /></label>
+                <label><attrs value='TITLE="Start", FONTSIZE=6' /></label>
+                <label><attrs value='TITLE="Aktuell", FONTSIZE=6' /></label>
+                <label><attrs value='TITLE="Zugekauft", FONTSIZE=6' /></label>
+                <label><attrs value='TITLE="Max.Zugekauft", FONTSIZE=6' /></label>
+                <!-- LE -->
+                <label><attrs value='TITLE="Lebenspunkte"' /></label>
+                <label><attrs value='TITLE="(KO+KO+KK)/2", FONTSIZE=6' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <!-- EO LE -->
+                <!-- AU -->
+                <label><attrs value='TITLE="Ausdauer"' /></label>
+                <label><attrs value='TITLE="(MU+KO+GE)/2", FONTSIZE=6' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <!-- EO AU -->
+                <!-- AE -->
+                <label><attrs value='TITLE="Astralenergie"' /></label>
+                <label><attrs value='TITLE="(MU+IN+CH)/2", FONTSIZE=6' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <!-- EO AE -->
+                <!-- KE -->
+                <label><attrs value='TITLE="Karmaenergie"' /></label>
+                <label><attrs value='TITLE=""' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <!-- EO KE -->
+                <!-- MR -->
+                <label><attrs value='TITLE="Magieresistenz"' /></label>
+                <label><attrs value='TITLE="(MU+KL+KO)/5", FONTSIZE=6' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <!-- EO MR -->
+                <!-- INI-B -->
+                <label><attrs value='TITLE="INI-Basiswert"' /></label>
+                <label><attrs value='TITLE="(MU+MU+IN+GE)/5", FONTSIZE=6' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <!-- EO INI-B -->
+                <!-- AT-B -->
+                <label><attrs value='TITLE="AT-Basiswert"' /></label>
+                <label><attrs value='TITLE="(MU+GE+KK)/5", FONTSIZE=6' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <!-- EO AT-B -->
+                <!-- PA-B -->
+                <label><attrs value='TITLE="PA-Basiswert"' /></label>
+                <label><attrs value='TITLE="(IN+GE+KK)/5", FONTSIZE=6' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <!-- EO PA-B -->
+                <!-- FK-B -->
+                <label><attrs value='TITLE="FK-Basiswert"' /></label>
+                <label><attrs value='TITLE="(IN+FF+KK)/5", FONTSIZE=6' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <label><attrs value='TITLE="-"' /></label>
+                <!-- EO PA-B -->
+            </gridbox>
+            <!-- EO Base Values -->
+        </hbox>
+    </vbox>
+</scrollbox>
