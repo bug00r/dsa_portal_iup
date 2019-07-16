@@ -172,7 +172,7 @@
                     <!-- History txt -->
                     <label><attrs value='TITLE=Familie/Herkunft/Hintergrund:' /></label>
                     <text>
-                        <attrs value='RASTERSIZE=225, MULTILINE=YES, VISIBLELINES=11, WORDWRAP=YES' />
+                        <attrs value='RASTERSIZE=225, MULTILINE=YES, VISIBLELINES=9, WORDWRAP=YES' />
                     </text>
                     <!-- EO History txt -->
                 </vbox>
