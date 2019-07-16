@@ -355,8 +355,7 @@
                 <label><attrs value='TITLE="-"' /></label>
                 <label><attrs value='TITLE="-"' /></label>
                 <label><attrs value='TITLE="-"' /></label>
-                <label><attrs value='TITLE="-"' /></label>
-                <label><attrs value='TITLE="-"' /></label>
+                <fill/><fill/>
                 <!-- EO MR -->
                 <!-- INI-B -->
                 <label><attrs value='TITLE="INI-Basiswert"' /></label>
@@ -364,8 +363,7 @@
                 <label><attrs value='TITLE="-"' /></label>
                 <label><attrs value='TITLE="-"' /></label>
                 <label><attrs value='TITLE="-"' /></label>
-                <label><attrs value='TITLE="-"' /></label>
-                <label><attrs value='TITLE="-"' /></label>
+                <fill/><fill/>
                 <!-- EO INI-B -->
                 <!-- AT-B -->
                 <label><attrs value='TITLE="AT-Basiswert"' /></label>
@@ -373,8 +371,7 @@
                 <label><attrs value='TITLE="-"' /></label>
                 <label><attrs value='TITLE="-"' /></label>
                 <label><attrs value='TITLE="-"' /></label>
-                <label><attrs value='TITLE="-"' /></label>
-                <label><attrs value='TITLE="-"' /></label>
+                <fill/><fill/>
                 <!-- EO AT-B -->
                 <!-- PA-B -->
                 <label><attrs value='TITLE="PA-Basiswert"' /></label>
@@ -382,8 +379,7 @@
                 <label><attrs value='TITLE="-"' /></label>
                 <label><attrs value='TITLE="-"' /></label>
                 <label><attrs value='TITLE="-"' /></label>
-                <label><attrs value='TITLE="-"' /></label>
-                <label><attrs value='TITLE="-"' /></label>
+                <fill/><fill/>
                 <!-- EO PA-B -->
                 <!-- FK-B -->
                 <label><attrs value='TITLE="FK-Basiswert"' /></label>
@@ -391,8 +387,7 @@
                 <label><attrs value='TITLE="-"' /></label>
                 <label><attrs value='TITLE="-"' /></label>
                 <label><attrs value='TITLE="-"' /></label>
-                <label><attrs value='TITLE="-"' /></label>
-                <label><attrs value='TITLE="-"' /></label>
+                <fill/><fill/>
                 <!-- EO PA-B -->
             </gridbox>
             <!-- EO Base Values -->

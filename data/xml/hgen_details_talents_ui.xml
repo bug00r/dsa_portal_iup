@@ -1,0 +1,1180 @@
+<scrollbox>
+    <attrs value='LAYOUTDRAG=NO' />
+    <hbox>
+        <!-- 1. column -->
+        <vbox>
+            <gridbox>
+                <attrs value='ORIENTATION=HORIZONTAL,NUMDIV=7, EXPAND=NO, SIZELIN=-1, SIZECOL=-1, GAPLIN=2, GAPCOL=5, ALIGNMENTLIN=ACENTER,ALIGNMENTCOL=ALEFT' />
+                <!-- Headline Nahkampf -->
+                <fill />
+                <label><attrs value='TITLE=Nahkampf(var.), RASTERSIZE=127, FONTSTYLE=Bold' /></label>
+                <label><attrs value='TITLE=SF, FONTSIZE=7' /></label>
+                <label><attrs value='TITLE=BE, FONTSIZE=7' /></label>
+                <label><attrs value='TITLE=AT, FONTSIZE=7' /></label>
+                <label><attrs value='TITLE=PA, FONTSIZE=7' /></label>
+                <label><attrs value='TITLE=TaW, FONTSIZE=7' /></label>
+                <!-- Nahkampftalente -->
+                <!-- Anderthalbhänder -->
+                <toggle/>
+                <label><attrs value='TITLE=Anderthalbhänder, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=E, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BE-2, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Dolche D BE-1 -->
+                <fill />
+                <label><attrs value='TITLE=Dolche' /></label>
+                <label><attrs value='TITLE=D' /></label>
+                <label><attrs value='TITLE=BE-1' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Fechtwaffen E BE-1 -->
+                <toggle/>
+                <label><attrs value='TITLE=Fechtwaffen, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=E, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BE-1, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Hiebwaffen D BE-4 -->
+                <fill />
+                <label><attrs value='TITLE=Hiebwaffen' /></label>
+                <label><attrs value='TITLE=D' /></label>
+                <label><attrs value='TITLE=BE-4' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Infanteriewaffen D BE-3 -->
+                <toggle/>
+                <label><attrs value='TITLE=Infanteriewaffen, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=D, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BE-3, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Kettenstäbe E BE-1 -->
+                <toggle/>
+                <label><attrs value='TITLE=Kettenstäbe, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=E, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BE-1, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Kettenwaffen D BE-3 -->
+                <toggle/>
+                <label><attrs value='TITLE=Kettenwaffen, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=D, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BE-3, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Lanzenreiten E - -->
+                <toggle/>
+                <label><attrs value='TITLE=Lanzenreiten, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=E, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Peitsche E BE -1 -->
+                <toggle/>
+                <label><attrs value='TITLE=Peitsche, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=E, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BE-1, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Raufen C BE -->
+                <fill />
+                <label><attrs value='TITLE=Raufen' /></label>
+                <label><attrs value='TITLE=C' /></label>
+                <label><attrs value='TITLE=BE' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Ringen D BE -->
+                <fill />
+                <label><attrs value='TITLE=Ringen' /></label>
+                <label><attrs value='TITLE=D' /></label>
+                <label><attrs value='TITLE=BE' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Säbel D BE-2 -->
+                <fill />
+                <label><attrs value='TITLE=Säbel' /></label>
+                <label><attrs value='TITLE=D' /></label>
+                <label><attrs value='TITLE=BE-2' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Schwerter E BE-2 -->
+                <toggle/>
+                <label><attrs value='TITLE=Schwerter, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=E, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BE-2, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Speere D BE-3 -->
+                <toggle/>
+                <label><attrs value='TITLE=Speere, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=D, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BE-3, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Stäbe D BE-2 -->
+                <toggle/>
+                <label><attrs value='TITLE=Speere, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=D, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BE-2, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Zweihandflegel D BE-3 -->
+                <toggle/>
+                <label><attrs value='TITLE=Zweihandflegel, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=D, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BE-3, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Zweihand-Hiebwaffen D BE-3 -->
+                <toggle/>
+                <label><attrs value='TITLE=Zweihand-Hiebwaffen, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=D, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BE-3, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Zweihandschwerter E BE-2 -->
+                <toggle/>
+                <label><attrs value='TITLE=Zweihandschwerter, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=D, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BE-3, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+            </gridbox>
+            <gridbox>
+                <attrs value='ORIENTATION=HORIZONTAL,NUMDIV=6, EXPAND=NO, SIZELIN=-1, SIZECOL=-1, GAPLIN=2, GAPCOL=5, ALIGNMENTLIN=ACENTER,ALIGNMENTCOL=ALEFT' />
+                <!-- Headline Fernkampf -->
+                <fill />
+                <label><attrs value='TITLE=Fernkampf(var.), RASTERSIZE=145,FONTSTYLE=Bold' /></label>
+                <label><attrs value='TITLE=SF, FONTSIZE=7' /></label>
+                <label><attrs value='TITLE=BE, FONTSIZE=7' /></label>
+                <label><attrs value='TITLE=FK, FONTSIZE=7' /></label>
+                <label><attrs value='TITLE=TaW, FONTSIZE=7' /></label>
+                <!-- Armbrust C BE-5 -->
+                <toggle/>
+                <label><attrs value='TITLE=Armbrust, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=C, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BE-5, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Belagerungswaffen D - -->
+                <toggle/>
+                <label><attrs value='TITLE=Belagerungswaffen, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=D, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Blasrohr D BE-5 -->
+                <toggle/>
+                <label><attrs value='TITLE=Blasrohr, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=D, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BE-5, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Bogen E BE-3 -->
+                <toggle/>
+                <label><attrs value='TITLE=Bogen, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=E, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BE-3, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Diskus D BE-2 -->
+                <toggle/>
+                <label><attrs value='TITLE=Diskus, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=D, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BE-2, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Schleuder E BE-2 -->
+                <toggle/>
+                <label><attrs value='TITLE=Schleuder, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=E, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BE-2, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Wurfbeile D BE-2 -->
+                <toggle/>
+                <label><attrs value='TITLE=Wurfbeile, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=D, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BE-2, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Wurfmesser C BE-3 -->
+                <fill/>
+                <label><attrs value='TITLE=Wurfmesser' /></label>
+                <label><attrs value='TITLE=C' /></label>
+                <label><attrs value='TITLE=BE-3' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Wurfspeere C BE-2 -->
+                <toggle/>
+                <label><attrs value='TITLE=Wurfspeere, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=C, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BE-2, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=-, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+            </gridbox>
+            <gridbox>
+                <attrs value='ORIENTATION=HORIZONTAL,NUMDIV=5, EXPAND=NO, SIZELIN=-1, SIZECOL=-1, GAPLIN=2, GAPCOL=5, ALIGNMENTLIN=ACENTER,ALIGNMENTCOL=ALEFT' />
+                <!-- Körper (D) Probe BE TaW -->
+                <fill />
+                <label><attrs value='TITLE="Körper (D)", FONTSTYLE=Bold' /></label>
+                <label><attrs value='TITLE=Probe, FONTSIZE=7' /></label>
+                <label><attrs value='TITLE=BE, FONTSIZE=7' /></label>
+                <label><attrs value='TITLE=TaW, FONTSIZE=7' /></label>
+                <!-- Akrobatik MU/GE/KK BEx2 -->
+                <toggle/>
+                <label><attrs value='TITLE=Akrobatik, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=MU/GE/KK, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BEx2, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Athletik GE/KO/KK BEx2 -->
+                <fill/>
+                <label><attrs value='TITLE=Athletik' /></label>
+                <label><attrs value='TITLE=GE/KO/KK' /></label>
+                <label><attrs value='TITLE=BEx2' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Fliegen MU/IN/GE BE -->
+                <toggle/>
+                <label><attrs value='TITLE=Fliegen, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=MU/IN/GE, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BE, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Gaukeleien MU/CH/FF BEx2 -->
+                <toggle/>
+                <label><attrs value='TITLE=Gaukeleien, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=MU/CH/FF, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BEx2, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Klettern MU/GE/KK BEx2 -->
+                <fill/>
+                <label><attrs value='TITLE=Klettern' /></label>
+                <label><attrs value='TITLE=MU/GE/KK' /></label>
+                <label><attrs value='TITLE=BEx2' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Körperbeherrschung MU/IN/GE BEx2 -->
+                <fill/>
+                <label><attrs value='TITLE=Körperbeherrschung' /></label>
+                <label><attrs value='TITLE=MU/IN/GE' /></label>
+                <label><attrs value='TITLE=BEx2' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Reiten CH/GE/KK BE-2 -->
+                <toggle/>
+                <label><attrs value='TITLE=Reiten, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=CH/GE/KK, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BE-2, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Schleichen MU/IN/GE BE -->
+                <fill/>
+                <label><attrs value='TITLE=Schleichen' /></label>
+                <label><attrs value='TITLE=MU/IN/GE' /></label>
+                <label><attrs value='TITLE=BE' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Schwimmen GE/KO/KK BEx2 -->
+                <fill/>
+                <label><attrs value='TITLE=Schwimmen' /></label>
+                <label><attrs value='TITLE=GE/KO/KK' /></label>
+                <label><attrs value='TITLE=BEx2' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Selbstbeherrschung MU/KO/KK - -->
+                <fill/>
+                <label><attrs value='TITLE=Selbstbeherrschung' /></label>
+                <label><attrs value='TITLE=MU/KO/KK' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Sich Verstecken MU/IN/GE BE-2 -->
+                <fill/>
+                <label><attrs value='TITLE="Sich Verstecken"' /></label>
+                <label><attrs value='TITLE=MU/IN/GE' /></label>
+                <label><attrs value='TITLE=BE-2' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Singen IN/CH/CH BE-3 -->
+                <fill/>
+                <label><attrs value='TITLE=Singen' /></label>
+                <label><attrs value='TITLE=IN/CH/CH' /></label>
+                <label><attrs value='TITLE=BE-3' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Sinnenschärfe KL/IN/IN - -->
+                <fill/>
+                <label><attrs value='TITLE=Sinnenschärfe' /></label>
+                <label><attrs value='TITLE=KL/IN/IN' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Skifahren GE/GE/KO BE-2 -->
+                <toggle/>
+                <label><attrs value='TITLE=Skifahren, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=GE/GE/KO, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BE-2, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Stimmen Imitieren KL/IN/CH BE-4 -->
+                <toggle/>
+                <label><attrs value='TITLE="Stimmen Imitieren", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/IN/CH, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BE-4, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Tanzen CH/GE/GE BEx2 -->
+                <fill/>
+                <label><attrs value='TITLE="Tanzen"' /></label>
+                <label><attrs value='TITLE=CH/GE/GE' /></label>
+                <label><attrs value='TITLE=BEx2' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Taschendiebstahl MU/IN/FF BEx2 -->
+                <toggle/>
+                <label><attrs value='TITLE="Taschendiebstahl", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=MU/IN/FF, ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=BEx2, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Zechen IN/KO/KK - -->
+                <fill/>
+                <label><attrs value='TITLE="Zechen"' /></label>
+                <label><attrs value='TITLE=IN/KO/KK' /></label>
+                <label><attrs value='TITLE=-' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+            </gridbox>
+            <gridbox>
+                <attrs value='ORIENTATION=HORIZONTAL,NUMDIV=4, EXPAND=NO, SIZELIN=-1, SIZECOL=-1, GAPLIN=2, GAPCOL=5, ALIGNMENTLIN=ACENTER,ALIGNMENTCOL=ALEFT' />
+                <!-- Gesellschaft (B) Probe TaW -->
+                <fill />
+                <label><attrs value='TITLE="Gesellschaft (B)", RASTERSIZE=135,FONTSTYLE=Bold' /></label>
+                <label><attrs value='TITLE=Probe, FONTSIZE=7' /></label>
+                <label><attrs value='TITLE=TaW, FONTSIZE=7' /></label>
+                <!-- Betören IN/CH/CH -->
+                <toggle/>
+                <label><attrs value='TITLE="Betören", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=IN/CH/CH, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Etikette KL/IN/CH -->
+                <toggle/>
+                <label><attrs value='TITLE="Etikette", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/IN/CH, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Gassenwissen KL/IN/CH -->
+                <toggle/>
+                <label><attrs value='TITLE="Gassenwissen", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/IN/CH, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Lehren KL/IN/CH -->
+                <toggle/>
+                <label><attrs value='TITLE="Lehren", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/IN/CH, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Menschenkenntnis KL/IN/CH -->
+                <fill/>
+                <label><attrs value='TITLE="Menschenkenntnis"' /></label>
+                <label><attrs value='TITLE=KL/IN/CH' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Schauspielerei MU/KL/CH -->
+                <toggle/>
+                <label><attrs value='TITLE="Schauspielerei", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=MU/KL/CH, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Schriftlicher Ausdruck KL/IN/IN -->
+                <toggle/>
+                <label><attrs value='TITLE="Schriftlicher Ausdruck", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/IN/IN, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Sich Verkleiden MU/CH/GE -->
+                <toggle/>
+                <label><attrs value='TITLE="Sich Verkleiden", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=MU/CH/GE, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- x Überreden MU/IN/CH -->
+                <fill/>
+                <label><attrs value='TITLE="Sich Verkleiden", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=MU/IN/CH, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Überzeugen KL/IN/CH -->
+                <toggle/>
+                <label><attrs value='TITLE="Überzeugen", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/IN/CH, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+            </gridbox>
+        </vbox>
+        <!-- 2. column -->
+        <vbox>
+            <gridbox>
+                <attrs value='ORIENTATION=HORIZONTAL,NUMDIV=4, EXPAND=NO, SIZELIN=-1, SIZECOL=-1, GAPLIN=2, GAPCOL=5, ALIGNMENTLIN=ACENTER,ALIGNMENTCOL=ALEFT' />
+                <!-- Natur (B) Probe TaW -->
+                <fill />
+                <label><attrs value='TITLE="Natur (B)", RASTERSIZE=142,FONTSTYLE=Bold' /></label>
+                <label><attrs value='TITLE=Probe, FONTSIZE=7' /></label>
+                <label><attrs value='TITLE=TaW, FONTSIZE=7' /></label>
+                <!-- Fährtensuchen KL/IN/KO -->
+                <fill/>
+                <label><attrs value='TITLE="Fährtensuchen"' /></label>
+                <label><attrs value='TITLE=KL/IN/KO' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Fallenstellen KL/FF/KK -->
+                <toggle/>
+                <label><attrs value='TITLE="Fallenstellen", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/FF/KK, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Fesseln / Entfesseln FF/GE/KK -->
+                <toggle/>
+                <label><attrs value='TITLE="Fesseln / Entfesseln", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=FF/GE/KK, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Fischen / Angeln IN/FF/KK -->
+                <toggle/>
+                <label><attrs value='TITLE="Fischen / Angeln", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=IN/FF/KK, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                
+                <!-- Orientierung KL/IN/IN -->
+                <fill/>
+                <label><attrs value='TITLE="Orientierung"' /></label>
+                <label><attrs value='TITLE=KL/IN/IN' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                  
+                <!-- Wettervorhersage KL/IN/IN -->
+                <toggle/>
+                <label><attrs value='TITLE="Wettervorhersage", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/IN/IN, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                
+                <!-- Wildnisleben IN/GE/KO -->
+                <fill/>
+                <label><attrs value='TITLE="Wildnisleben"' /></label>
+                <label><attrs value='TITLE=IN/GE/KO' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+            </gridbox>
+            <gridbox>
+                <attrs value='ORIENTATION=HORIZONTAL,NUMDIV=4, EXPAND=NO, SIZELIN=-1, SIZECOL=-1, GAPLIN=2, GAPCOL=5, ALIGNMENTLIN=ACENTER,ALIGNMENTCOL=ALEFT' />
+                <!-- Wissenstalente (B) Probe TaW -->
+                <fill />
+                <label><attrs value='TITLE="Wissenstalente (B)", RASTERSIZE=135,FONTSTYLE=Bold' /></label>
+                <label><attrs value='TITLE=Probe, FONTSIZE=7' /></label>
+                <label><attrs value='TITLE=TaW, FONTSIZE=7' /></label>
+                <!-- Anatomie MU/KL/FF -->
+                <toggle/>
+                <label><attrs value='TITLE="Anatomie", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=MU/KL/FF, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Baukunst KL/KL/FF -->
+                <toggle/>
+                <label><attrs value='TITLE="Baukunst", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/KL/FF, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Brettspiel KL/KL/IN -->
+                <toggle/>
+                <label><attrs value='TITLE="Brettspiel", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/KL/IN , ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Geographie KL/KL/IN -->
+                <toggle/>
+                <label><attrs value='TITLE="Geographie", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/KL/IN , ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Geschichtswissen KL/KL/IN -->
+                <toggle/>
+                <label><attrs value='TITLE="Geschichtswissen", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/KL/IN , ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Gesteinskunde KL/IN/FF -->
+                <toggle/>
+                <label><attrs value='TITLE="Gesteinskunde", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/IN/FF , ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Götter / Kulte KL/KL/IN -->
+                <fill/>
+                <label><attrs value='TITLE="Götter / Kulte"' /></label>
+                <label><attrs value='TITLE=KL/KL/IN' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Heraldik KL/KL/FF -->
+                <toggle/>
+                <label><attrs value='TITLE="Heraldik", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/KL/FF , ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Hüttenkunde KL/IN/KO -->
+                <toggle/>
+                <label><attrs value='TITLE="Hüttenkunde", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/IN/KO , ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Kriegskunst MU/KL/CH -->
+                <toggle/>
+                <label><attrs value='TITLE="Kriegskunst", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=MU/KL/CH , ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                
+                <!-- Kryptographie KL/KL/IN -->
+                <toggle/>
+                <label><attrs value='TITLE="Kryptographie", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/KL/IN , ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                      
+                <!-- Magiekunde KL/KL/IN -->
+                <toggle/>
+                <label><attrs value='TITLE="Magiekunde", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/KL/IN , ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>  
+                <!-- Mechanik KL/KL/FF -->
+                <toggle/>
+                <label><attrs value='TITLE="Mechanik", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/KL/FF , ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>  
+                <!-- Pflanzenkunde KL/IN/FF -->
+                <toggle/>
+                <label><attrs value='TITLE="Pflanzenkunde", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/IN/FF , ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text> 
+                <!-- Philosophie KL/KL/IN -->
+                <toggle/>
+                <label><attrs value='TITLE="Philosophie", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/KL/IN , ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                 
+                <!-- Rechnen KL/KL/IN -->
+                <fill/>
+                <label><attrs value='TITLE="Rechnen"' /></label>
+                <label><attrs value='TITLE=KL/KL/IN' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                  
+                <!-- Rechtskunde KL/KL/IN -->
+                <toggle/>
+                <label><attrs value='TITLE="Rechtskunde", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/KL/IN , ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>    
+                <!-- Sagen / Legenden KL/IN/CH -->
+                <fill/>
+                <label><attrs value='TITLE="Sagen / Legenden"' /></label>
+                <label><attrs value='TITLE=KL/IN/CH' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text> 
+                <!-- Schätzen KL/IN/IN -->
+                <toggle/>
+                <label><attrs value='TITLE="Schätzen", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/IN/IN , ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text> 
+                <!-- Sprachenkunde KL/KL/IN -->
+                <toggle/>
+                <label><attrs value='TITLE="Sprachenkunde", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/KL/IN, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text> 
+                <!-- Staatskunst KL/IN/CH -->
+                <toggle/>
+                <label><attrs value='TITLE="Staatskunst", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/IN/CH, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text> 
+                <!-- Sternkunde KL/KL/IN -->
+                <toggle/>
+                <label><attrs value='TITLE="Sternkunde", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/KL/IN, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text> 
+                <!-- Tierkunde MU/KL/IN -->
+                <toggle/>
+                <label><attrs value='TITLE="Tierkunde", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=MU/KL/IN, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text> 
+            </gridbox>
+            <!-- Sprachen -->
+            <gridbox>
+                <attrs value='ORIENTATION=HORIZONTAL,NUMDIV=4, EXPAND=NO, SIZELIN=-1, SIZECOL=-1, GAPLIN=2, GAPCOL=5, ALIGNMENTLIN=ACENTER,ALIGNMENTCOL=ALEFT' />
+                <fill />
+                <label><attrs value='TITLE="Sprachen (ver.)", RASTERSIZE=135,FONTSTYLE=Bold' /></label>
+                <label><attrs value='TITLE=Kompl., FONTSIZE=7' /></label>
+                <label><attrs value='TITLE=TaW, FONTSIZE=7' /></label>
+            </gridbox>
+            <!-- Schriften-->
+            <gridbox>
+                <attrs value='ORIENTATION=HORIZONTAL,NUMDIV=4, EXPAND=NO, SIZELIN=-1, SIZECOL=-1, GAPLIN=2, GAPCOL=5, ALIGNMENTLIN=ACENTER,ALIGNMENTCOL=ALEFT' />
+                <fill />
+                <label><attrs value='TITLE="Schriften (ver.)", RASTERSIZE=135,FONTSTYLE=Bold' /></label>
+                <label><attrs value='TITLE=Kompl., FONTSIZE=7' /></label>
+                <label><attrs value='TITLE=TaW, FONTSIZE=7' /></label>
+            </gridbox>
+        </vbox>
+        <!-- 3. column -->
+        <vbox>
+            <!-- Handwerk -->
+            <gridbox>
+                <attrs value='ORIENTATION=HORIZONTAL,NUMDIV=4, EXPAND=NO, SIZELIN=-1, SIZECOL=-1, GAPLIN=2, GAPCOL=5, ALIGNMENTLIN=ACENTER,ALIGNMENTCOL=ALEFT' />
+                <!-- Handwerk (B) Probe TaW -->
+                <fill />
+                <label><attrs value='TITLE="Handwerk (B)", RASTERSIZE=135,FONTSTYLE=Bold' /></label>
+                <label><attrs value='TITLE=Probe, FONTSIZE=7' /></label>
+                <label><attrs value='TITLE=TaW, FONTSIZE=7' /></label>
+                <!-- Abrichten MU/IN/CH -->
+                <toggle/>
+                <label><attrs value='TITLE="Abrichten", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=MU/IN/CH, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Ackerbau IN/FF/KO -->
+                <toggle/>
+                <label><attrs value='TITLE="Ackerbau", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=IN/FF/KO, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Alchemie MU/KL/FF -->
+                <toggle/>
+                <label><attrs value='TITLE="Alchemie", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=MU/KL/FF, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                
+                <!-- Bergbau IN/KO/KK -->
+                <toggle/>
+                <label><attrs value='TITLE="Bergbau", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=IN/KO/KK, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>  
+                <!-- Bogenbau KL/IN/FF -->
+                <toggle/>
+                <label><attrs value='TITLE="Bogenbau", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/IN/FF, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                 
+                <!-- Boote fahren GE/KO/KK -->
+                <toggle/>
+                <label><attrs value='TITLE="Boote fahren", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=GE/KO/KK, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>   
+                <!-- Brauer KL/FF/KK -->
+                <toggle/>
+                <label><attrs value='TITLE="Brauer", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/FF/KK, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                  
+                <!-- Drucker KL/FF/KK -->
+                <toggle/>
+                <label><attrs value='TITLE="Drucker", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/FF/KK, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                 
+                <!-- Fahrzeuge lenken IN/CH/FF -->
+                <toggle/>
+                <label><attrs value='TITLE="Fahrzeuge lenken", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=IN/CH/FF, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                  
+                <!-- Falschspiel MU/CH/FF -->
+                <toggle/>
+                <label><attrs value='TITLE="Falschspiel", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=MU/CH/FF, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                   
+                <!-- Feinmechanik KL/FF/FF -->
+                <toggle/>
+                <label><attrs value='TITLE="Feinmechanik", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/FF/FF, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>  
+                <!-- Feuersteinbearbeitung KL/FF/FF -->
+                <toggle/>
+                <label><attrs value='TITLE="Feuersteinbearbeitung", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/FF/FF, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                  
+                <!-- Fleischer KL/FF/KK -->
+                <toggle/>
+                <label><attrs value='TITLE="Fleischer", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/FF/KK, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                   
+                <!-- Gerber / Kürschner KL/FF/KO -->
+                <toggle/>
+                <label><attrs value='TITLE="Gerber / Kürschner", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/FF/KO, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                  
+                <!-- Glaskunst FF/FF/KO -->
+                <toggle/>
+                <label><attrs value='TITLE="Glaskunst", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=FF/FF/KO, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                 
+                <!-- Grobschmied FF/KO/KK -->
+                <toggle/>
+                <label><attrs value='TITLE="Grobschmied", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=FF/KO/KK, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                   
+                <!-- Handel KL/IN/CH -->
+                <toggle/>
+                <label><attrs value='TITLE="Handel", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/IN/CH, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                    
+                <!-- Hauswirtschaft IN/CH/FF -->
+                <toggle/>
+                <label><attrs value='TITLE="Hauswirtschaft", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=IN/CH/FF, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                    
+                <!-- Heilkunde Gift MU/KL/IN -->
+                <toggle/>
+                <label><attrs value='TITLE="Heilkunde Gift", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=MU/KL/IN, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>  
+                <!-- Heilkunde Krankheiten MU/KL/CH -->
+                <toggle/>
+                <label><attrs value='TITLE="Heilkunde Krankheiten", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=MU/KL/CH, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text> 
+                <!-- Heilkunde Seele IN/CH/CH -->
+                <toggle/>
+                <label><attrs value='TITLE="Heilkunde Seele", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=IN/CH/CH, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                 
+                <!-- Heilkunde Wunden KL/CH/FF -->
+                <fill/>
+                <label><attrs value='TITLE="Heilkunde Wunden"' /></label>
+                <label><attrs value='TITLE=KL/CH/FF' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                  
+                <!-- Holzbearbeitung KL/FF/KK -->
+                <fill/>
+                <label><attrs value='TITLE="Holzbearbeitung"' /></label>
+                <label><attrs value='TITLE=KL/FF/KK' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                 
+                <!-- Instrumentenbauer KL/IN/FF -->
+                <toggle/>
+                <label><attrs value='TITLE="Holzbearbeitung", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/IN/FF, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                   
+                <!-- Kartographie KL/KL/FF -->
+                <toggle/>
+                <label><attrs value='TITLE="Kartographie", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/KL/FF, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                 
+                <!-- Kochen KL/IN/FF -->
+                <fill/>
+                <label><attrs value='TITLE="Kochen"' /></label>
+                <label><attrs value='TITLE=KL/IN/FF' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                 
+                <!-- Kristallzucht KL/IN/FF -->
+                <toggle/>
+                <label><attrs value='TITLE="Kristallzucht", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/IN/FF, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                
+                <!-- Lederarbeiten KL/FF/FF -->
+                <fill/>
+                <label><attrs value='TITLE="Lederarbeiten"' /></label>
+                <label><attrs value='TITLE=KL/FF/FF' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                   
+                <!-- Malen / Zeichnen KL/IN/FF -->
+                <fill/>
+                <label><attrs value='TITLE="Malen / Zeichnen"' /></label>
+                <label><attrs value='TITLE=KL/IN/FF' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                 
+                <!-- Maurer FF/GE/KK -->
+                <toggle/>
+                <label><attrs value='TITLE="Maurer", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=FF/GE/KK, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                 
+                <!-- Metallguss KL/FF/KK -->
+                <toggle/>
+                <label><attrs value='TITLE="Metallguss", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/FF/KK, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                  
+                <!-- Musizieren IN/CH/FF -->
+                <toggle/>
+                <label><attrs value='TITLE="Musizieren", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=IN/CH/FF, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                     
+                <!-- Schlösser knacken IN/FF/FF -->
+                <toggle/>
+                <label><attrs value='TITLE="Schlösser knacken", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=IN/FF/FF, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                   
+                <!-- Schnaps brennen KL/IN/FF -->
+                <toggle/>
+                <label><attrs value='TITLE="Schnaps brennen", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/IN/FF, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                  
+                <!-- Schneidern KL/FF/FF -->
+                <fill/>
+                <label><attrs value='TITLE="Schneidern"' /></label>
+                <label><attrs value='TITLE=KL/FF/FF' /></label>
+                <text>
+                    <attrs value='RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                  
+                <!-- Seefahrt FF/GE/KK -->
+                <toggle/>
+                <label><attrs value='TITLE="Seefahrt", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=FF/GE/KK , ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                  
+                <!-- Seiler FF/FF/KK -->
+                <toggle/>
+                <label><attrs value='TITLE="Seiler", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=FF/FF/KK, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                  
+                <!-- Steinmetz FF/FF/KK -->
+                <toggle/>
+                <label><attrs value='TITLE="Steinmetz", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=FF/FF/KK, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                  
+                <!-- Steinschneider/Juwelier IN/FF/FF -->
+                <toggle/>
+                <label><attrs value='TITLE="Steinschneider/Juwelier", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=IN/FF/FF, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text> 
+                <!-- Stellmacher KL/FF/KK -->
+                <toggle/>
+                <label><attrs value='TITLE="Stellmacher", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/FF/KK, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                 
+                <!-- Stoffe färben KL/FF/KK -->
+                <toggle/>
+                <label><attrs value='TITLE="Stoffe färben", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/FF/KK, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                  
+                <!-- Tätowieren IN/FF/FF -->
+                <toggle/>
+                <label><attrs value='TITLE="Tätowieren", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=IN/FF/FF, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                
+                <!-- Töpfern KL/FF/FF -->
+                <toggle/>
+                <label><attrs value='TITLE="Töpfern", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/FF/FF, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                 
+                <!-- Viehzucht KL/IN/KK -->
+                <toggle/>
+                <label><attrs value='TITLE="Viehzucht", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/IN/KK, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                  
+                <!-- Webkunst FF/FF/KK -->
+                <toggle/>
+                <label><attrs value='TITLE="Webkunst", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=FF/FF/KK, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                   
+                <!-- Winzer KL/FF/KK -->
+                <toggle/>
+                <label><attrs value='TITLE="Winzer", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/FF/KK, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                   
+                <!-- Zimmermann KL/FF/KK -->
+                <toggle/>
+                <label><attrs value='TITLE="Zimmermann", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/FF/KK, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                  
+            </gridbox>
+            <!-- Gaben-->
+            <gridbox>
+                <attrs value='ORIENTATION=HORIZONTAL,NUMDIV=4, EXPAND=NO, SIZELIN=-1, SIZECOL=-1, GAPLIN=2, GAPCOL=5, ALIGNMENTLIN=ACENTER,ALIGNMENTCOL=ALEFT' />
+                <!-- Gaben (F) Probe TaW -->
+                <fill />
+                <label><attrs value='TITLE="Gaben (F)", RASTERSIZE=140,FONTSTYLE=Bold' /></label>
+                <label><attrs value='TITLE=Probe, FONTSIZE=7' /></label>
+                <label><attrs value='TITLE=TaW, FONTSIZE=7' /></label>
+                <!-- Empathie MU/IN/IN -->
+                <toggle/>
+                <label><attrs value='TITLE="Empathie", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=MU/IN/IN, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                
+                <!-- Gefahreninstinkt KL/IN/IN -->
+                <toggle/>
+                <label><attrs value='TITLE="Gefahreninstinkt", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=KL/IN/IN, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                    
+                <!-- Geräuschhexerei IN/CH/KO -->
+                <toggle/>
+                <label><attrs value='TITLE="Geräuschhexerei", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=IN/CH/KO, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text> 
+                <!-- Kräfteschub MU/IN/KO -->
+                <toggle/>
+                <label><attrs value='TITLE="Kräfteschub", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=MU/IN/KO, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                 
+                <!-- Magiegespür MU/IN/IN -->
+                <toggle/>
+                <label><attrs value='TITLE="Magiegespür", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=MU/IN/IN, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                   
+                <!-- Prophezeien IN/IN/CH -->
+                <toggle/>
+                <label><attrs value='TITLE="Prophezeien", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=IN/IN/CH, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text> 
+                <!-- Talentschub MU/IN/KO -->
+                <toggle/>
+                <label><attrs value='TITLE="Talentschub", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=MU/IN/KO, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                 
+                <!-- Tierempathie MU/IN/CH -->
+                <toggle/>
+                <label><attrs value='TITLE="Tierempathie", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=MU/IN/CH, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                    
+                <!-- Zwergennase FF/IN/IN -->
+                <toggle/>
+                <label><attrs value='TITLE="Zwergennase", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=FF/IN/IN, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO, RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                  
+            </gridbox>
+        </vbox>
+    </hbox>
+</scrollbox>
