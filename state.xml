@@ -18,6 +18,7 @@
             </module>
             <module name="hgen">
                 <e name="redundant selected hero" src="src/hgen/plugin_hgen_ui_callback.c" example=":hgen_on_close_hero_tab:+8" >extract code for later usage in aother callbacks.</e>
+                <e name="use single details ui" src="src/hgen/plugin_hgen_ui_funcs.c" example=":create_andor_open_hero:+15" >Currently each hero got a new details page. We want to save UI State in hero file and using only one detailpage, but in Tabs</e>
             </module>
         </cleanup>
     </issues>
