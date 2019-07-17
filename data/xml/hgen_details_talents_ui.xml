@@ -753,6 +753,139 @@
                 <label><attrs value='TITLE="Sprachen (ver.)", RASTERSIZE=135,FONTSTYLE=Bold' /></label>
                 <label><attrs value='TITLE=Kompl., FONTSIZE=7' /></label>
                 <label><attrs value='TITLE=TaW, FONTSIZE=7' /></label>
+                <!-- Garethi-Familie		-->
+                <!-- Garethi*1,2 18		-->
+                <toggle/>
+                <label><attrs value='TITLE="Garethi", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=18, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text> 
+                <!-- Bosparano*2 21		-->
+                <toggle/>
+                <label><attrs value='TITLE="Bosparano", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=21, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text> 
+                <!-- Aureliani** 21		-->
+                <toggle/>
+                <label><attrs value='TITLE="Aureliani", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=21, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                 
+                <!-- Zyklopäisch*2 18		-->
+                <toggle/>
+                <label><attrs value='TITLE="Zyklopäisch", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=18, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                       
+                <!-- Tulamidya-Familie		-->
+                <!-- Tulamidya 18		-->
+                <toggle/>
+                <label><attrs value='TITLE="Tulamidya", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=18, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                
+                <!-- Ur-Tulamidya** 21		-->
+                <toggle/>
+                <label><attrs value='TITLE="Ur-Tulamidya", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=21, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                 
+                <!-- Zelemja 18		-->
+                <toggle/>
+                <label><attrs value='TITLE="Zelemja", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=18, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                   
+                <!-- Alaani*3 21		-->
+                <toggle/>
+                <label><attrs value='TITLE="Alaani", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=21, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>  
+                <!-- Zhulchammaqra 15		-->
+                <toggle/>
+                <label><attrs value='TITLE="Zhulchammaqra", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=15, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                 
+                <!-- Ferkina 16		-->
+                <toggle/>
+                <label><attrs value='TITLE="Ferkina", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=16, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                  
+                <!-- Ruuz** 18		-->
+                <toggle/>
+                <label><attrs value='TITLE="Ruuz", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=18, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>                 
+                <!-- Alte Kemi 18		-->
+                <toggle/>
+                <label><attrs value='TITLE="Alte Kemi", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=18, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>  
+                <!-- Rabensprache 15		-->
+                <toggle/>
+                <label><attrs value='TITLE="Rabensprache", ACTIVE=NO' /></label>
+                <label><attrs value='TITLE=18, ACTIVE=NO' /></label>
+                <text>
+                    <attrs value='ACTIVE=NO,RASTERSIZE=35, READONLY=YES, SPIN=yes, SPININC=1, SPINAUTO=no, SPINMIN=50, SPINMAX=200' />
+                </text>
+                <!-- Thorwalsch-Familie		-->
+                <!-- Hjaldingsch 18		-->
+                <!-- Thorwalsch*1 18		-->
+                <!-- Gjalskisch*3 18		-->
+                <!-- Fjarnisch 18		-->
+
+                <!-- Elfisch-Familie***		-->
+                <!-- Isdira 15 (21)		-->
+                <!-- Asdharia** (B) 15 (24)		-->
+
+                <!-- Zwergisch-Familie 		-->
+                <!-- Rogolan 21		-->
+                <!-- Angram** 21		-->
+
+                <!-- Orkisch-Familie		-->
+                <!-- Ologhaijan 15		-->
+                <!-- Oloarkh 10		-->
+
+                <!-- Rissoal-Familie		-->
+                <!-- Mahrisch 20		-->
+                <!-- Rissoal 20		-->
+
+                <!-- Einzelne Sprachen		-->
+                <!-- Drachisch*** - (21)		-->
+                <!-- Rssahh*** 9 (18)		-->
+                <!-- Trollisch 15		-->
+                <!-- Goblinisch 12		-->
+                <!-- Grolmisch*** 6 (17)		-->
+
+                <!-- Koboldisch*** - (15)		-->
+                <!-- Mohisch 15		-->
+                <!-- Molochisch 17		-->
+                <!-- Neckergesang 24		-->
+                <!-- Nujuka 15		-->
+                <!-- Z´Lit*** - (17)		-->
+
+                <!-- Geheimsprachen		-->
+                <!-- Zhayad 15		-->
+                <!-- Atak 12		-->
+                <!-- Füchsisch 12		-->
             </gridbox>
             <!-- Schriften-->
             <gridbox>
@@ -761,6 +894,31 @@
                 <label><attrs value='TITLE="Schriften (ver.)", RASTERSIZE=135,FONTSTYLE=Bold' /></label>
                 <label><attrs value='TITLE=Kompl., FONTSIZE=7' /></label>
                 <label><attrs value='TITLE=TaW, FONTSIZE=7' /></label>
+                <!-- Kusliker Zeichen 10		-->
+                <!-- Imperiale Schriftzeichen 12		-->
+                <!-- Tulamidya 14		-->
+                <!-- G. Glyphen v. Unau 13		-->
+                <!-- Ur-Tulamidya 16		-->
+                <!-- Chrmk 18		-->
+                <!-- Altes Alaani 18		-->
+                <!-- Altes Kemi 21		-->
+                <!-- Hjaldingsche Runen 10		-->
+                <!-- Gjalskisch 14		-->
+                <!-- Isdira 15		-->
+                <!-- Asdharia 18		-->
+                <!-- Rogolan 11		-->
+                <!-- Angram 21		-->
+
+                <!-- Mahrische Glyphen (B) 15		-->
+                <!-- Drakned (B) 15		-->
+                <!-- Chuchas (B) 24		-->
+                <!-- Raumbilderschrift (C) 24		-->
+                <!-- Zhayad 18		-->
+                <!-- Gimaril 10		-->
+                <!-- Nanduria 10		-->
+                <!-- Amulashtra 11/17		-->
+                <!-- Arkanil (C) 24		-->
+                <!-- Drakhard-Zinken 9 (+)		-->  
             </gridbox>
         </vbox>
         <!-- 3. column -->
