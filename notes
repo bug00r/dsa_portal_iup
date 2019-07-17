@@ -1,0 +1,54 @@
+[OK]1. I want to create IUP GUI based on XML?
+        - I built an own xml parser
+
+[OK]2. I want to built xml data depend GUIs with XLST and adding params
+        - libsxlt
+            xmlDocPtr	xsltApplyStylesheet	(xsltStylesheetPtr style, 
+					                         xmlDocPtr doc, 
+					                         const char ** params)
+
+[-]3. I want to use external documents inside of XSLT.
+        - xslt function document(URI) OK
+        - but i want to have external document from existing document, can i hook this document function?
+            1) libxslt provides void	xsltSetLoaderFunc		(xsltDocLoaderFunc f)
+
+                xmlDocPtr	xsltDocLoaderFunc	(const xmlChar * URI, 
+					                             xmlDictPtr dict, 
+					                             int options, 
+					                             void * ctxt, 
+					                             xsltLoadType type)
+                        Enum xsltLoadType {
+                            XSLT_LOAD_START = 0 : loading for a top stylesheet
+                            XSLT_LOAD_STYLESHEET = 1 : loading for a stylesheet include/import
+                            XSLT_LOAD_DOCUMENT = 2 : loading document at transformation time
+                        }
+                        we have to catch xsltLoadType == XSLT_LOAD_DOCUMENT Rest has to delegate into
+                                xsltDocDefaultLoaderFunc
+            (Here we can't add our own loaded docs :( )
+            -1. if i reset the loaderFunc i can delegate in all other parts to the function:
+                        xsltDocDefaultLoaderFunc
+            0. i got a context, how i can get into my data pointer.
+                        xsltTransformContext contains the xsltStylesheetPtr; If the outside and inside are the same
+                        it could work to create an own one.
+                            struct custom pointer { 
+                                xsltStylesheetPtr oldstyle; //this is the first data and could overloaded
+                                void *mydata;
+                            }
+            1. i got xsltStylesheetPtr outside:
+                        we are creating own pointer and inject our data.
+                        so we need our own deletion method
+
+            2) - xsltStylesheetPtr	xsltParseStylesheetDoc	(xmlDocPtr doc)
+               - xsltTransformContextPtr	xsltNewTransformContext	(xsltStylesheetPtr style, xmlDocPtr doc)
+               - xmlDocPtr	xsltApplyStylesheetUser	(xsltStylesheetPtr style, 
+                                                    xmlDocPtr doc, 
+                                                    const char ** params, 
+                                                    const char * output, //output file, can be NULL
+                                                    FILE * profile, //can be null
+                                                    xsltTransformContextPtr userCtxt)
+               - xsltTransformContextPtr._private // user defined data
+
+
+                and loader method overload see above
+
+
