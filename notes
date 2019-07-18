@@ -7,7 +7,7 @@
 					                         xmlDocPtr doc, 
 					                         const char ** params)
 
-[-]3. I want to use external documents inside of XSLT.
+[OK]3. I want to use external documents inside of XSLT.
         - xslt function document(URI) OK
         - but i want to have external document from existing document, can i hook this document function?
             1) libxslt provides void	xsltSetLoaderFunc		(xsltDocLoaderFunc f)
@@ -51,4 +51,36 @@
 
                 and loader method overload see above
 
+[-]4.The Rules have a lots of dependecies and manipulations after something was changed. So, what will we need.
+    [-] Collection of all dependecies and Manipulators based on topic:
+        Topics: Breed, Culture, Profession, Pro, Contra, Special Abilities(Mage regular...)
+            - manipulation type: add, increase, decrease...
+            - manipulation target: to find maximum topics we have to recalculate.
+    [-] Collection of all given Data in a structured way: Base of this is the hero xml, there are all manual and    
+        automatic files included. We have to follow the generation Rules. Which kind Data we have to collect, why 
+        and from which place. 
+            1. You have base GP
+            2. Attributes like MU,KL ..., GS and SO.
+                - Other Tags can have modificators like +, - and limits(example breed..)
+            3. LeP, AsP, AT, PA, Ini...
+                - Other Tags can have modificators like + - and limits(pro contra, breed, culture..)
+            4. Pro and contras 
+                - Other Tags can contain them, like Breed Culture and professions or manual addition
+            5. Special Abilities
+                - Other Tags can contain them, like Breed Culture and professions or manual addition
+            6. Talents(regular, Speels Liturgies, Gives)
+                - Other Tags can contain them, like Breed Culture and professions or manual addition
+            7. Manipulator, they can included in every element and can change the calculation way of 
+               different parts.
+                - like mastership in single Talent or Talentgroup, There are some reduced costs
+    [-] The calculation process is the most complex one, but what we have to do in different cases?
+        - Example: Talent, Special Abilites
+            - collection existing by breed, culture and profession.
+            - make summary
+            - collection modificators and manual additions, calculate costs of manual summary based on
+              modifiers(it could be cheaper or more expensive)
+    [-] Extraction of Dependecies in every Case: You can have Dependencies
+        [-] List of all Dependencies to examine a base. For this you have to read all/most Rules
+        [-] Check beside if they are valid(needed: Data consolidation)
+    
 
