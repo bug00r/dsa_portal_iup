@@ -56,6 +56,27 @@
         Topics: Breed, Culture, Profession, Pro, Contra, Special Abilities(Mage regular...)
             - manipulation type: add, increase, decrease...
             - manipulation target: to find maximum topics we have to recalculate.
+        
+        Example: Talents
+            <talents>
+                <group name="Fight"> //special case like language because variable Increasement Columns
+                    <mods> // mods tag says this are mods for all Fighting Talents
+                        <mod value="-1" src="//breed[@name = 'Mittelländer']" /> //means one column left => cheaper, comes from Breed
+                        <mod value="1" src="//contra[@name = 'Dumpfighter']" /> //means one column right => more expensive, comes from contra
+                    </mods>
+                    <talent name="Dolche"/> //this will be affected by global fighting mods
+                    <talent name="Schwerter">
+                        <mods>
+                            <mod value="-1" src="//pro[@name = 'Cheaper Talent']"> //this has both mods from Fight group and, comes from pro 
+                        </mods>
+                    </talent>
+                </group>
+                <group name="Körperliche">
+                </group>
+                ...
+            </talents>
+
+
     [-] Collection of all given Data in a structured way: Base of this is the hero xml, there are all manual and    
         automatic files included. We have to follow the generation Rules. Which kind Data we have to collect, why 
         and from which place. 
